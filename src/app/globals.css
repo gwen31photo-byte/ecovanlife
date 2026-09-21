@@ -181,6 +181,18 @@ input {
   font-weight: 700;
   letter-spacing: -1.2px;
 }
+.site-header.over-hero .brand {
+  padding: 6px 10px;
+  margin: -6px -10px;
+  background: rgba(247, 246, 242, 0.55);
+  border-radius: 6px;
+}
+.site-header .header-logo {
+  display: block;
+  width: 210px;
+  height: auto;
+  object-fit: contain;
+}
 .brand-dot {
   color: #d6a78e;
 }
@@ -256,7 +268,7 @@ input {
   font-size: 11px;
 }
 .hero h1 {
-  font-size: clamp(64px, 8.4vw, 118px);
+  font-size: clamp(56px, 6.4vw, 90px);
   letter-spacing: -6px;
   font-weight: 500;
   margin: 16px 0;
@@ -272,8 +284,8 @@ input {
 }
 .hero-description {
   color: #eeeee8;
-  font-size: 14px;
-  line-height: 1.9;
+  font-size: 15px;
+  line-height: 26.6px;
   margin-bottom: 32px;
 }
 .button {
@@ -977,6 +989,9 @@ input {
   }
 }
 @media (max-width: 800px) {
+  .site-header .header-logo {
+    width: 150px;
+  }
   .hero-image {
     object-position: 30% center;
     transform: scale(1.2);
@@ -1150,7 +1165,7 @@ input {
 }
 @media (max-width: 600px) {
   .hero h1 {
-    font-size: 64px;
+    font-size: clamp(44px, 10vw, 60px);
     letter-spacing: -4px;
   }
   .hero .eyebrow {
@@ -1161,7 +1176,8 @@ input {
     font-size: 19px;
   }
   .hero-description {
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 24.7px;
   }
   .hero-content {
     top: 47%;

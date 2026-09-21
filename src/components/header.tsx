@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, Mountain } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { navigation } from "@/content/site";
 export function Header() {
   const pathname = usePathname();
@@ -10,10 +11,14 @@ export function Header() {
   return (
     <header className={`site-header ${pathname === "/" ? "over-hero" : ""}`}>
       <Link href="/" className="brand" aria-label="EcoVanLife, accueil">
-        <Mountain size={30} strokeWidth={1.3} />
-        <span>
-          EcoVanLife<span className="brand-dot">.</span>
-        </span>
+        <Image
+          src="/images/logo-ecovanlife1.png"
+          alt="EcoVanLife"
+          width={2172}
+          height={724}
+          sizes="(max-width: 800px) 150px, 210px"
+          className="header-logo"
+        />
       </Link>
       <button
         className="menu-toggle"

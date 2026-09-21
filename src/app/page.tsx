@@ -26,7 +26,7 @@ export default function Home() {
         <div className="hero-content">
           <p className="eyebrow">CARNETS DE ROUTE & INSTANTS DE LIBERTÉ</p>
           <h1>
-            EcoVanLife<span>.</span>
+            La route comme maison<span>.</span>
           </h1>
           <p className="hero-tagline">Voyager. Explorer. Vivre autrement.</p>
           <p className="hero-description">
