@@ -76,6 +76,30 @@ import florenceHauteurs from "../../../../public/images/voyages/de-toulouse-a-li
 import florencePonteVecchioPanorama from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-ponte-vecchio-panorama.jpg";
 import florencePanorama from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-panorama.jpg";
 import florenceVanDeuxiemeNuit from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-van-deuxieme-nuit.jpg";
+import saintMarinArriveeHauteurs from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-arrivee-hauteurs.jpg";
+import saintMarinPremierPanorama from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-premier-panorama.jpg";
+import saintMarinPremieresRues from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-premieres-rues.jpg";
+import saintMarinRuesBoutiques from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-rues-boutiques.jpg";
+import saintMarinInterieurHistorique from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-interieur-historique.jpg";
+import saintMarinArchitecture from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-architecture.jpg";
+import saintMarinRueFortifications from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-rue-fortifications.jpg";
+import saintMarinFortificationsJardin from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-fortifications-jardin.jpg";
+import saintMarinArtillerie from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-artillerie.jpg";
+import saintMarinPaysageNuages from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-paysage-nuages.jpg";
+import saintMarinVueHauteurs from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-vue-hauteurs.jpg";
+import saintMarinForteresse from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-forteresse.jpg";
+import saintMarinRempartsSoiree from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-remparts-soiree.jpg";
+import saintMarinPanoramaMatin from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-panorama-matin.jpg";
+import saintMarinArchitecturePaysage from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-architecture-paysage.jpg";
+import saintMarinPetitesRues from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-petites-rues.jpg";
+import saintMarinCappuccino from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-cappuccino.jpg";
+import saintMarinEntreeFortifications from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-entree-fortifications.jpg";
+import saintMarinInterieurTour from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-interieur-tour.jpg";
+import saintMarinArmures from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-armures.jpg";
+import saintMarinPanoramaTour from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-panorama-tour.jpg";
+import saintMarinTourRemparts from "../../../../public/images/voyages/de-toulouse-a-litalie/saint-marin-tour-remparts.jpg";
+import modeneArriveeAireCampingCar from "../../../../public/images/voyages/de-toulouse-a-litalie/modene-arrivee-aire-camping-car.jpg";
+import modeneVanSoiree from "../../../../public/images/voyages/de-toulouse-a-litalie/modene-van-soiree.jpg";
 
 export const metadata: Metadata = {
   title: "De Toulouse à l’Italie",
@@ -681,6 +705,160 @@ export default function ToulouseItalyPage() {
             <figure className={styles.photograph}>
               <Image src={florenceVanDeuxiemeNuit} alt="L’arrière de notre van ouvert sur l’aire de camping-car, avec un rideau pour la deuxième nuit à Florence" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 30vw, 420px" />
             </figure>
+          </section>
+        </section>
+        <section className={`${styles.chapter} ${styles.saintMarin}`} aria-labelledby="saint-marin-title">
+          <header className={styles.chapterHeader}>
+            <p className={styles.chapterNumber}>ÉTAPE 07</p>
+            <div>
+              <p className={styles.dateline}>18–19 AVRIL 2025</p>
+              <h2 id="saint-marin-title">Saint-Marin, la surprise des hauteurs</h2>
+              <p className={styles.route}>Florence → Saint-Marin → Modène</p>
+            </div>
+          </header>
+
+          <section aria-labelledby="saint-marin-discovery-title">
+            <div className={styles.saintMarinArrival}>
+              <div className={styles.prose}>
+                <p className={styles.dateline}>18 AVRIL · UNE BELLE SURPRISE</p>
+                <h3 id="saint-marin-discovery-title">Monter pour découvrir</h3>
+                <p>Nous quittons Florence le 18 avril au matin pour environ trois heures de route vers Saint-Marin. En début d’après-midi, nous garons le van sur une aire de camping-car gratuite, dans la partie basse de la ville.</p>
+                <p>Nous prenons ensuite le téléphérique pour rejoindre le centre historique. Nous ne savons pas vraiment à quoi nous attendre. C’est là que vient la surprise : un endroit magnifique, perché au-dessus du paysage.</p>
+              </div>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinArriveeHauteurs} alt="Vue en hauteur sur les maisons de la partie basse de Saint-Marin, entourées de verdure" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 44vw, 620px" />
+              </figure>
+            </div>
+            <div className={styles.saintMarinFirstView}>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinPremierPanorama} alt="Les collines et les villages autour de Saint-Marin sous un ciel chargé de nuages" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 55vw, 760px" />
+              </figure>
+            </div>
+            <div className={`${styles.prose} ${styles.saintMarinTextPause}`}>
+              <p>Comme souvent, nous avons choisi la destination sans préparer les visites. Nous avançons simplement dans les petites rues, entre les boutiques d’art et de souvenirs, les façades et les fortifications. Saint-Marin se découvre au fil de la marche, et nous sommes ravis de cette surprise.</p>
+            </div>
+            <div className={styles.saintMarinStreets}>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinPremieresRues} alt="Escaliers, murs de pierre et grandes façades dans les premières rues du centre historique" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 42vw, 580px" />
+              </figure>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinRuesBoutiques} alt="Les devantures et les boutiques le long d’une rue pavée de Saint-Marin" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 32vw, 440px" />
+              </figure>
+            </div>
+            <div className={styles.saintMarinArchitecture}>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinInterieurHistorique} alt="Une salle aux bancs de bois et aux grandes peintures murales dans le centre historique" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 30vw, 420px" />
+              </figure>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinArchitecture} alt="Une façade de pierre à colonnes et son fronton dans le centre de Saint-Marin" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 24vw, 330px" />
+              </figure>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinRueFortifications} alt="Une petite rue commerçante entre les façades et les murs de pierre de Saint-Marin" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 25vw, 340px" />
+              </figure>
+            </div>
+            <div className={styles.saintMarinWalls}>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinFortificationsJardin} alt="Un jardin au pied des hauts murs et des escaliers des fortifications" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 44vw, 620px" />
+              </figure>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinArtillerie} alt="Des pièces d’artillerie anciennes sur roues devant un bâtiment en pierre" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 29vw, 400px" />
+              </figure>
+            </div>
+            <div className={`${styles.prose} ${styles.saintMarinTextPause}`}>
+              <h3>Le paysage, tout autour</h3>
+              <p>Les rues et les fortifications nous plaisent déjà beaucoup, mais ce sont surtout les vues qui nous surprennent. Depuis les hauteurs, le paysage s’étend au loin sous les nuages. Nous n’avions pas imaginé découvrir tout cela en venant ici.</p>
+            </div>
+            <figure className={styles.photograph}>
+              <Image src={saintMarinPaysageNuages} alt="Les collines verdoyantes sous une trouée de ciel bleu entre de grands nuages, vues depuis Saint-Marin" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 85vw, 1200px" />
+            </figure>
+            <div className={styles.saintMarinTerrace}>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinVueHauteurs} alt="Une terrasse de pierre au-dessus des arbres et du vaste paysage autour de Saint-Marin" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 55vw, 760px" />
+              </figure>
+            </div>
+            <div className={styles.saintMarinFortress}>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinForteresse} alt="Une forteresse et ses tours dressées sur une crête rocheuse au-dessus des arbres" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 76vw, 1050px" />
+              </figure>
+            </div>
+            <div className={styles.saintMarinFirstDayEnd}>
+              <div className={styles.prose}>
+                <p>Cette première découverte nous donne envie de continuer. Les petites rues, les remparts et les panoramas ont largement dépassé ce que nous attendions de cette halte. Le lendemain, nous reviendrons dans le centre historique pour en voir davantage.</p>
+              </div>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinRempartsSoiree} alt="Des passants dans une rue bordée de boutiques et de remparts crénelés" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 40vw, 560px" />
+              </figure>
+            </div>
+          </section>
+
+          <section className={styles.saintMarinSequence} aria-labelledby="saint-marin-second-day-title">
+            <div className={`${styles.prose} ${styles.saintMarinIntro}`}>
+              <p className={styles.dateline}>19 AVRIL · RETOUR DANS LE CENTRE HISTORIQUE</p>
+              <h3 id="saint-marin-second-day-title">Encore un peu de Saint-Marin</h3>
+              <p>Le 19 avril, nous retournons dans le centre historique pour poursuivre la visite. Après la belle surprise de la veille, nous avons envie de découvrir davantage les tours, les châteaux et les remparts, avec toujours ces panoramas autour de nous.</p>
+            </div>
+            <div className={styles.saintMarinMorningView}>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinPanoramaMatin} alt="Les collines et les champs autour de Saint-Marin sous le ciel bleu du matin" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 72vw, 1000px" />
+              </figure>
+            </div>
+            <div className={styles.saintMarinMorningStreets}>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinArchitecturePaysage} alt="Une place et ses bâtiments de pierre ouverts sur le paysage en contrebas" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 42vw, 580px" />
+              </figure>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinPetitesRues} alt="Un passage pavé entre une petite boutique et les murs de pierre, sous les arbres" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 32vw, 440px" />
+              </figure>
+            </div>
+            <div className={styles.saintMarinCoffeeBreak}>
+              <div className={styles.prose}>
+                <p className={styles.dateline}>LE CAPPUCCINO DU MATIN</p>
+                <p>Dans la matinée, nous prenons aussi le temps d’un cappuccino. Une petite pause au milieu de la visite, avant de continuer à découvrir Saint-Marin.</p>
+              </div>
+              <figure className={`${styles.photograph} ${styles.saintMarinCoffee}`}>
+                <Image src={saintMarinCappuccino} alt="Un cappuccino dans une tasse blanche, avec un croissant sur la table" sizes="(max-width: 700px) 150px, (max-width: 1000px) 200px, 230px" />
+              </figure>
+            </div>
+            <div className={styles.saintMarinInteriors}>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinEntreeFortifications} alt="L’entrée d’une fortification entre ses murs crénelés et ses tours de pierre" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 28vw, 380px" />
+              </figure>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinInterieurTour} alt="Une salle intérieure avec des vitrines, du mobilier en bois et un lustre" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 23vw, 320px" />
+              </figure>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinArmures} alt="Deux armures exposées derrière une vitrine" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 21vw, 290px" />
+              </figure>
+            </div>
+            <div className={`${styles.prose} ${styles.saintMarinTextPause}`}>
+              <h3>Entre les tours et l’horizon</h3>
+              <p>Nous continuons parmi les tours et les remparts. D’un point de vue à l’autre, le paysage reste une grande part du plaisir de la visite. Cette deuxième journée confirme notre première impression : Saint-Marin restera l’une des belles surprises de cette partie du voyage.</p>
+            </div>
+            <div className={styles.saintMarinTowers}>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinPanoramaTour} alt="Le paysage au loin entre une tour de pierre et les remparts de Saint-Marin" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 35vw, 480px" />
+              </figure>
+              <figure className={styles.photograph}>
+                <Image src={saintMarinTourRemparts} alt="Une tour et ses remparts crénelés au bord du chemin, sous un ciel bleu" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 40vw, 550px" />
+              </figure>
+            </div>
+          </section>
+
+          <section className={styles.saintMarinDeparture} aria-labelledby="saint-marin-modene-title">
+            <div className={`${styles.prose} ${styles.saintMarinIntro}`}>
+              <p className={styles.dateline}>19 AVRIL · VERS 18 H 30 À MODÈNE</p>
+              <h3 id="saint-marin-modene-title">Reprendre la route vers Modène</h3>
+              <p>Nous quittons Saint-Marin pour prendre la direction de Modène. Nous arrivons vers 18 h 30 sur l’aire de camping-car Campus Club et nous installons pour la soirée.</p>
+              <p>La suite du voyage nous attend tout près : le 20 avril, nous irons découvrir le musée Ferrari de Maranello. Pour l’instant, nous nous installons tranquillement pour la soirée, avant une étape qui s’annonce bien différente.</p>
+            </div>
+            <div className={styles.saintMarinModene}>
+              <figure className={styles.photograph}>
+                <Image src={modeneArriveeAireCampingCar} alt="Notre van rouge et blanc stationné sous les arbres sur l’aire de camping-car de Modène" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 28vw, 380px" />
+              </figure>
+              <figure className={styles.photograph}>
+                <Image src={modeneVanSoiree} alt="Les chaises installées derrière notre van ouvert pour la soirée à Modène" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 32vw, 440px" />
+              </figure>
+            </div>
           </section>
         </section>
       </div>

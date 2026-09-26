@@ -624,3 +624,118 @@
   .florenceFiat { width: 180px; margin-top: 40px; }
   .florenceClosing { margin-top: 64px; padding-top: 36px; }
 }
+
+/* Saint-Marin: natural proportions and the journal's existing visual rhythm. */
+.saintMarin .photograph img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.saintMarin h3 { font-size: clamp(25px, 3vw, 36px); line-height: 1.2; }
+.saintMarinSequence { margin-top: 96px; }
+.saintMarinIntro { margin: 0 auto 48px; }
+.saintMarinTextPause { margin: 64px auto; }
+.saintMarinArrival, .saintMarinStreets, .saintMarinArchitecture,
+.saintMarinWalls, .saintMarinFirstDayEnd, .saintMarinMorningStreets,
+.saintMarinCoffeeBreak, .saintMarinInteriors, .saintMarinTowers,
+.saintMarinModene {
+  display: grid;
+  gap: clamp(32px, 6vw, 85px);
+  align-items: start;
+}
+.saintMarinArrival {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  align-items: center;
+}
+.saintMarinFirstView { max-width: 760px; margin: 64px 0 0 auto; }
+.saintMarinStreets, .saintMarinMorningStreets {
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  max-width: 1050px;
+  margin-inline: auto;
+}
+.saintMarinStreets > :last-child, .saintMarinMorningStreets > :last-child { margin-top: 64px; }
+.saintMarinArchitecture {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  margin-top: 80px;
+}
+.saintMarinArchitecture > :nth-child(2) { margin-top: 48px; }
+.saintMarinArchitecture > :last-child { margin-top: 96px; }
+.saintMarinWalls {
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  align-items: center;
+  max-width: 1050px;
+  margin: 80px auto 0;
+}
+.saintMarinTerrace { max-width: 760px; margin: 56px 0 0 auto; }
+.saintMarinFortress { max-width: 1050px; margin: 80px auto 0; }
+.saintMarinFirstDayEnd {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  align-items: center;
+  max-width: 1050px;
+  margin: 64px auto 0;
+}
+.saintMarinMorningView { max-width: 1000px; margin-inline: auto; }
+.saintMarinMorningStreets { margin-top: 64px; }
+.saintMarinCoffeeBreak {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 200px);
+  max-width: 850px;
+  margin: 80px auto;
+  align-items: center;
+}
+.saintMarinCoffee { width: 200px; max-width: 100%; }
+.saintMarinInteriors {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: clamp(24px, 4vw, 56px);
+  max-width: 1050px;
+  margin-inline: auto;
+}
+.saintMarinInteriors > :nth-child(2) { margin-top: 64px; }
+.saintMarinInteriors > :last-child { margin-top: 128px; }
+.saintMarinTowers {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+  max-width: 1100px;
+  margin-inline: auto;
+  align-items: end;
+}
+.saintMarinDeparture { border-top: 1px solid var(--line); margin-top: 110px; padding-top: 64px; }
+.saintMarinModene {
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  max-width: 900px;
+  margin-inline: auto;
+}
+.saintMarinModene > :last-child { margin-top: 64px; }
+@media (min-width: 1001px) {
+  .saintMarinCoffeeBreak { grid-template-columns: minmax(0, 1fr) minmax(0, 230px); }
+  .saintMarinCoffee { width: 230px; }
+  .saintMarinInteriors { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) minmax(0, 0.9fr); }
+  .saintMarinTowers { max-width: 1040px; }
+}
+@media (min-width: 701px) and (max-width: 1000px) {
+  .saintMarinSequence { margin-top: 72px; }
+  .saintMarinArrival, .saintMarinStreets, .saintMarinWalls,
+  .saintMarinFirstDayEnd, .saintMarinMorningStreets, .saintMarinCoffeeBreak,
+  .saintMarinTowers, .saintMarinModene { gap: 32px; }
+  .saintMarinArchitecture, .saintMarinInteriors { gap: 24px; }
+  .saintMarinArchitecture > :nth-child(2), .saintMarinInteriors > :nth-child(2) { margin-top: 32px; }
+  .saintMarinArchitecture > :last-child, .saintMarinInteriors > :last-child { margin-top: 64px; }
+}
+@media (max-width: 700px) {
+  .saintMarinSequence { margin-top: 64px; }
+  .saintMarinIntro { margin-bottom: 32px; }
+  .saintMarinTextPause { margin: 40px auto; }
+  .saintMarinArrival, .saintMarinStreets, .saintMarinArchitecture,
+  .saintMarinWalls, .saintMarinFirstDayEnd, .saintMarinMorningStreets,
+  .saintMarinCoffeeBreak, .saintMarinInteriors, .saintMarinTowers,
+  .saintMarinModene { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .saintMarinStreets > :last-child, .saintMarinMorningStreets > :last-child,
+  .saintMarinArchitecture > :nth-child(n), .saintMarinInteriors > :nth-child(n),
+  .saintMarinModene > :last-child { margin-top: 0; }
+  .saintMarinFirstView, .saintMarinArchitecture, .saintMarinWalls,
+  .saintMarinTerrace, .saintMarinFortress, .saintMarinFirstDayEnd,
+  .saintMarinMorningStreets { margin-top: 40px; }
+  .saintMarinCoffeeBreak { margin: 40px auto; gap: 24px; }
+  .saintMarinCoffee { width: 150px; justify-self: end; }
+  .saintMarinDeparture { margin-top: 64px; padding-top: 36px; }
+}
