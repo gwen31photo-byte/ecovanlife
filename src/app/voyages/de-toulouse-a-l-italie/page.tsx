@@ -32,6 +32,22 @@ import cinqueVernazzaEglise from "../../../../public/images/voyages/de-toulouse-
 import cinqueVernazzaHero from "../../../../public/images/voyages/de-toulouse-a-litalie/cinque-terre-vernazza-hero.jpg";
 import cinqueVillagePort from "../../../../public/images/voyages/de-toulouse-a-litalie/cinque-terre-village-port.jpg";
 
+import piseCathedraleTour from "../../../../public/images/voyages/de-toulouse-a-litalie/pise-cathedrale-tour.jpg";
+import piseCathedraleVueHaut from "../../../../public/images/voyages/de-toulouse-a-litalie/pise-cathedrale-vue-haut.jpg";
+import piseBaptistereInterieur from "../../../../public/images/voyages/de-toulouse-a-litalie/pise-baptistere-interieur.jpg";
+import piseCamposantoCloitre from "../../../../public/images/voyages/de-toulouse-a-litalie/pise-camposanto-cloitre.jpg";
+import piseCamposantoFresques from "../../../../public/images/voyages/de-toulouse-a-litalie/pise-camposanto-fresques.jpg";
+import piseCamposantoMonument from "../../../../public/images/voyages/de-toulouse-a-litalie/pise-camposanto-monument.jpg";
+import piseCamposantoGaleries from "../../../../public/images/voyages/de-toulouse-a-litalie/pise-camposanto-galeries.jpg";
+import piseMarcheSouvenirs from "../../../../public/images/voyages/de-toulouse-a-litalie/pise-marche-souvenirs.jpg";
+import piseBaptistereVueHaut from "../../../../public/images/voyages/de-toulouse-a-litalie/pise-baptistere-vue-haut.jpg";
+import pisePiazzaDeiMiracoli from "../../../../public/images/voyages/de-toulouse-a-litalie/pise-piazza-dei-miracoli.jpg";
+import piseTourFrontale from "../../../../public/images/voyages/de-toulouse-a-litalie/pise-tour-frontale.jpg";
+import piseCathedraleInterieurAutel from "../../../../public/images/voyages/de-toulouse-a-litalie/pise-cathedrale-interieur-autel.jpg";
+import piseCathedraleInterieur from "../../../../public/images/voyages/de-toulouse-a-litalie/pise-cathedrale-interieur.jpg";
+import piseTourContrePlongee from "../../../../public/images/voyages/de-toulouse-a-litalie/pise-tour-contre-plongee.jpg";
+import florenceAireCampingCar from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-aire-camping-car.jpg";
+
 export const metadata: Metadata = {
   title: "De Toulouse à l’Italie",
   description:
@@ -363,6 +379,99 @@ export default function ToulouseItalyPage() {
                 <p className={styles.dateline}>NOTRE NUIT</p>
                 <p>Nous trouvons l’aire très bien équipée, avec notamment des douches et tout ce qu’il faut pour passer une bonne soirée et une bonne nuit après cette journée.</p>
               </aside>
+            </div>
+          </section>
+        </section>
+        <section className={`${styles.chapter} ${styles.pise}`} aria-labelledby="pise-title">
+          <header className={styles.chapterHeader}>
+            <p className={styles.chapterNumber}>ÉTAPE 05</p>
+            <div>
+              <p className={styles.dateline}>16 AVRIL 2025</p>
+              <h2 id="pise-title">Pise, une halte sur la route de Florence</h2>
+              <p className={styles.route}>La Spezia → Pise → Florence</p>
+            </div>
+          </header>
+
+          <div className={styles.piseArrival}>
+            <div className={styles.prose}>
+              <p className={styles.dateline}>DE LA SPEZIA À PISE</p>
+              <p>Nous quittons l’aire de camping-car de La Spezia dans la matinée du 16 avril. Direction Pise, où nous arrivons aux alentours de 10 h. Nous garons le van sur le grand parking utilisé notamment par les cars de touristes.</p>
+              <p>En quittant le parking, nous passons devant les petites boutiques et le marché aux souvenirs. Au bout de ce passage, nous rejoignons la Piazza dei Miracoli.</p>
+            </div>
+            <figure className={styles.photograph}><Image src={piseMarcheSouvenirs} alt="Les boutiques de souvenirs alignées le long des remparts, sur le passage vers la Piazza dei Miracoli" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 34vw, 420px" /></figure>
+          </div>
+
+          <section className={styles.piseVisit} aria-labelledby="pise-piazza-title">
+            <div className={`${styles.prose} ${styles.piseIntro}`}>
+              <p className={styles.dateline}>LA VISITE COMMENCE</p>
+              <h3 id="pise-piazza-title">Sur la Piazza dei Miracoli</h3>
+              <p>Le Baptistère, la cathédrale et la tour se dévoilent devant nous. Notre halte à Pise se concentrera sur cet ensemble, avec la visite du Baptistère, de la cathédrale et du Camposanto.</p>
+            </div>
+            <figure className={`${styles.photograph} ${styles.pisePiazzaMain}`}><Image src={pisePiazzaDeiMiracoli} alt="Le Baptistère au premier plan, la cathédrale et la tour au-delà des pelouses de la Piazza dei Miracoli" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 76vw, 1050px" /></figure>
+            <div className={styles.pisePiazzaDetail}><figure className={styles.photograph}><Image src={piseCathedraleTour} alt="La façade de la cathédrale de Pise et la tour derrière elle, au bord de la pelouse" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 48vw, 650px" /></figure></div>
+          </section>
+
+          <section className={styles.piseVisit} aria-labelledby="pise-baptistere-title">
+            <div className={`${styles.prose} ${styles.piseIntro}`}>
+              <h3 id="pise-baptistere-title">À l’intérieur du Baptistère</h3>
+              <p>Nous entrons d’abord dans le Baptistère. Les photographies en gardent deux regards : les détails de l’intérieur, puis une vue d’en haut sur tout le volume du bâtiment.</p>
+            </div>
+            <div className={styles.piseBaptistery}>
+              <figure className={styles.photograph}><Image src={piseBaptistereInterieur} alt="La chaire sculptée et les décors de marbre à l’intérieur du Baptistère" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 45vw, 620px" /></figure>
+              <figure className={styles.photograph}><Image src={piseBaptistereVueHaut} alt="Vue plongeante sur les fonts baptismaux et les arcades à l’intérieur du Baptistère" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 28vw, 380px" /></figure>
+            </div>
+          </section>
+
+          <section className={styles.piseVisit} aria-labelledby="pise-cathedrale-title">
+            <div className={`${styles.prose} ${styles.piseIntro}`}>
+              <h3 id="pise-cathedrale-title">De la façade à la nef</h3>
+              <p>La visite se poursuit dans la cathédrale. Après la façade, place aux colonnes, au plafond et aux décors de l’intérieur : quelques images pour garder le souvenir de cette partie de la matinée.</p>
+            </div>
+            <div className={styles.piseCathedral}>
+              <div className={styles.piseCathedralMain}><figure className={styles.photograph}><Image src={piseCathedraleInterieur} alt="La nef de la cathédrale, ses colonnes et son plafond à caissons dorés" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 43vw, 590px" /></figure></div>
+              <div className={styles.piseCathedralSide}>
+                <figure className={styles.photograph}><Image src={piseCathedraleVueHaut} alt="La façade de la cathédrale vue depuis une ouverture encadrée de colonnes" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 28vw, 380px" /></figure>
+                <figure className={styles.photograph}><Image src={piseCathedraleInterieurAutel} alt="Un autel richement décoré sous les arcs et les colonnes de la cathédrale" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 23vw, 320px" /></figure>
+              </div>
+            </div>
+          </section>
+
+          <section className={styles.piseVisit} aria-labelledby="pise-camposanto-title">
+            <div className={`${styles.prose} ${styles.piseIntro}`}>
+              <h3 id="pise-camposanto-title">Au fil des galeries du Camposanto</h3>
+              <p>Nous découvrons ensuite le Camposanto. Nous parcourons ses longues galeries, entre fresques et monuments, avant de ressortir sur la Piazza dei Miracoli et de retrouver la tour.</p>
+            </div>
+            <figure className={`${styles.photograph} ${styles.piseCloisterMain}`}><Image src={piseCamposantoCloitre} alt="La pelouse du cloître du Camposanto bordée de longues galeries aux arcades de marbre" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 72vw, 1000px" /></figure>
+            <div className={styles.piseCamposantoDetails}>
+              <figure className={styles.photograph}><Image src={piseCamposantoFresques} alt="Les fresques sur les murs d’une galerie du Camposanto, au-dessus du sol de pierre" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 43vw, 590px" /></figure>
+              <figure className={styles.photograph}><Image src={piseCamposantoMonument} alt="Un monument sculpté en marbre blanc devant les peintures murales du Camposanto" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 29vw, 400px" /></figure>
+            </div>
+            <div className={styles.piseCamposantoGallery}><figure className={styles.photograph}><Image src={piseCamposantoGaleries} alt="Les galeries du Camposanto et leurs fenêtres ouvragées autour de la cour" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 55vw, 760px" /></figure></div>
+          </section>
+
+          <section className={styles.piseVisit} aria-labelledby="pise-tour-title">
+            <div className={`${styles.prose} ${styles.piseIntro}`}>
+                  <h3 id="pise-tour-title">La tour, vue d’en bas</h3>
+                  <p>Nous ne visitons pas l’intérieur de la tour et ne montons pas à son sommet. Il y a beaucoup de monde, et nous découvrons qu’il aurait fallu réserver à l’avance. Nous la gardons donc en souvenir depuis l’extérieur, sous deux angles différents.</p>
+                </div>
+            <div className={styles.piseTower}>
+              <figure className={styles.photograph}><Image src={piseTourFrontale} alt="La tour de Pise vue de face, avec ses étages de colonnes et les visiteurs à son pied" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 28vw, 390px" /></figure>
+              <figure className={styles.photograph}><Image src={piseTourContrePlongee} alt="La tour de Pise photographiée en contre-plongée, ses arcades se détachant sur le ciel" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 33vw, 455px" /></figure>
+            </div>
+          </section>
+
+          <section className={styles.piseDeparture} aria-labelledby="pise-florence-title">
+            <div className={styles.piseFlorence}>
+              <div className={styles.prose}>
+              <p className={styles.dateline}>REPRENDRE LA ROUTE</p>
+              <h3 id="pise-florence-title">Vers Florence</h3>
+              <p>Nous n’explorons pas le reste de Pise. Laisser le van avec toutes nos affaires sur ce grand parking touristique nous inquiète un peu, et nous préférons ne pas nous attarder davantage. Après la visite, nous retrouvons le van et prenons la direction de Florence.</p>
+            
+                <p className={styles.dateline}>VERS 17 H · FLORENCE</p>
+                <p>Nous arrivons sur l’aire de camping-car de Florence, tout près du centre-ville. Une fois installés, nous partons à pied pour une première promenade et passons le reste de la soirée dans la ville. La suite du carnet se poursuivra ici.</p>
+              
+              </div>
+              <figure className={styles.photograph}><Image src={florenceAireCampingCar} alt="Les emplacements et les camping-cars sur l’aire de Florence, le long d’une allée pavée" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 32vw, 400px" /></figure>
             </div>
           </section>
         </section>
