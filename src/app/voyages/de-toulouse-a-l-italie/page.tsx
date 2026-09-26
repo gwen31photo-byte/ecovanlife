@@ -48,6 +48,35 @@ import piseCathedraleInterieur from "../../../../public/images/voyages/de-toulou
 import piseTourContrePlongee from "../../../../public/images/voyages/de-toulouse-a-litalie/pise-tour-contre-plongee.jpg";
 import florenceAireCampingCar from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-aire-camping-car.jpg";
 
+import florencePanoramaDuomo from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-panorama-duomo.jpg";
+import florencePremiersPas from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-premiers-pas.jpg";
+import florenceRueCentre from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-rue-centre.jpg";
+import florenceArnoPremiereSoiree from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-arno-premiere-soiree.jpg";
+import florencePalazzoVecchio from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-palazzo-vecchio.jpg";
+import florencePiazzaSignoria from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-piazza-signoria.jpg";
+import florenceFontaineNeptune from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-fontaine-neptune.jpg";
+import florenceRuelle from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-ruelle.jpg";
+import florenceDuomoDecouverte from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-duomo-decouverte.jpg";
+import florenceDuomoFacade from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-duomo-facade.jpg";
+import florenceSoiree from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-soiree.jpg";
+import florencePonteVecchioSoir from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-ponte-vecchio-soir.jpg";
+import florencePonteVecchioNuit from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-ponte-vecchio-nuit.jpg";
+import florenceVanReveil from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-van-reveil.jpg";
+import florenceCappuccino from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-cappuccino.jpg";
+import florenceRuesSousLaPluie from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-rues-sous-la-pluie.jpg";
+import florenceMarche from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-marche.jpg";
+import florenceMatinee from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-matinee.jpg";
+import florenceEgliseInterieur from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-eglise-interieur.jpg";
+import florenceCourSculpture from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-cour-sculpture.jpg";
+import florenceBoutiqueItalienne from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-boutique-italienne.jpg";
+import florenceFiat500 from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-fiat-500.jpg";
+import florenceVueArnoHauteurs from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-vue-arno-hauteurs.jpg";
+import florenceMonteeHauteurs from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-montee-hauteurs.jpg";
+import florenceHauteurs from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-hauteurs.jpg";
+import florencePonteVecchioPanorama from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-ponte-vecchio-panorama.jpg";
+import florencePanorama from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-panorama.jpg";
+import florenceVanDeuxiemeNuit from "../../../../public/images/voyages/de-toulouse-a-litalie/florence-van-deuxieme-nuit.jpg";
+
 export const metadata: Metadata = {
   title: "De Toulouse à l’Italie",
   description:
@@ -473,6 +502,185 @@ export default function ToulouseItalyPage() {
               </div>
               <figure className={styles.photograph}><Image src={florenceAireCampingCar} alt="Les emplacements et les camping-cars sur l’aire de Florence, le long d’une allée pavée" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 32vw, 400px" /></figure>
             </div>
+          </section>
+        </section>
+        <section className={`${styles.chapter} ${styles.florence}`} aria-labelledby="florence-title">
+          <header className={styles.chapterHeader}>
+            <p className={styles.chapterNumber}>ÉTAPE 06</p>
+            <div>
+              <p className={styles.dateline}>16–17 AVRIL 2025</p>
+              <h2 id="florence-title">Florence, au fil des rues</h2>
+              <p className={styles.route}>Pise → Florence</p>
+            </div>
+          </header>
+          <figure className={styles.photograph}>
+              <Image src={florencePanoramaDuomo} alt="Florence vue depuis les hauteurs, avec la coupole du Duomo au-dessus des toits sous un ciel nuageux" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 85vw, 1200px" />
+            </figure>
+
+          <section className={styles.florenceSequence} aria-labelledby="florence-first-evening-title">
+            <div className={`${styles.prose} ${styles.florenceIntro}`}>
+              <p className={styles.dateline}>16 AVRIL · PREMIERS PAS DANS FLORENCE</p>
+              <h3 id="florence-first-evening-title">Marcher, simplement</h3>
+              <p>Nous arrivons à Florence en fin d’après-midi après notre halte à Pise. Une fois le van installé sur l’aire de camping-car, tout près du centre, nous n’avons pas vraiment de programme : nous partons simplement marcher et découvrir la ville.</p>
+            </div>
+            <div className={styles.florenceFirstStreets}>
+              <figure className={styles.photograph}>
+              <Image src={florencePremiersPas} alt="Une statue au bord d’une rue arborée lors de nos premiers pas dans Florence" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 28vw, 380px" />
+            </figure>
+              <figure className={styles.photograph}>
+              <Image src={florenceRueCentre} alt="Une rue de Florence entre une façade de pierre et les maisons du centre" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 32vw, 440px" />
+            </figure>
+            </div>
+            <div className={styles.florenceRiver}>
+              <figure className={styles.photograph}>
+              <Image src={florenceArnoPremiereSoiree} alt="L’Arno bordé de façades, avec un pont au loin sous le ciel de fin de journée" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 72vw, 1000px" />
+            </figure>
+            </div>
+            <div className={`${styles.prose} ${styles.florenceTextPause}`}>
+              <p>Au fil des rues, nous rejoignons l’Arno puis le cœur historique. Places, palais, ruelles… Florence se dévoile progressivement devant nous. Nous découvrons notamment le Duomo avant de poursuivre notre promenade jusqu’au Ponte Vecchio.</p>
+            </div>
+            <div className={styles.florenceSignoria}>
+              <figure className={styles.photograph}>
+              <Image src={florencePalazzoVecchio} alt="La façade et la haute tour du Palazzo Vecchio sur la Piazza della Signoria" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 32vw, 450px" />
+            </figure>
+              <div className={styles.florenceSignoriaDetails}>
+                <figure className={styles.photograph}>
+              <Image src={florencePiazzaSignoria} alt="Les statues sous les grandes arcades de la loggia, sur la Piazza della Signoria" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 23vw, 320px" />
+            </figure>
+                <figure className={styles.photograph}>
+              <Image src={florenceFontaineNeptune} alt="La fontaine de Neptune et ses sculptures devant les pierres du Palazzo Vecchio" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 38vw, 520px" />
+            </figure>
+              </div>
+            </div>
+            <div className={styles.florenceDuomoApproach}>
+              <figure className={styles.photograph}>
+              <Image src={florenceRuelle} alt="Une ruelle étroite bordée de façades colorées et de devantures à Florence" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 26vw, 360px" />
+            </figure>
+              <figure className={styles.photograph}>
+              <Image src={florenceDuomoDecouverte} alt="La coupole du Duomo et les marbres de la cathédrale vus depuis la rue" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 35vw, 480px" />
+            </figure>
+            </div>
+            <div className={styles.florenceFacade}>
+              <figure className={styles.photograph}>
+              <Image src={florenceDuomoFacade} alt="La façade ouvragée du Duomo et son campanile, vus depuis la place" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 64vw, 900px" />
+            </figure>
+            </div>
+            <div className={styles.florenceDusk}>
+              <figure className={styles.photograph}>
+              <Image src={florenceSoiree} alt="Une rue entre les palais de Florence pendant notre promenade du soir" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 28vw, 380px" />
+            </figure>
+              <figure className={styles.photograph}>
+              <Image src={florencePonteVecchioSoir} alt="Le Ponte Vecchio et ses maisons au-dessus de l’Arno dans la lumière du soir" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 46vw, 650px" />
+            </figure>
+            </div>
+            <div className={styles.florenceNight}>
+              <div className={styles.prose}>
+                <p>La lumière baisse peu à peu et nous continuons à marcher dans Florence jusqu’à la nuit. Nous rentrerons au van vers 22 h, avec déjà une idée pour le lendemain : prendre de la hauteur pour découvrir la ville autrement.</p>
+              </div>
+              <figure className={styles.photograph}>
+              <Image src={florencePonteVecchioNuit} alt="Les devantures fermées et éclairées du Ponte Vecchio à la nuit tombée" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 28vw, 380px" />
+            </figure>
+            </div>
+          </section>
+
+          <section className={styles.florenceSequence} aria-labelledby="florence-morning-title">
+            <div className={`${styles.prose} ${styles.florenceIntro}`}>
+              <p className={styles.dateline}>17 AVRIL · RÉVEIL SOUS LA PLUIE</p>
+              <h3 id="florence-morning-title">Un cappuccino pour commencer</h3>
+              <p>Le lendemain matin, Florence se réveille sous la pluie. Pas question pour autant de rester au van : nous repartons à pied pour poursuivre notre découverte de la ville.</p>
+              <p>Première étape indispensable : un petit café italien pour déguster un cappuccino. Et celui-là restera un très bon souvenir !</p>
+            </div>
+            <div className={styles.florenceMorning}>
+              <figure className={styles.photograph}>
+              <Image src={florenceVanReveil} alt="Notre van rouge et blanc stationné sur l’aire de Florence au réveil" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 24vw, 320px" />
+            </figure>
+              <figure className={`${styles.photograph} ${styles.florenceCoffee}`}>
+              <Image src={florenceCappuccino} alt="Un cappuccino dans une tasse blanche, posé sur sa soucoupe au café" sizes="(max-width: 700px) 140px, 180px" />
+            </figure>
+            </div>
+          </section>
+
+          <section className={styles.florenceSequence} aria-labelledby="florence-walk-title">
+            <div className={`${styles.prose} ${styles.florenceIntro}`}>
+              <h3 id="florence-walk-title">Au fil des rues</h3>
+              <p>Malgré la météo, nous continuons simplement à marcher. Comme souvent pendant ce voyage, nous n’avons rien prévu à l’avance. Nous choisissons une destination, puis nous découvrons simplement une fois sur place.</p>
+            </div>
+            <div className={styles.florenceRain}>
+              <figure className={styles.photograph}>
+              <Image src={florenceRuesSousLaPluie} alt="Des passants avec leurs parapluies dans une rue pavée de Florence sous la pluie" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 28vw, 380px" />
+            </figure>
+              <div className={styles.florenceRainDetails}>
+                <figure className={styles.photograph}>
+              <Image src={florenceMarche} alt="Une allée couverte du marché avec des étals et des sacs colorés" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 25vw, 340px" />
+            </figure>
+                <figure className={styles.photograph}>
+              <Image src={florenceMatinee} alt="Une place de Florence au sol mouillé, entourée de façades et d’arcades" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 48vw, 650px" />
+            </figure>
+              </div>
+            </div>
+            <div className={`${styles.prose} ${styles.florenceTextPause}`}>
+              <p>Marchés, boutiques, églises, palais et petites rues ponctuent notre promenade. Nous passons moins de temps autour du Ponte Vecchio, déjà découvert la veille, car une autre idée nous trotte dans la tête : rejoindre les hauteurs que nous avions repérées pendant notre première soirée.</p>
+            </div>
+            <div className={styles.florenceWalkDetails}>
+              <figure className={styles.photograph}>
+              <Image src={florenceEgliseInterieur} alt="Les bancs, les voûtes et l’orgue à l’intérieur d’une église de Florence" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 30vw, 420px" />
+            </figure>
+              <figure className={styles.photograph}>
+              <Image src={florenceCourSculpture} alt="Une sculpture sombre au milieu d’une cour de palais bordée d’arcades" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 25vw, 350px" />
+            </figure>
+              <figure className={styles.photograph}>
+              <Image src={florenceBoutiqueItalienne} alt="L’entrée d’une boutique italienne avec ses produits suspendus et son sol à damier" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 24vw, 330px" />
+            </figure>
+            </div>
+            <figure className={`${styles.photograph} ${styles.florenceFiat}`}>
+              <Image src={florenceFiat500} alt="Une petite Fiat 500 blanche garée sur les pavés de Florence" sizes="(max-width: 700px) 180px, 240px" />
+            </figure>
+          </section>
+
+          <section className={styles.florenceSequence} aria-labelledby="florence-heights-title">
+            <div className={`${styles.prose} ${styles.florenceIntro}`}>
+              <h3 id="florence-heights-title">Prendre de la hauteur</h3>
+              <p>La veille au soir, en parcourant les rues de Florence, nous avions remarqué qu’il était possible de prendre de la hauteur pour découvrir la ville autrement. Alors, sans vraiment savoir ce qui nous attend là-haut, nous décidons simplement d’aller voir.</p>
+            </div>
+            <div className={styles.florenceArnoView}>
+              <figure className={styles.photograph}>
+              <Image src={florenceVueArnoHauteurs} alt="L’Arno devant les façades de Florence et la tour du Palazzo Vecchio" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 64vw, 900px" />
+            </figure>
+            </div>
+            <div className={styles.florenceClimb}>
+              <figure className={styles.photograph}>
+              <Image src={florenceMonteeHauteurs} alt="Une haute porte de pierre sur le chemin des hauteurs de Florence" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 24vw, 330px" />
+            </figure>
+              <figure className={styles.photograph}>
+              <Image src={florenceHauteurs} alt="Les collines verdoyantes, les cyprès et les bâtiments sur les hauteurs de Florence" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 46vw, 650px" />
+            </figure>
+            </div>
+            <div className={`${styles.prose} ${styles.florenceTextPause}`}>
+              <p>Malgré les nuages, la vue en arrivant nous récompense largement. Florence s’étend devant nous, autour de l’Arno, avec ses ponts, ses toits et l’impressionnante coupole du Duomo qui domine la ville. Un panorama magnifique, même sous ce ciel gris.</p>
+            </div>
+            <figure className={styles.photograph}>
+              <Image src={florencePonteVecchioPanorama} alt="Le Ponte Vecchio et les ponts de l’Arno vus depuis les hauteurs, au milieu des toits de Florence" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 85vw, 1200px" />
+            </figure>
+            <div className={styles.florencePanorama}>
+              <figure className={styles.photograph}>
+              <Image src={florencePanorama} alt="Florence et ses monuments au-delà des arbres, sous un vaste ciel de nuages" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 76vw, 1050px" />
+            </figure>
+            </div>
+            <div className={`${styles.prose} ${styles.florenceTextPause}`}>
+              <p>Après avoir passé des heures à parcourir ses rues, la découvrir ainsi depuis les hauteurs lui donne une tout autre dimension.</p>
+            </div>
+          </section>
+
+          <section className={styles.florenceClosing} aria-labelledby="florence-last-evening-title">
+            <div className={styles.prose}>
+              <h3 id="florence-last-evening-title">Une dernière soirée à Florence</h3>
+              <p>Après cette longue journée de marche, nous terminons par un restaurant avant de reprendre le chemin du van.</p>
+              <p>Le repas ne restera pas vraiment parmi nos meilleurs souvenirs : une adresse très touristique, plutôt chère et pas franchement à la hauteur de nos attentes. Tant pis, cela ne gâchera certainement pas cette journée passée à découvrir Florence.</p>
+              <p>Nous retrouvons finalement notre aire de camping-car pour une deuxième nuit, bien contents de poser les pieds après tous ces kilomètres parcourus dans la ville.</p>
+            </div>
+            <figure className={styles.photograph}>
+              <Image src={florenceVanDeuxiemeNuit} alt="L’arrière de notre van ouvert sur l’aire de camping-car, avec un rideau pour la deuxième nuit à Florence" sizes="(max-width: 700px) 88vw, (max-width: 1412px) 30vw, 420px" />
+            </figure>
           </section>
         </section>
       </div>

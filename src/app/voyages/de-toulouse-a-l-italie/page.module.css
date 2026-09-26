@@ -507,3 +507,120 @@
   .piseCathedralSide > :last-child { width: 100%; }
   .piseDeparture { padding-top: 36px; margin-top: 64px; }
 }
+
+/* Florence: original image ratios and the journal's established spacing. */
+.florence .photograph img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.florence h3 { font-size: clamp(25px, 3vw, 36px); line-height: 1.2; }
+.florenceSequence { margin-top: 96px; }
+.florenceIntro { margin: 0 auto 48px; }
+.florenceTextPause { margin: 64px auto; }
+.florenceFirstStreets, .florenceSignoria, .florenceDuomoApproach,
+.florenceDusk, .florenceNight, .florenceMorning, .florenceRain,
+.florenceWalkDetails, .florenceClimb, .florenceClosing {
+  display: grid;
+  gap: clamp(32px, 6vw, 85px);
+  align-items: start;
+}
+.florenceFirstStreets {
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  max-width: 850px;
+  margin-inline: auto;
+}
+.florenceFirstStreets > :last-child { margin-top: 64px; }
+.florenceRiver { max-width: 1000px; margin: 80px auto 0; }
+.florenceSignoria {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  max-width: 1050px;
+  margin-inline: auto;
+  align-items: center;
+}
+.florenceSignoriaDetails, .florenceRainDetails { display: grid; gap: 40px; min-width: 0; }
+.florenceSignoriaDetails > :first-child { width: 64%; justify-self: end; }
+.florenceDuomoApproach {
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1fr);
+  align-items: center;
+  max-width: 900px;
+  margin: 96px auto 0;
+}
+.florenceFacade { max-width: 900px; margin: 64px 0 0 auto; }
+.florenceDusk {
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.3fr);
+  align-items: center;
+  margin: 96px auto 0;
+  max-width: 1050px;
+}
+.florenceNight {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr);
+  max-width: 1000px;
+  margin: 64px auto 0;
+  align-items: center;
+}
+.florenceMorning {
+  grid-template-columns: minmax(0, 320px) minmax(0, 180px);
+  max-width: 640px;
+  margin-inline: auto;
+  align-items: center;
+  justify-content: space-between;
+}
+.florenceCoffee { max-width: 180px; }
+.florenceRain {
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.35fr);
+  align-items: center;
+  max-width: 1050px;
+  margin-inline: auto;
+}
+.florenceRainDetails > :first-child { width: 54%; justify-self: end; }
+.florenceWalkDetails {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: clamp(24px, 4vw, 56px);
+}
+.florenceWalkDetails > :nth-child(2) { margin-top: 80px; }
+.florenceWalkDetails > :last-child { margin-top: 160px; }
+.florenceFiat { width: 240px; max-width: 100%; margin: 64px auto 0; }
+.florenceArnoView { max-width: 900px; margin-inline: auto; }
+.florenceClimb {
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.4fr);
+  align-items: center;
+  max-width: 1050px;
+  margin: 64px auto 0;
+}
+.florencePanorama { max-width: 1050px; margin: 64px auto 0; }
+.florenceClosing {
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  max-width: 1050px;
+  margin: 110px auto 0;
+  padding-top: 64px;
+  border-top: 1px solid var(--line);
+  align-items: center;
+}
+@media (min-width: 701px) and (max-width: 1000px) {
+  .florenceSequence { margin-top: 72px; }
+  .florenceFirstStreets, .florenceSignoria, .florenceDuomoApproach,
+  .florenceDusk, .florenceNight, .florenceMorning, .florenceRain,
+  .florenceClimb, .florenceClosing { gap: 32px; }
+  .florenceWalkDetails { gap: 24px; }
+  .florenceWalkDetails > :nth-child(2) { margin-top: 40px; }
+  .florenceWalkDetails > :last-child { margin-top: 80px; }
+}
+@media (max-width: 700px) {
+  .florenceSequence { margin-top: 64px; }
+  .florenceIntro { margin-bottom: 32px; }
+  .florenceTextPause { margin: 40px auto; }
+  .florenceFirstStreets, .florenceSignoria, .florenceDuomoApproach,
+  .florenceDusk, .florenceNight, .florenceRain, .florenceWalkDetails,
+  .florenceClimb, .florenceClosing { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .florenceFirstStreets > :last-child, .florenceWalkDetails > :nth-child(n) { margin-top: 0; }
+  .florenceSignoriaDetails, .florenceRainDetails { gap: 32px; }
+  .florenceSignoriaDetails > :first-child, .florenceRainDetails > :first-child { width: 100%; }
+  .florenceRiver, .florenceDuomoApproach, .florenceFacade,
+  .florenceDusk, .florenceNight, .florenceClimb, .florencePanorama { margin-top: 40px; }
+  .florenceMorning { grid-template-columns: minmax(0, 1fr); gap: 24px; max-width: 320px; }
+  .florenceCoffee { width: 140px; justify-self: end; }
+  .florenceFiat { width: 180px; margin-top: 40px; }
+  .florenceClosing { margin-top: 64px; padding-top: 36px; }
+}
