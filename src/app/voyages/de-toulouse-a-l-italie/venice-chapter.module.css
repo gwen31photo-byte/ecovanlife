@@ -1,0 +1,100 @@
+.chapter h3 { font-size: clamp(25px, 3vw, 36px); line-height: 1.2; }
+.photo { min-width: 0; margin: 0; }
+.photo img { display: block; width: 100%; height: auto; object-fit: contain; }
+.sequence { margin-top: 100px; }
+.text { margin: 0 auto 48px; }
+.textPause { margin: 72px auto 48px; }
+.arrival, .firstWalk, .canalWeave, .canalOpening, .towardSquare,
+.eveningSquare, .squarePortraits, .campingDetails, .returnRoute,
+.inventions, .churches, .daySquare, .palaceDetails, .prison, .lastLooks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(32px, 6vw, 85px);
+  align-items: center;
+}
+.arrival { grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.85fr); max-width: 1050px; margin: auto; }
+.firstWalk { max-width: 860px; margin: auto; align-items: start; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); }
+.firstWalk > :last-child { margin-top: 100px; }
+.canalWeave { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); max-width: 1000px; margin: auto; }
+.canalAside > .photo { width: 82%; margin: 0 0 40px auto; }
+.canalOpening { grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.4fr); margin-top: 72px; }
+.towardSquare { grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.65fr); max-width: 1000px; margin: auto; }
+.eveningSquare { margin-top: 80px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
+.squarePortraits { gap: 28px; align-items: start; }
+.squarePortraits > :last-child { margin-top: 64px; }
+.nightWide { max-width: 1050px; margin: auto; }
+.nightEcho { max-width: 550px; width: 55%; margin: 48px 0 0 auto; }
+.morning { margin-top: 110px; padding-top: 64px; border-top: 1px solid var(--line); }
+.campingDetails { grid-template-columns: minmax(0, 155px) minmax(0, 380px); max-width: 640px; margin: auto; }
+.coffee { max-width: 155px; }
+.returnRoute { grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr); max-width: 1050px; margin: auto; }
+.returnRoute > :last-child > div { margin-bottom: 40px; }
+.inventions { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr) minmax(0, 0.8fr); gap: clamp(24px, 4vw, 56px); max-width: 1050px; margin: auto; align-items: start; }
+.inventions > :nth-child(2) { margin-top: 72px; }
+.inventions > :last-child { margin-top: 144px; }
+.churches { max-width: 850px; margin: auto; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
+.waterside { max-width: 860px; margin: 64px auto 0; }
+.daySquare { max-width: 1050px; margin: auto; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); align-items: start; }
+.daySquare > :last-child { margin-top: 72px; }
+.palaceOutside { max-width: 1000px; margin: auto; }
+.courtyardDetail { width: 55%; max-width: 550px; margin: 48px 0 0 auto; }
+.palaceRoom { width: 100%; }
+.palaceDetails { grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.7fr); margin: 64px auto 0; max-width: 1100px; }
+.prison { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.7fr); max-width: 900px; margin: 80px auto 0; }
+.returnHome { margin-top: 110px; padding-top: 64px; border-top: 1px solid var(--line); }
+.lastLooks { max-width: 780px; margin: 64px auto 0; align-items: start; }
+.lastLooks > :last-child { margin-top: 64px; }
+.closing { margin: 64px auto 0; }
+@media (min-width: 701px) and (max-width: 1000px) {
+  .arrival, .firstWalk, .canalWeave, .canalOpening, .towardSquare,
+  .eveningSquare, .campingDetails, .returnRoute, .churches, .daySquare,
+  .palaceDetails, .prison, .lastLooks { gap: 32px; }
+  .arrival { grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); }
+  .eveningSquare { grid-template-columns: minmax(0, 1fr); }
+  .squarePortraits { max-width: 440px; margin: 0 auto; }
+  .sequence { margin-top: 72px; }
+  .inventions > :nth-child(2) { margin-top: 40px; }
+  .inventions > :last-child { margin-top: 80px; }
+}
+@media (max-width: 700px) {
+  .arrival, .canalWeave, .canalOpening, .towardSquare, .eveningSquare,
+  .returnRoute, .daySquare, .palaceDetails, .prison {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+  .sequence { margin-top: 64px; }
+  .text { margin-bottom: 32px; }
+  .textPause { margin: 48px auto 32px; }
+  .arrival > .photo { width: 82%; margin: auto; }
+  .firstWalk, .churches, .lastLooks { gap: 24px; }
+  .firstWalk > :last-child { margin-top: 48px; }
+  .canalWeave > .photo { width: 86%; }
+  .canalAside > .photo { width: 72%; margin-bottom: 32px; }
+  .canalOpening { margin-top: 40px; }
+  .canalOpening > :first-child { width: 60%; margin: 0 auto; }
+  .towardSquare > :last-child { width: 72%; margin: 0 0 0 auto; }
+  .eveningSquare { margin-top: 48px; }
+  .squarePortraits { gap: 24px; }
+  .squarePortraits > :last-child { margin-top: 40px; }
+  .nightEcho { width: 80%; margin-top: 32px; }
+  .morning, .returnHome { margin-top: 64px; padding-top: 40px; }
+  .campingDetails { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .coffee { width: 115px; margin: 0 0 0 auto; }
+  .campingDetails > :last-child { width: 88%; }
+  .returnRoute > .photo { width: 72%; margin: auto; }
+  .returnRoute > :last-child > div { margin-bottom: 32px; }
+  .inventions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .inventions > :first-child { grid-column: 1 / -1; width: 72%; margin: auto; }
+  .inventions > :nth-child(2) { margin-top: 0; }
+  .inventions > :last-child { margin-top: 32px; }
+  .waterside { margin-top: 32px; }
+  .daySquare > :last-child { margin-top: 0; width: 84%; justify-self: end; }
+  .courtyardDetail { width: 84%; margin-top: 32px; }
+  .palaceDetails { margin-top: 32px; }
+  .palaceDetails > :last-child { width: 66%; margin: auto; }
+  .prison { margin-top: 48px; }
+  .prison > .photo { width: 72%; margin: 0 0 0 auto; }
+  .lastLooks { margin-top: 40px; }
+  .lastLooks > :last-child { margin-top: 40px; }
+  .closing { margin-top: 40px; }
+}
