@@ -1,0 +1,63 @@
+.chapter h3 { font-size: clamp(25px, 3vw, 36px); line-height: 1.2; }
+.photo { min-width: 0; margin: 0; }
+.photo img { display: block; width: 100%; height: auto; object-fit: contain; }
+.morning, .historyPair, .classics, .modernPassage, .modernPair,
+.f1Details, .detourIntro, .lamboClassics, .lamboLastLook, .campingPair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+.morning { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+.coffee { width: 170px; margin: 32px 0 0 auto; }
+.sequence { margin-top: 100px; }
+.text { margin: 0 auto 48px; }
+.textPause { margin: 72px auto 48px; }
+.firstCar { max-width: 820px; margin: 0 auto; }
+.historyPair { max-width: 1050px; margin: 56px auto 0; align-items: start; }
+.historyPair > :last-child { margin-top: 64px; }
+.classics { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.4fr); }
+.modernPassage { max-width: 1050px; margin: 80px auto 0; align-items: end; }
+.modernPassage > :last-child > div { margin-bottom: 40px; }
+.modernPair { max-width: 940px; margin: 64px 0 0 auto; }
+.f1Details { max-width: 900px; margin: 0 auto; }
+.f1Final { margin-top: 56px; }
+.detour { margin-top: 100px; }
+.detourIntro { margin: 72px auto 40px; }
+.lamboClassics { max-width: 900px; margin: 0 auto; gap: 32px; }
+.lamboLastLook {
+  grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.5fr) minmax(0, 0.65fr);
+  gap: 32px;
+  max-width: 1050px;
+  margin: 40px auto 0;
+}
+.evening { border-top: 1px solid var(--line); margin-top: 110px; padding-top: 64px; }
+.campingPair { max-width: 760px; margin: 56px auto 0; align-items: start; gap: 80px; }
+.campingPair > :last-child { margin-top: 64px; }
+.closing { margin: 64px auto 0; }
+@media (min-width: 701px) and (max-width: 1000px) {
+  .morning, .historyPair, .classics, .modernPassage, .modernPair,
+  .f1Details, .detourIntro, .campingPair { gap: 32px; }
+  .sequence, .detour { margin-top: 72px; }
+  .lamboLastLook { gap: 24px; }
+}
+@media (max-width: 700px) {
+  .morning, .historyPair, .classics, .modernPassage, .modernPair,
+  .f1Details, .detourIntro, .lamboClassics, .campingPair {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+  .coffee { width: 140px; margin-top: 24px; }
+  .sequence, .detour { margin-top: 64px; }
+  .text { margin-bottom: 32px; }
+  .textPause { margin: 48px auto 32px; }
+  .historyPair, .modernPassage, .modernPair, .f1Final { margin-top: 32px; }
+  .historyPair > :last-child, .campingPair > :last-child { margin-top: 0; }
+  .modernPassage > :last-child > div { margin-bottom: 32px; }
+  .detourIntro { margin-top: 48px; }
+  .lamboLastLook { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 32px; }
+  .lamboLastLook > :nth-child(2) { grid-column: 1 / -1; grid-row: 2; }
+  .evening { margin-top: 64px; padding-top: 40px; }
+  .campingPair { width: 82%; margin-top: 40px; gap: 40px; }
+  .closing { margin-top: 40px; }
+}
