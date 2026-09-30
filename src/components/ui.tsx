@@ -142,8 +142,7 @@ export function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} EcoVanLife</span>
-        <span>Site de démonstration · textes et photos à remplacer</span>
+        <span>© {new Date().getFullYear()} EcoVanLife — Photographies et contenus tous droits réservés.</span>
         <div>
           <Link href="/mentions-legales">Mentions légales</Link>
           <Link href="/confidentialite">Confidentialité</Link>
