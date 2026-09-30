@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Compass, Camera, Leaf } from "lucide-react";
 import {
-  AdventureGrid,
   SectionHeading,
   TextLink,
   GuideCards,
 } from "@/components/ui";
+import { RoadTripGrid } from "@/components/road-trip-grid";
 import { Gallery } from "@/components/gallery";
 import { Newsletter } from "@/components/newsletter";
 export const metadata = { alternates: { canonical: "/" } };
@@ -60,7 +60,7 @@ export default function Home() {
           href="/voyages"
           link="Tous les voyages"
         />
-        <AdventureGrid />
+        <RoadTripGrid />
       </section>
       <section className="road-section">
         <div className="road-image">

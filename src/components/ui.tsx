@@ -156,19 +156,25 @@ export function PageIntro({
   eyebrow,
   title,
   description,
+  showDemoNote = true,
+  className,
 }: {
   eyebrow: string;
   title: string;
   description: string;
+  showDemoNote?: boolean;
+  className?: string;
 }) {
   return (
-    <section className="page-intro">
+    <section className={`page-intro${className ? ` ${className}` : ""}`}>
       <p className="eyebrow">{eyebrow}</p>
       <h1>{title}</h1>
       <p>{description}</p>
-      <span className="demo-note">
-        Collection de démonstration — contenus à personnaliser
-      </span>
+      {showDemoNote && (
+        <span className="demo-note">
+          Collection de démonstration — contenus à personnaliser
+        </span>
+      )}
     </section>
   );
 }
