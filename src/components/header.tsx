@@ -9,7 +9,7 @@ export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   return (
-    <header className={`site-header ${pathname === "/" ? "over-hero" : ""}`}>
+    <header className="site-header">
       <Link href="/" className="brand" aria-label="EcoVanLife, accueil">
         <Image
           src="/images/logo-ecovanlife1.png"
