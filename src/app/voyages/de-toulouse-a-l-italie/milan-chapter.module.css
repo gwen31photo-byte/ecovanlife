@@ -31,6 +31,15 @@
 .coffeeBreak { max-width: 1000px; margin: 56px auto 0; grid-template-columns: minmax(0, 1fr) minmax(0, 360px); }
 .closing { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--line); }
 .closing .text { margin-bottom: 0; }
+.eveningRoad { margin-top: 40px; }
+.eveningPair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 4vw, 48px);
+  max-width: 688px;
+  margin: 40px auto 0;
+  align-items: start;
+}
 @media (min-width: 701px) and (max-width: 1000px) {
   .sequence { margin-top: 64px; }
   .coffeeBreak { grid-template-columns: minmax(0, 1fr) minmax(0, 270px); }
@@ -57,4 +66,5 @@
   .organ, .coffeeBreak { margin-top: 40px; }
   .coffeeBreak > .photo { width: 80%; max-width: 360px; justify-self: end; }
   .closing { margin-top: 48px; padding-top: 32px; }
+  .eveningRoad, .eveningPair { margin-top: 32px; }
 }

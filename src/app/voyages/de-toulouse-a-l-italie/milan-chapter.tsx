@@ -26,6 +26,9 @@ import organ from "../../../../public/images/voyages/de-toulouse-a-litalie/milan
 import square from "../../../../public/images/voyages/de-toulouse-a-litalie/milan-place-retour-galerie.jpg";
 import coffee from "../../../../public/images/voyages/de-toulouse-a-litalie/milan-gouter-cappuccino-tiramisu.jpg";
 import ruins from "../../../../public/images/voyages/de-toulouse-a-litalie/milan-palais-imperial-vestiges.jpg";
+import lakeRoad from "../../../../public/images/voyages/de-toulouse-a-litalie/bellagio-route-bord-lac.jpg";
+import campingArrival from "../../../../public/images/voyages/de-toulouse-a-litalie/bellagio-camping-la-fornace-arrivee.jpg";
+import eveningPizza from "../../../../public/images/voyages/de-toulouse-a-litalie/bellagio-repas-pizza.jpg";
 
 const wide = "(max-width: 700px) 88vw, (max-width: 1412px) 85vw, 1100px";
 
@@ -181,7 +184,12 @@ export default function MilanChapter() {
         <div className={`${journal.prose} ${styles.text}`}>
           <p className={journal.dateline}>NUIT DU 23 AU 24 AVRIL</p>
           <h3 id="milan-bellagio">Direction Bellagio et le lac de Côme</h3>
-          <p>Nous retrouvons le van à New Park Milano et quittons Milan pour Bellagio et le lac de Côme. Nous arrivons au camping pour y passer la nuit du 23 au 24 avril. La suite du voyage nous attend désormais au bord du lac.</p>
+          <p>Nous retrouvons le van à New Park Milano et quittons Milan pour Bellagio et le lac de Côme. Vers 18 h 45, nous longeons le lac de Côme en direction de Bellagio, avant d’arriver au camping La Fornace pour y passer la nuit du 23 au 24 avril. Nous terminons cette longue journée autour d’une pizza. La suite du voyage nous attend désormais au bord du lac.</p>
+        </div>
+        <Photo src={lakeRoad} alt="La route au bord du lac de Côme en direction de Bellagio, en fin de journée" className={`${styles.lead} ${styles.eveningRoad}`} sizes={wide} />
+        <div className={styles.eveningPair}>
+          <Photo src={campingArrival} alt="L’entrée du camping La Fornace à notre arrivée le soir du 23 avril" sizes="(max-width: 700px) 41vw, 320px" />
+          <Photo src={eveningPizza} alt="La pizza du repas du soir après notre journée à Milan et la route vers Bellagio" sizes="(max-width: 700px) 41vw, 320px" />
         </div>
       </section>
     </section>
