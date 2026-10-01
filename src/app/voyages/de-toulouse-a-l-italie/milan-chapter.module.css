@@ -1,0 +1,60 @@
+.chapter h3 { font-size: clamp(25px, 3vw, 36px); line-height: 1.2; }
+.photo img { display: block; width: 100%; height: auto; object-fit: contain; }
+.text { margin: 0 auto 48px; }
+.textPause { margin: 56px auto; }
+.sequence { margin-top: 80px; }
+.lead { max-width: 1100px; margin-inline: auto; }
+.echo { width: 62%; max-width: 650px; margin: 40px 0 0 auto; }
+.castlePair, .park, .arch, .anecdote, .walk, .churchPair,
+.duomoDetails, .portraitPair, .coffeeBreak {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+.castlePair { max-width: 1000px; margin: 48px auto 0; align-items: start; }
+.castlePair > :last-child { margin-top: 48px; }
+.park { max-width: 1000px; margin: auto; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); }
+.detail { max-width: 380px; width: 80%; margin: 32px auto 0; }
+.echo.centered { margin-inline: auto; }
+.arch { max-width: 1000px; margin: auto; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.8fr); }
+.anecdote { max-width: 1050px; margin: 64px auto 48px; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+.walk { max-width: 1000px; margin: auto; grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.4fr); }
+.stack { display: grid; min-width: 0; gap: 32px; }
+.stack > :first-child { width: 72%; justify-self: end; }
+.churchPair { max-width: 800px; margin: auto; align-items: start; }
+.churchPair > :last-child { margin-top: 64px; }
+.duomoDetails { max-width: 900px; margin: 48px auto 0; grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.3fr); }
+.portraitPair { max-width: 900px; margin: auto; align-items: start; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.85fr); }
+.portraitPair > :last-child { margin-top: 80px; }
+.organ { max-width: 800px; margin: 56px auto 0; }
+.coffeeBreak { max-width: 1000px; margin: 56px auto 0; grid-template-columns: minmax(0, 1fr) minmax(0, 360px); }
+.closing { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--line); }
+.closing .text { margin-bottom: 0; }
+@media (min-width: 701px) and (max-width: 1000px) {
+  .sequence { margin-top: 64px; }
+  .coffeeBreak { grid-template-columns: minmax(0, 1fr) minmax(0, 270px); }
+  .portraitPair > :last-child { margin-top: 48px; }
+}
+@media (max-width: 700px) {
+  .sequence { margin-top: 56px; }
+  .text { margin-bottom: 32px; }
+  .textPause { margin: 40px auto; }
+  .castlePair, .park, .arch, .anecdote, .walk, .churchPair,
+  .duomoDetails, .portraitPair, .coffeeBreak { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .castlePair, .duomoDetails { margin-top: 32px; }
+  .castlePair > :last-child, .churchPair > :last-child,
+  .portraitPair > :last-child { margin-top: 0; }
+  .echo { width: 85%; margin-top: 32px; }
+  .park > .photo, .arch > .photo, .walk > .photo,
+  .duomoDetails > :first-child { width: 75%; max-width: 360px; margin-inline: auto; }
+  .detail { width: 80%; margin-top: 24px; }
+  .anecdote { margin: 40px auto 32px; }
+  .stack { gap: 24px; }
+  .churchPair > .photo { width: 80%; max-width: 360px; margin-inline: auto; }
+  .portraitPair > .photo { width: 70%; max-width: 360px; margin-inline: auto; }
+  .portraitPair > .photo:first-child { width: 90%; max-width: 500px; }
+  .organ, .coffeeBreak { margin-top: 40px; }
+  .coffeeBreak > .photo { width: 80%; max-width: 360px; justify-self: end; }
+  .closing { margin-top: 48px; padding-top: 32px; }
+}
