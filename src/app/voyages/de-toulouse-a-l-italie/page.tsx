@@ -8,6 +8,7 @@ import VeniceChapter from "./venice-chapter";
 import SirmioneChapter from "./sirmione-chapter";
 import MilanChapter from "./milan-chapter";
 import BellagioChapter from "./bellagio-chapter";
+import RetourBrianconChapter from "./retour-briancon-chapter";
 import genesPanorama from "../../../../public/images/voyages/de-toulouse-a-litalie/genes-panorama.jpg";
 import genesRuelle from "../../../../public/images/voyages/de-toulouse-a-litalie/genes-ruelle-panificio.jpg";
 import genesCathedrale from "../../../../public/images/voyages/de-toulouse-a-litalie/genes-cathedrale.jpg";
@@ -871,6 +872,7 @@ export default function ToulouseItalyPage() {
         <SirmioneChapter />
         <MilanChapter />
         <BellagioChapter />
+        <RetourBrianconChapter />
       </div>
     </article>
   );

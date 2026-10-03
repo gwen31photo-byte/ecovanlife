@@ -1,0 +1,27 @@
+.chapter h3 { font-size: clamp(25px, 3vw, 36px); line-height: 1.2; }
+.photo { min-width: 0; }
+.photo img { display: block; width: 100%; height: auto; object-fit: contain; image-orientation: from-image; }
+.text { margin: 0 auto 48px; }
+.textPause { margin: 48px auto; }
+.sequence { margin-top: 72px; }
+.opening { width: 82%; max-width: 780px; margin-inline: auto; }
+.landscape { max-width: 950px; margin-inline: auto; }
+.opening + .landscape { margin-top: 40px; }
+.villagePause, .snowPair { display: grid; align-items: center; gap: clamp(24px, 4vw, 48px); }
+.villagePause { max-width: 950px; margin: 48px auto 0; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+.villagePause > .photo { max-width: 420px; }
+.snowPair { max-width: 950px; margin-inline: auto; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
+.portrait { width: 75%; max-width: 360px; margin-inline: auto; }
+.closing { margin: 48px auto 0; }
+@media (max-width: 700px) {
+  .sequence { margin-top: 48px; }
+  .text { margin-bottom: 32px; }
+  .textPause { margin: 32px auto; }
+  .opening { width: 90%; }
+  .opening + .landscape { margin-top: 24px; }
+  .villagePause, .snowPair { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .villagePause { margin-top: 32px; }
+  .villagePause > .photo, .snowPair > .photo:first-child { width: 85%; margin-inline: auto; }
+  .portrait { width: 80%; max-width: 300px; }
+  .closing { margin-top: 32px; }
+}
