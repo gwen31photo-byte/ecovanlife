@@ -1,0 +1,61 @@
+.chapter h3 { font-size: clamp(25px, 3vw, 36px); line-height: 1.2; }
+.photo { min-width: 0; }
+.photo img { display: block; width: 100%; height: auto; object-fit: contain; image-orientation: from-image; }
+.text { margin: 0 auto 48px; }
+.textPause { margin: 56px auto; }
+.sequence { margin-top: 80px; }
+.lead { max-width: 950px; margin-inline: auto; }
+.echo { width: 62%; max-width: 650px; margin: 40px auto 0; }
+.panorama { max-width: 900px; margin-inline: auto; }
+.coffeeBreak, .harbourPair, .lanesPair, .churchPair {
+  display: grid;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+.coffeeBreak {
+  max-width: 900px;
+  margin: 56px auto;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 220px);
+}
+.harbourPair, .lanesPair {
+  max-width: 1000px;
+  grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.3fr);
+  margin: 48px auto 0;
+}
+.street { width: 75%; max-width: 360px; margin: 48px auto 0; }
+.churchPair {
+  max-width: 820px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  margin: auto;
+  align-items: start;
+}
+.churchPair > :last-child { margin-top: 64px; }
+.staircase { width: 80%; max-width: 520px; margin: 56px auto 0; }
+.closing { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--line); }
+.van { max-width: 800px; margin-inline: auto; }
+@media (min-width: 701px) and (max-width: 1000px) {
+  .sequence { margin-top: 64px; }
+  .churchPair > :last-child { margin-top: 48px; }
+}
+@media (max-width: 700px) {
+  .sequence { margin-top: 56px; }
+  .text { margin-bottom: 32px; }
+  .textPause { margin: 40px auto; }
+  .echo { width: 85%; margin-top: 32px; }
+  .coffeeBreak, .harbourPair, .lanesPair, .churchPair {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+  .coffeeBreak { margin: 40px auto; }
+  .coffeeBreak > .photo { width: 62%; max-width: 220px; justify-self: end; }
+  .harbourPair, .lanesPair { margin-top: 32px; }
+  .harbourPair > :first-child, .lanesPair > :first-child {
+    width: 80%; max-width: 360px; margin-inline: auto;
+  }
+  .street { width: 80%; margin-top: 32px; }
+  .churchPair > .photo { width: 80%; max-width: 360px; margin-inline: auto; }
+  .churchPair > .photo:first-child { width: 85%; max-width: 420px; }
+  .churchPair > :last-child { margin-top: 0; }
+  .staircase { width: 90%; margin-top: 40px; }
+  .closing { margin-top: 48px; padding-top: 32px; }
+}
