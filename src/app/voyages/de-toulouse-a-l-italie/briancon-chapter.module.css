@@ -1,0 +1,23 @@
+.chapter h3 { font-size: clamp(25px, 3vw, 36px); line-height: 1.2; }
+.photo { min-width: 0; }
+.photo img { display: block; width: 100%; height: auto; object-fit: contain; image-orientation: from-image; }
+.text { margin: 0 auto 48px; }
+.textPause { margin: 48px auto; }
+.sequence { margin-top: 72px; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: clamp(24px, 4vw, 48px); max-width: 688px; margin-inline: auto; }
+.landscape { max-width: 950px; margin-inline: auto; }
+.medium { width: 82%; max-width: 720px; margin-inline: auto; }
+.portrait { width: 75%; max-width: 340px; margin-inline: auto; }
+.coffee { width: 65%; max-width: 280px; margin-inline: auto; }
+.closing { margin: 48px auto 0; }
+@media (max-width: 700px) {
+  .sequence { margin-top: 48px; }
+  .text { margin-bottom: 32px; }
+  .textPause { margin: 32px auto; }
+  .pair { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .pair > .photo { width: 80%; max-width: 300px; margin-inline: auto; }
+  .portrait { width: 80%; max-width: 300px; }
+  .medium { width: 90%; }
+  .coffee { width: 70%; max-width: 250px; }
+  .closing { margin-top: 32px; }
+}
