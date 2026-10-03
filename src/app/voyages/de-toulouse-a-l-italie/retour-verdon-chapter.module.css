@@ -1,0 +1,14 @@
+.chapter h3 { font-size: clamp(25px, 3vw, 36px); line-height: 1.2; }
+.photo { min-width: 0; }
+.photo img { display: block; width: 100%; height: auto; object-fit: contain; }
+.text { margin: 0 auto 48px; }
+.sequence { margin-top: 72px; }
+.landscape { max-width: 950px; margin-inline: auto; }
+.portrait { width: 75%; max-width: 340px; margin-inline: auto; }
+.closing { margin: 48px auto 0; }
+@media (max-width: 700px) {
+  .text { margin-bottom: 32px; }
+  .sequence { margin-top: 48px; }
+  .portrait { width: 80%; max-width: 300px; }
+  .closing { margin-top: 32px; }
+}
