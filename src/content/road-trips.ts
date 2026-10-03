@@ -19,8 +19,8 @@ export const roadTrips = [
     country: "France — Italie",
     description:
       "Des routes du Sud aux villes italiennes, en passant par la Méditerranée : plusieurs semaines au rythme du van.",
-    image: "/images/road.jpg",
-    alt: "Photographie d’illustration temporaire : paysage de montagne",
+    image: "/images/voyages/de-toulouse-a-litalie/cinque-terre-arrivee-cote.jpg",
+    alt: "Maisons colorées des Cinque Terre sur une falaise au-dessus de la mer",
   },
   {
     title: "Chypre, l’île aux deux visages",

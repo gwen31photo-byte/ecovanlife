@@ -9,6 +9,10 @@
   background: var(--ink);
 }
 
+.heroImage {
+  object-position: 50% 35%;
+}
+
 .hero::after {
   content: "";
   position: absolute;
@@ -46,9 +50,9 @@
 }
 
 .itinerary {
-  max-width: 1100px;
+  max-width: 1260px;
   margin: auto;
-  padding: 65px 7.5% 80px;
+  padding: 65px 30px 80px;
 }
 
 .itinerary h2 {
@@ -56,81 +60,11 @@
   margin-bottom: 24px;
 }
 
-.itinerary ol {
-  position: relative;
-  max-width: 740px;
-  padding: 8px 0;
-  margin: 36px auto 0;
-  list-style: none;
-}
-
-.itinerary ol::before {
-  content: "";
-  position: absolute;
-  top: 32px;
-  bottom: 32px;
-  left: 50%;
-  width: 1px;
-  background: var(--line);
-}
-
-.itinerary li {
-  position: relative;
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  width: 50%;
-  min-height: 48px;
-  padding: 12px 30px 12px 0;
-}
-
-.itinerary li::before {
-  content: "";
-  position: absolute;
-  top: 20px;
-  right: -4px;
-  width: 7px;
-  height: 7px;
-  border: 1px solid var(--rust);
-  border-radius: 50%;
-  background: var(--paper);
-}
-
-.itinerary li:nth-child(odd) {
-  justify-content: flex-end;
-  text-align: right;
-}
-
-.itinerary li:nth-child(even) {
-  margin-left: 50%;
-  padding: 12px 0 12px 30px;
-}
-
-.itinerary li:nth-child(even)::before {
-  left: -3px;
-  right: auto;
-}
-
-.itinerary li:first-child::before,
-.itinerary li:last-child::before {
-  background: var(--rust);
-}
-
-.stepNumber {
-  flex-shrink: 0;
-  color: var(--rust);
-  font-size: 10px;
-  letter-spacing: 1px;
-}
-
-.stepName {
-  color: var(--ink);
-  font-family: var(--font-heading);
-  font-size: 15px;
-  line-height: 1.6;
-}
-
 @media (max-width: 800px) {
+  .heroImage {
+    object-position: 55% 50%;
+  }
+
   .hero {
     min-height: 560px;
     padding: 60px 6%;
@@ -150,29 +84,6 @@
 
   .itinerary {
     padding: 45px 6% 60px;
-  }
-}
-
-@media (max-width: 600px) {
-  .itinerary ol {
-    margin-top: 28px;
-  }
-
-  .itinerary ol::before {
-    left: 4px;
-  }
-
-  .itinerary li:nth-child(n) {
-    width: 100%;
-    margin-left: 0;
-    padding: 12px 0 12px 28px;
-    justify-content: flex-start;
-    text-align: left;
-  }
-
-  .itinerary li:nth-child(n)::before {
-    left: 1px;
-    right: auto;
   }
 }
 

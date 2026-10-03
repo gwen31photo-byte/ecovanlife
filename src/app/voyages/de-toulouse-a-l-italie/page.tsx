@@ -11,6 +11,7 @@ import BellagioChapter from "./bellagio-chapter";
 import RetourBrianconChapter from "./retour-briancon-chapter";
 import BrianconChapter from "./briancon-chapter";
 import RetourVerdonChapter from "./retour-verdon-chapter";
+import ItineraryMap from "./itinerary-map";
 import genesPanorama from "../../../../public/images/voyages/de-toulouse-a-litalie/genes-panorama.jpg";
 import genesRuelle from "../../../../public/images/voyages/de-toulouse-a-litalie/genes-ruelle-panificio.jpg";
 import genesCathedrale from "../../../../public/images/voyages/de-toulouse-a-litalie/genes-cathedrale.jpg";
@@ -116,26 +117,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/voyages/de-toulouse-a-l-italie" },
 };
 
-const stops = [
-  "Fonsorbes",
-  "Bargemon",
-  "Monaco",
-  "Gênes",
-  "La Spezia",
-  "Cinque Terre",
-  "Pise",
-  "Florence",
-  "Saint-Marin",
-  "Modène / Maranello",
-  "Venise",
-  "Sirmione / Lac de Garde",
-  "Milan",
-  "Bellagio / Lac de Côme",
-  "Briançon",
-  "Gorges du Verdon",
-  "Fonsorbes",
-];
-
 // Local photographs are detected at build time. Rebuild after adding the originals.
 const photoDirectory = "/images/voyages/de-toulouse-a-litalie";
 
@@ -188,11 +169,12 @@ export default function ToulouseItalyPage() {
     <article>
       <section className={styles.hero} aria-labelledby="trip-title">
         <Image
-          src="/images/road.jpg"
-          alt="Photographie d’illustration temporaire : paysage de montagne"
+          src="/images/voyages/de-toulouse-a-litalie/cinque-terre-arrivee-cote.jpg"
+          alt="Maisons colorées des Cinque Terre sur une falaise au-dessus de la mer"
           fill
           priority
           sizes="100vw"
+          className={styles.heroImage}
         />
         <div className={styles.content}>
           <p className={`eyebrow ${styles.eyebrow}`}>
@@ -211,16 +193,7 @@ export default function ToulouseItalyPage() {
       </section>
       <section className={styles.itinerary} aria-labelledby="itinerary-title">
         <h2 id="itinerary-title">L’itinéraire</h2>
-        <ol>
-          {stops.map((stop, index) => (
-            <li key={`${index}-${stop}`}>
-              <span className={styles.stepNumber} aria-hidden="true">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <span className={styles.stepName}>{stop}</span>
-            </li>
-          ))}
-        </ol>
+        <ItineraryMap />
       </section>
       <div className={styles.journal}>
         <section className={styles.chapter} aria-labelledby="bargemon-title">

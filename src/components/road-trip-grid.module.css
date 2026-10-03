@@ -6,6 +6,10 @@
   max-width: none;
 }
 
+:global(#aventures) .card[href="/voyages/de-toulouse-a-l-italie"] :global(.image-label) {
+  font-size: 10px;
+}
+
 .description {
   font-size: 13px;
   margin: 10px 0 0;

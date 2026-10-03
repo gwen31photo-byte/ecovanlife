@@ -1,0 +1,103 @@
+.map { min-width: 0; }
+.frame { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #e4edeb; }
+.viewport { overflow: auto; max-height: 720px; cursor: grab; touch-action: pan-y; scrollbar-width: thin; scrollbar-color: #bec9bf transparent; }
+.viewport:active { cursor: grabbing; }
+.viewport:focus-visible { outline: 2px solid var(--rust); outline-offset: -3px; }
+.canvas { line-height: 0; }
+.svg { display: block; width: 100%; height: auto; }
+.geography { fill: #f0efe7; stroke: #aaa99b; stroke-width: 1.35; pointer-events: none; }
+.country, .smallCountry, .region, .sea { stroke: none; fill: #8c9888; font-family: var(--font-heading); }
+.country { font-size: 22px; letter-spacing: 6px; }
+.smallCountry { font-size: 12px; letter-spacing: 3px; }
+.region { font-size: 16px; font-style: italic; fill: #a1a995; }
+.sea { font-size: 19px; font-style: italic; fill: #91aaa6; letter-spacing: 2px; }
+.route { fill: none; stroke: var(--rust); color: var(--rust); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; opacity: .95; pointer-events: none; }
+.route path { vector-effect: non-scaling-stroke; }
+.svg marker { color: var(--rust); }
+.stop { cursor: pointer; outline: none; }
+.leader { fill: none; stroke: #8c9685; stroke-width: 1; vector-effect: non-scaling-stroke; pointer-events: none; }
+.dot { fill: var(--rust); stroke: var(--paper); stroke-width: 2; }
+.labelTarget { fill: transparent; }
+.label { font-family: var(--font-body); font-size: 14px; font-weight: 500; fill: var(--muted); paint-order: stroke; stroke: #f0efe7; stroke-width: 5px; stroke-linejoin: round; pointer-events: none; }
+.stop[data-stop="fonsorbes"] .label { font-size: 16px; fill: var(--ink); }
+.stop:hover .label, .stop:focus-visible .label { fill: var(--rust); }
+.stop:hover .labelTarget, .stop:focus-visible .labelTarget { fill: #f7f6f2e6; stroke: var(--rust); stroke-width: 1; }
+.majorStop { --major-green: #287447; }
+.majorStop .dot { fill: var(--major-green); }
+.majorStop .label,
+.majorStop:hover .label,
+.majorStop:focus-visible .label { fill: var(--major-green); font-size: 16px; font-weight: 700; }
+.controls { position: absolute; top: 12px; right: 12px; z-index: 1; display: flex; gap: 2px; padding: 2px; border: 1px solid var(--line); border-radius: 8px; background: #f7f6f2ed; }
+.controls button { display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 5px; background: transparent; color: var(--ink); cursor: pointer; }
+.controls button:hover { background: var(--sand); }
+.controls button:disabled { opacity: .3; cursor: default; }
+.controls button:focus-visible { outline: 2px solid var(--rust); }
+.caption { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 20px; margin: 16px 0 10px; color: var(--muted); font-size: 12px; }
+.caption p { margin: 0; }
+.caption p span { margin-left: 8px; }
+.credit { margin-left: auto; font-size: 10px; color: var(--muted); }
+.mobileHint { display: none; }
+@media (max-width: 800px) {
+  .viewport { height: 460px; max-height: none; }
+  .controls { top: 8px; right: 8px; }
+  .caption { font-size: 11px; gap: 6px 12px; }
+  .caption p span { display: block; margin-left: 0; margin-top: 4px; }
+  .mobileHint { display: block; width: 100%; }
+}
+
+.mobileItinerary { display: none; }
+
+@media (max-width: 600px) {
+  .frame, .caption { display: none; }
+  .mobileItinerary { display: block; }
+  .mobileItinerary ol { margin: 0; padding: 0; list-style: none; }
+  .mobileItinerary li { position: relative; }
+  .mobileItinerary li::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--line);
+  }
+  .mobileItinerary li:first-child::before { top: 50%; }
+  .mobileItinerary li:last-child::before { bottom: 50%; }
+  .mobileItinerary li::after {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    transform: translateY(-50%);
+    border: 1px solid var(--rust);
+    border-radius: 50%;
+    background: var(--paper);
+    pointer-events: none;
+  }
+  .mobileItinerary li:first-child::after,
+  .mobileItinerary li:last-child::after { background: var(--rust); }
+  .mobileItinerary a {
+    display: flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 12px 12px 12px 34px;
+    border-radius: 6px;
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.5;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .mobileItinerary a:hover { background: var(--sand); color: var(--rust); }
+  .mobileItinerary .mobileMajorStop a { color: #287447; font-weight: 700; }
+  .mobileItinerary .mobileMajorStop::after {
+    left: 2px;
+    width: 11px;
+    height: 11px;
+    border-color: #287447;
+    background: #287447;
+  }
+  .mobileItinerary a:focus-visible { outline: 2px solid var(--rust); outline-offset: 2px; }
+}
