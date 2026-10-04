@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/ui";
 import { ImageProtection } from "@/components/image-protection";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { siteUrl } from "@/content/site";
 import "./globals.css";
 export const metadata: Metadata = {
@@ -43,6 +44,7 @@ export default function RootLayout({
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );

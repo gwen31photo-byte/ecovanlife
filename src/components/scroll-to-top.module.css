@@ -1,0 +1,23 @@
+.button {
+  position: fixed;
+  right: calc(24px + env(safe-area-inset-right, 0px));
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ink);
+  color: white;
+  box-shadow: 0 3px 12px #14261c30;
+}
+
+@media (max-width: 600px) {
+  .button {
+    width: 44px;
+    height: 44px;
+  }
+}
