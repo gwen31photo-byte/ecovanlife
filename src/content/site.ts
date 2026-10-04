@@ -114,5 +114,4 @@ export const guides = [
     image: "/images/forest.jpg",
   },
 ];
-export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://ecovanlife.fr";
+export const siteUrl = "https://ecovanlife.fr";

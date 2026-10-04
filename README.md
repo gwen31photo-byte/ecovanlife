@@ -12,7 +12,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Ouvrir http://localhost:3000. Définir `NEXT_PUBLIC_SITE_URL` avec l’URL publique du site (par défaut `https://ecovanlife.fr`). Cette valeur intervient dans les métadonnées et le sitemap au build.
+Ouvrir http://localhost:3000. Le domaine public est fixé à `https://ecovanlife.fr` dans `src/content/site.ts` pour les métadonnées, robots.txt et le sitemap ; `NEXT_PUBLIC_SITE_URL` ne le remplace plus.
 
 ```bash
 npm run lint
@@ -59,7 +59,7 @@ Les guides et produits sont annoncés comme à venir. Il n’y a aucun panier, f
 Utiliser une offre disposant réellement d’un runtime Node.js (application Node.js ou VPS), avec Node.js 22+. Un hébergement PHP seul ne suffit pas à cette configuration. Les intitulés des réglages dépendent de l’offre et de son interface.
 
 - Transférer le projet et son lockfile, sans `node_modules`, `.next` ni secrets.
-- Renseigner `NEXT_PUBLIC_SITE_URL=https://ecovanlife.fr` avant compilation.
+- Le domaine des URL SEO est fixé à `https://ecovanlife.fr` dans `src/content/site.ts`.
 - Installer : `npm ci`.
 - Construire : `npm run build`.
 - Démarrer : `npm start` ; configurer le port donné par l’hébergeur et le routage du domaine vers l’application.
