@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, Mountain, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { adventures, guides, navigation, type Adventure } from "@/content/site";
 export function TextLink({
   href,
@@ -106,8 +106,14 @@ export function Footer() {
       <div className="footer-main">
         <div>
           <Link className="brand" href="/">
-            <Mountain size={29} />
-            <span>EcoVanLife.</span>
+            <Image
+              src="/images/logo-ecovanlife2.png"
+              alt="EcoVanLife"
+              width={612}
+              height={408}
+              sizes="130px"
+              style={{ width: 130, height: "auto", display: "block" }}
+            />
           </Link>
           <p>
             Moins de choses.
