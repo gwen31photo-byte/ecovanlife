@@ -1180,7 +1180,7 @@ input {
     line-height: 24.7px;
   }
   .hero-content {
-    top: 47%;
+    top: calc(47% - 90px);
     transform: translateY(-30%);
   }
   .hero {
