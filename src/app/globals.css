@@ -188,8 +188,8 @@ input {
 }
 .site-header .header-logo {
   display: block;
-  width: 210px;
-  height: auto;
+  width: auto;
+  height: 105px;
   object-fit: contain;
 }
 .brand-dot {
@@ -990,7 +990,8 @@ input {
 }
 @media (max-width: 800px) {
   .site-header .header-logo {
-    width: 150px;
+    width: auto;
+    height: 82px;
   }
   .hero-image {
     object-position: 30% center;

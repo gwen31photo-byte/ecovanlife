@@ -12,7 +12,7 @@ export function Header() {
     <header className="site-header">
       <Link href="/" className="brand" aria-label="EcoVanLife, accueil">
         <Image
-          src="/images/logo-ecovanlife1.png"
+          src="/images/logo-ecovanlife2.png"
           alt="EcoVanLife"
           width={2172}
           height={724}
