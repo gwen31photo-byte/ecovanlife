@@ -1,6 +1,7 @@
 export const roadTrips = [
   {
     title: "La grande boucle de l’Ouest",
+    href: "/voyages/la-grande-boucle-de-l-ouest",
     region: "France",
     category: "Road trip",
     duration: "17 jours",

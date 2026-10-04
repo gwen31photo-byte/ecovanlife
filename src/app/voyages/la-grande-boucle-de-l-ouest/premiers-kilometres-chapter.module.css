@@ -1,0 +1,36 @@
+.chapter { border-top: 1px solid var(--line); padding-top: 64px; scroll-margin-top: 32px; }
+.chapterHeader { display: grid; grid-template-columns: 1fr 4fr; gap: 36px; margin-bottom: 56px; }
+.chapterHeader h2 { max-width: 750px; font-size: clamp(32px, 4.3vw, 56px); line-height: 1.15; margin-bottom: 20px; text-wrap: balance; }
+.route { margin: 0; font-size: 14px; }
+.chapter h3 { font-size: clamp(25px, 3vw, 36px); line-height: 1.2; text-wrap: balance; }
+.sequence + .sequence { margin-top: 80px; }
+.photo { min-width: 0; margin: 0; }
+.photo img { display: block; width: 100%; height: auto; object-fit: contain; }
+.photo figcaption { margin-top: 12px; font-size: 12px; line-height: 1.6; color: var(--muted); }
+.departure, .evening { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); align-items: center; gap: clamp(32px, 5vw, 72px); max-width: 1050px; margin-inline: auto; }
+.evening { margin-top: 64px; }
+.portrait { width: 100%; max-width: 420px; margin-inline: auto; }
+.landscape { max-width: 950px; margin-inline: auto; }
+.panorama { width: 100%; }
+.medium { max-width: 800px; margin-inline: auto; }
+.text { margin: 0 auto 40px; }
+.textPause { margin: 48px auto; }
+.closing { margin: 40px auto 0; }
+
+@media (max-width: 1000px) {
+  .departure, .evening { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .chapter { padding-top: 36px; }
+  .chapterHeader { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-bottom: 36px; }
+  .chapterHeader > p { margin-bottom: 0; }
+  .chapterHeader h2 { margin-bottom: 16px; }
+  .departure, .evening { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .portrait { width: 90%; max-width: 360px; }
+  .evening { margin-top: 36px; }
+  .sequence + .sequence { margin-top: 48px; }
+  .text { margin-bottom: 28px; }
+  .textPause { margin: 32px auto; }
+  .closing { margin-top: 28px; }
+}
