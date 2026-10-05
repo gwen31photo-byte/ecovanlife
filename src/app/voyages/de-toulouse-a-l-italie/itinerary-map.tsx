@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type PointerEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent, type PointerEvent } from "react";
 import { Minus, Plus, RotateCcw } from "lucide-react";
 import { countries } from "./trip-map-geography";
 import styles from "./itinerary-map.module.css";
@@ -44,6 +44,42 @@ export default function ItineraryMap() {
   const viewport = useRef<HTMLDivElement>(null);
   const drag = useRef<{ x: number; y: number; left: number; top: number; moved: boolean } | null>(null);
   const suppressClick = useRef(false);
+
+  function jumpToStep(event: MouseEvent<HTMLAnchorElement | SVGAElement>) {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey ||
+      event.ctrlKey || event.shiftKey || event.altKey) return;
+    const hash = event.currentTarget.getAttribute("href");
+    const target = hash ? document.getElementById(hash.slice(1)) : null;
+    if (!target) return;
+
+    event.preventDefault();
+    if (window.location.hash !== hash) {
+      window.history.pushState(null, "", hash);
+    }
+    const scrollStyles = [document.documentElement, document.body].map((element) => ({
+      style: element.style,
+      value: element.style.getPropertyValue("scroll-behavior"),
+      priority: element.style.getPropertyPriority("scroll-behavior"),
+    }));
+    try {
+      // Disable CSS smooth scrolling before focus and scrolling on mobile too.
+      scrollStyles.forEach(({ style }) => style.setProperty("scroll-behavior", "auto", "important"));
+      // Preserve keyboard navigation to the destination without another scroll.
+      const tabIndex = target.getAttribute("tabindex");
+      target.setAttribute("tabindex", "-1");
+      target.focus({ preventScroll: true });
+      if (tabIndex === null) target.removeAttribute("tabindex");
+      else target.setAttribute("tabindex", tabIndex);
+      const offset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      const top = Math.max(0, window.scrollY + target.getBoundingClientRect().top - offset);
+      window.scrollTo({ top, left: window.scrollX, behavior: "auto" });
+    } finally {
+      scrollStyles.forEach(({ style, value, priority }) => {
+        if (value) style.setProperty("scroll-behavior", value, priority);
+        else style.removeProperty("scroll-behavior");
+      });
+    }
+  }
 
   function initialView() {
     const element = viewport.current;
@@ -142,7 +178,7 @@ export default function ItineraryMap() {
                 const major = majorStops.has(point.key);
                 const labelX = Math.max(left + 12, Math.min(left + width - 12, point.x));
                 const labelY = Math.max(top, Math.min(top + 44, point.y));
-                return <a key={point.key} href={`#${point.anchor}`} className={`${styles.stop}${major ? ` ${styles.majorStop}` : ""}`}
+                return <a key={point.key} href={`#${point.anchor}`} onClick={jumpToStep} className={`${styles.stop}${major ? ` ${styles.majorStop}` : ""}`}
                   aria-label={`${point.name} — lire le carnet`} data-stop={point.key}>
                   <path className={styles.leader} d={`M${point.x},${point.y}L${labelX},${labelY}`} />
                   <circle className={styles.dot} cx={point.x} cy={point.y} r={point.key === "fonsorbes" ? 7 : major ? 7 : 5} />
@@ -163,12 +199,12 @@ export default function ItineraryMap() {
         <ol>
           {visibleStops.map((stop, index) => (
             <li key={stop.key} className={majorStops.has(stop.key) ? styles.mobileMajorStop : undefined}>
-              <a href={`#${stop.anchor}`}>
+              <a href={`#${stop.anchor}`} onClick={jumpToStep}>
                 {index === 0 ? "Fonsorbes · départ" : stop.name}
               </a>
             </li>
           ))}
-          <li><a href={`#${stops[0].anchor}`}>Fonsorbes · retour</a></li>
+          <li><a href={`#${stops[0].anchor}`} onClick={jumpToStep}>Fonsorbes · retour</a></li>
         </ol>
       </nav>
     </div>
