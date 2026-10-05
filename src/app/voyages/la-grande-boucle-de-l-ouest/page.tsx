@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import IleOleronChapter from "./ile-oleron-chapter";
 import PremiersKilometresChapter from "./premiers-kilometres-chapter";
 import styles from "./page.module.css";
 
@@ -37,6 +38,7 @@ export default function OuestFrancePage() {
         </div>
       </header>
       <PremiersKilometresChapter />
+      <IleOleronChapter />
     </article>
   );
 }
