@@ -7,6 +7,15 @@ import { siteUrl } from "@/content/site";
 import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: [
+      { url: "/images/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+      { url: "/images/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/images/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/images/favicon.ico",
+    apple: { url: "/images/apple-icon.png", sizes: "180x180", type: "image/png" },
+  },
   title: {
     default: "EcoVanLife — Voyager. Explorer. Vivre autrement.",
     template: "%s | EcoVanLife",
