@@ -1,0 +1,16 @@
+.photo { min-width: 0; width: 100%; margin: 0 auto; }
+.photo img { display: block; width: 100%; height: auto; object-fit: contain; image-orientation: from-image; }
+.photo figcaption { margin-top: 12px; font-size: 12px; line-height: 1.6; color: var(--muted); }
+.firstSequence { margin-top: 80px; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; align-items: start; max-width: 880px; margin-inline: auto; }
+.colorPause { display: grid; grid-template-columns: minmax(0, 480px) minmax(0, 420px); gap: clamp(32px, 5vw, 72px); align-items: center; max-width: 1000px; margin: 64px auto 0; }
+.detailPause { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 520px); gap: clamp(32px, 5vw, 72px); align-items: center; max-width: 950px; margin-inline: auto; }
+.closing { margin: 48px auto 0; }
+
+@media (max-width: 700px) {
+  .firstSequence { margin-top: 48px; }
+  .pair { grid-template-columns: minmax(0, 1fr); gap: 36px; max-width: 360px; }
+  .colorPause, .detailPause { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .colorPause { margin-top: 36px; }
+  .closing { margin-top: 32px; }
+}
