@@ -1,0 +1,26 @@
+.sequence + .sequence { margin-top: 80px; }
+.photo { min-width: 0; width: 100%; margin: 0 auto; }
+.photo img { display: block; width: 100%; height: auto; object-fit: contain; image-orientation: from-image; }
+.photo figcaption { margin-top: 12px; font-size: 12px; line-height: 1.6; color: var(--muted); }
+.photo + .photo { margin-top: 64px; }
+.landscape { max-width: 950px; }
+.panorama { max-width: 1200px; }
+.opening { max-width: 1050px; }
+.portrait { max-width: 420px; }
+.van { max-width: 420px; }
+.dunes { max-width: 560px; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; align-items: start; max-width: 880px; margin-inline: auto; }
+.pairPhoto { max-width: none; }
+.pair > .photo + .photo { margin-top: 0; }
+.mixedPair { grid-template-columns: minmax(0, 360px) minmax(0, 554px); max-width: 950px; align-items: center; }
+.closing { margin: 64px auto 0; }
+
+@media (max-width: 700px) {
+  .sequence + .sequence { margin-top: 48px; }
+  .photo + .photo { margin-top: 36px; }
+  .portrait, .van { width: 90%; max-width: 360px; }
+  .pair, .mixedPair { grid-template-columns: minmax(0, 1fr); gap: 36px; max-width: 360px; }
+  .mixedPair { max-width: 100%; }
+  .mixedPair > .photo:first-child { width: 90%; max-width: 360px; }
+  .closing { margin-top: 36px; }
+}
