@@ -3,6 +3,7 @@ import Link from "next/link";
 import IleOleronChapter from "./ile-oleron-chapter";
 import LaRochelleChapter from "./la-rochelle-chapter";
 import MeschersChapter from "./meschers-chapter";
+import FourasChapter from "./fouras-chapter";
 import PremiersKilometresChapter from "./premiers-kilometres-chapter";
 import styles from "./page.module.css";
 
@@ -43,6 +44,7 @@ export default function OuestFrancePage() {
       <IleOleronChapter />
       <LaRochelleChapter />
       <MeschersChapter />
+      <FourasChapter />
     </article>
   );
 }
