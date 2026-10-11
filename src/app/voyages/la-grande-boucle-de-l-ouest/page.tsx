@@ -4,6 +4,7 @@ import IleOleronChapter from "./ile-oleron-chapter";
 import LaRochelleChapter from "./la-rochelle-chapter";
 import MeschersChapter from "./meschers-chapter";
 import FourasChapter from "./fouras-chapter";
+import PuyDuFouChapter from "./puy-du-fou-chapter";
 import PremiersKilometresChapter from "./premiers-kilometres-chapter";
 import styles from "./page.module.css";
 
@@ -33,7 +34,7 @@ export default function OuestFrancePage() {
           </p>
           <p>
             Deux rendez-vous structurent le voyage : nous avons réservé le Puy
-            du Fou pour les 23 et 24 juillet et le ZooParc de Beauval pour le
+            du Fou pour les 24 et 25 juillet et le ZooParc de Beauval pour le
             31 juillet. Entre ces dates, nous n’avons pas préparé chaque journée
             dans le détail. Comme d’habitude, nous comptons beaucoup décider au
             fur et à mesure, au gré de la route et de nos envies.
@@ -45,6 +46,7 @@ export default function OuestFrancePage() {
       <LaRochelleChapter />
       <MeschersChapter />
       <FourasChapter />
+      <PuyDuFouChapter />
     </article>
   );
 }
