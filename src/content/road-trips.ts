@@ -8,8 +8,9 @@ export const roadTrips = [
     country: "France",
     description:
       "De l’Atlantique à la Normandie, entre océan, patrimoine et détours imprévus.",
-    image: "/images/coast.jpg",
-    alt: "Photographie d’illustration temporaire : océan et côte",
+    image: "/images/voyages/la-grande-boucle-de-l-ouest/meschers-panorama-falaises-et-cavites.JPG",
+    imagePosition: "35% 55%",
+    alt: "Falaises de Meschers-sur-Gironde et leurs cavités au-dessus de l’estuaire",
   },
   {
     title: "De Toulouse à l’Italie",

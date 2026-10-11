@@ -15,6 +15,7 @@ export function RoadTripGrid() {
                 alt={trip.alt}
                 fill
                 sizes="(max-width: 800px) 100vw, 33vw"
+                style={trip.imagePosition ? { objectPosition: trip.imagePosition } : undefined}
               />
               <span className="image-label">{trip.region}</span>
             </div>
