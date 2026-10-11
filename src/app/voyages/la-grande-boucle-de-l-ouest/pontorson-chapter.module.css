@@ -1,0 +1,22 @@
+.introduction { margin: 0 auto 56px; }
+.sequence + .sequence { margin-top: 72px; }
+.text { margin: 0 auto 36px; }
+.textPause { margin: 40px auto; }
+.photo { min-width: 0; width: 100%; max-width: 950px; margin: 0 auto; }
+.photo img { display: block; width: 100%; height: auto; object-fit: contain; image-orientation: from-image; }
+.photo figcaption { margin-top: 12px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.portrait { max-width: 378px; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; align-items: start; max-width: 950px; margin-inline: auto; }
+.photo + .pair { margin-top: 36px; }
+.discovery { border-left: 2px solid var(--rust); padding-left: 24px; }
+
+@media (max-width: 700px) {
+  .introduction { margin-bottom: 36px; }
+  .sequence + .sequence { margin-top: 48px; }
+  .text { margin-bottom: 28px; }
+  .textPause { margin-block: 32px; }
+  .pair { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .portrait { width: 90%; }
+  .photo + .pair { margin-top: 28px; }
+  .discovery { padding-left: 18px; }
+}

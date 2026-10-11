@@ -5,6 +5,7 @@ import LaRochelleChapter from "./la-rochelle-chapter";
 import MeschersChapter from "./meschers-chapter";
 import FourasChapter from "./fouras-chapter";
 import PuyDuFouChapter from "./puy-du-fou-chapter";
+import PontorsonChapter from "./pontorson-chapter";
 import PremiersKilometresChapter from "./premiers-kilometres-chapter";
 import styles from "./page.module.css";
 
@@ -47,6 +48,7 @@ export default function OuestFrancePage() {
       <MeschersChapter />
       <FourasChapter />
       <PuyDuFouChapter />
+      <PontorsonChapter />
     </article>
   );
 }
