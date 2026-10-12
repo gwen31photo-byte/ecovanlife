@@ -1,5 +1,5 @@
 import { PageIntro } from "@/components/ui";
-import { Gallery } from "@/components/gallery";
+import { PhotoGallery } from "./photo-gallery";
 export const metadata = {
   title: "Photographies — instants d’évasion",
   alternates: { canonical: "/photos" },
@@ -10,10 +10,11 @@ export default function Page() {
       <PageIntro
         eyebrow="LA BEAUTÉ DES DÉTOURS"
         title="Une lumière. Une émotion."
-        description="Des paysages, des détails, des instants suspendus. Cliquez sur une image pour prendre le temps de la regarder."
+        description="Des paysages aux ruelles chargées d'histoire, des lumières fugaces aux horizons lointains. Chaque photographie raconte un instant, une émotion, une rencontre avec le monde."
+        showDemoNote={false}
       />
       <section className="section listing">
-        <Gallery />
+        <PhotoGallery />
       </section>
     </>
   );

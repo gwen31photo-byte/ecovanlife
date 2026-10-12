@@ -1,0 +1,17 @@
+.shop {
+  text-align: center;
+  margin: 0 0 35px;
+}
+
+.caption {
+  overflow-wrap: anywhere;
+}
+
+.caption svg {
+  flex-shrink: 0;
+}
+
+.purchase {
+  text-align: center;
+  margin-top: 12px;
+}
