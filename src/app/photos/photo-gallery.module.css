@@ -15,3 +15,22 @@
   text-align: center;
   margin-top: 12px;
 }
+
+.imageStatus {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+.lightboxPhoto {
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+}
+
+.lightboxPhoto[data-loaded="true"] {
+  opacity: 1;
+}

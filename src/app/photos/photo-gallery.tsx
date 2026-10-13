@@ -7,6 +7,31 @@ import { photographs, photoShopUrl, type Photograph } from "./catalog";
 import { photoCollections } from "./collections";
 import styles from "./photo-gallery.module.css";
 
+function LightboxImage({ photo }: { photo: Photograph }) {
+  const [status, setStatus] = useState<"loading" | "loaded" | "error">("loading");
+
+  return (
+    <div className="lightbox-image" aria-busy={status === "loading"}>
+      {status !== "loaded" && (
+        <div className={styles.imageStatus} role="status">
+          {status === "error" ? "Impossible de charger la photographie." : "Chargement…"}
+        </div>
+      )}
+      <Image
+        src={photo.src}
+        alt={photo.alt}
+        fill
+        sizes="90vw"
+        loading="eager"
+        className={styles.lightboxPhoto}
+        data-loaded={status === "loaded"}
+        onLoad={() => setStatus("loaded")}
+        onError={() => setStatus("error")}
+      />
+    </div>
+  );
+}
+
 export function PhotoGallery() {
   const [filter, setFilter] = useState("all");
   const [selected, setSelected] = useState<Photograph | null>(null);
@@ -63,6 +88,7 @@ export function PhotoGallery() {
         ref={dialog}
         className="lightbox"
         aria-label="Photographie agrandie"
+        onClose={() => setSelected(null)}
         onClick={(event) => {
           if (event.target === event.currentTarget) dialog.current?.close();
         }}
@@ -78,9 +104,7 @@ export function PhotoGallery() {
         </button>
         {selected && (
           <>
-            <div className="lightbox-image">
-              <Image src={selected.src} alt={selected.alt} fill sizes="90vw" />
-            </div>
+            <LightboxImage key={selected.src} photo={selected} />
             <p className={styles.caption}>{selected.title}</p>
             {selected.picfairUrl?.trim() && (
               <div className={styles.purchase}>
