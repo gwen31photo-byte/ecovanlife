@@ -2,34 +2,21 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { X, Expand } from "lucide-react";
-import { photos } from "@/content/site";
-export function Gallery({ compact = false }: { compact?: boolean }) {
-  const [filter, setFilter] = useState("Tout");
-  const [selected, setSelected] = useState(photos[0]);
+import type { Photograph } from "@/app/photos/catalog";
+
+type GalleryPhoto = Pick<Photograph, "id" | "title" | "alt" | "src" | "thumbnailSrc">;
+
+export function Gallery({ photos }: { photos: readonly GalleryPhoto[] }) {
+  const [selected, setSelected] = useState<GalleryPhoto | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
-  const visible = (compact ? photos.slice(0, 3) : photos).filter(
-    (photo) => filter === "Tout" || photo.category === filter,
-  );
   return (
     <>
-      {!compact && (
-        <div className="filters" aria-label="Filtrer les photographies">
-          {["Tout", "Nature", "Montagne", "Océan"].map((item) => (
-            <button
-              key={item}
-              aria-pressed={filter === item}
-              onClick={() => setFilter(item)}
-            >
-              {item}
-            </button>
-          ))}
-        </div>
-      )}
-      <div className={`gallery ${compact ? "compact" : ""}`}>
-        {visible.map((photo) => (
+      <div className="gallery compact">
+        {photos.map((photo) => (
           <button
+            type="button"
             className="gallery-photo"
-            key={photo.src}
+            key={photo.id}
             onClick={() => {
               setSelected(photo);
               dialog.current?.showModal();
@@ -37,14 +24,14 @@ export function Gallery({ compact = false }: { compact?: boolean }) {
             aria-label={`Agrandir : ${photo.title}`}
           >
             <Image
-              src={photo.src}
+              src={photo.thumbnailSrc}
               alt={photo.alt}
               fill
-              sizes="(max-width: 700px) 100vw, 33vw"
+              sizes="(max-width: 600px) 85vw, 33vw"
             />
             <span>
               {photo.title}
-              <Expand size={18} />
+              <Expand size={18} aria-hidden="true" />
             </span>
           </button>
         ))}
@@ -53,11 +40,13 @@ export function Gallery({ compact = false }: { compact?: boolean }) {
         ref={dialog}
         className="lightbox"
         aria-label="Photographie agrandie"
+        onClose={() => setSelected(null)}
         onClick={(event) => {
           if (event.target === event.currentTarget) dialog.current?.close();
         }}
       >
         <button
+          type="button"
           className="close-lightbox"
           autoFocus
           onClick={() => dialog.current?.close()}
@@ -65,10 +54,14 @@ export function Gallery({ compact = false }: { compact?: boolean }) {
         >
           <X />
         </button>
-        <div className="lightbox-image">
-          <Image src={selected.src} alt={selected.alt} fill sizes="90vw" />
-        </div>
-        <p>{selected.title} — photographie de démonstration</p>
+        {selected && (
+          <>
+            <div className="lightbox-image">
+              <Image src={selected.src} alt={selected.alt} fill sizes="90vw" loading="eager" />
+            </div>
+            <p>{selected.title}</p>
+          </>
+        )}
       </dialog>
     </>
   );

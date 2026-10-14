@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Compass, Camera, Leaf } from "lucide-react";
@@ -9,7 +10,56 @@ import {
 import { RoadTripGrid } from "@/components/road-trip-grid";
 import { Gallery } from "@/components/gallery";
 import { Newsletter } from "@/components/newsletter";
-export const metadata = { alternates: { canonical: "/" } };
+import { photographs } from "./photos/catalog";
+import { siteUrl } from "@/content/site";
+
+const title = "EcoVanLife — Voyages en van, carnets de route et photographies";
+const description =
+  "Explorez EcoVanLife : carnets de voyage, aventures en van, paysages et photographies pour découvrir le monde autrement.";
+const shareImage = {
+  url: "/images/social/accueil-ecovanlife.png",
+  width: 1200,
+  height: 630,
+  alt: "Logo EcoVanLife représentant un van rouge devant un paysage de montagnes et de sapins.",
+};
+
+export const metadata: Metadata = {
+  title: { absolute: title },
+  description,
+  alternates: { canonical: `${siteUrl}/` },
+  openGraph: {
+    title,
+    description,
+    url: `${siteUrl}/`,
+    type: "website",
+    locale: "fr_FR",
+    siteName: "EcoVanLife",
+    images: [shareImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [{ url: shareImage.url, alt: shareImage.alt }],
+  },
+};
+
+const featuredPhotoIds = [
+  "voyages/Italie/20 avril 2025 - venise - pixel(17).jpg",
+  "patrimoine français/Juillet 2026 - St moret sur loing - Pixel(4).JPG",
+  "lumière de méditeranée/aout 2024 - falaise leucate - nikkon(3).JPEG",
+];
+const featuredPhotos = featuredPhotoIds.map((id) => {
+  const photo = photographs.find((photo) => photo.id === id);
+  if (!photo) throw new Error(`Missing featured photograph: ${id}`);
+  return {
+    id: photo.id,
+    title: photo.title,
+    alt: photo.alt,
+    src: photo.src,
+    thumbnailSrc: photo.thumbnailSrc,
+  };
+});
 export default function Home() {
   return (
     <>
@@ -113,9 +163,10 @@ export default function Home() {
           Ces instants qui ne durent qu’une seconde, et qu’on voudrait garder
           toujours.
         </p>
-        <Gallery compact />
+        <Gallery photos={featuredPhotos} />
         <div className="gallery-footnote">
-          <Camera size={15} /> Un regard sur le monde — galerie de démonstration
+          <Camera size={15} /> Trois instants, trois regards. Découvrez mes
+          photographies au fil des voyages.
         </div>
       </section>
       <section className="guides-section section">
