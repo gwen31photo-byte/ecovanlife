@@ -15,7 +15,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "La grande boucle de l’Ouest",
   description:
-    "Notre carnet de road trip en van dans l’Ouest de la France, en juillet 2025. Premiers kilomètres depuis Fonsorbes, une nuit à Sainte-Bazeille et la dune du Pilat.",
+    "Notre road trip en van dans l'Ouest de la France : dune du Pilat, côte atlantique, Puy du Fou, Mont-Saint-Michel et plages du Débarquement.",
   alternates: { canonical: "/voyages/la-grande-boucle-de-l-ouest" },
 };
 

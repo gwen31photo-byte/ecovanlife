@@ -4,7 +4,9 @@ import { photographs } from "./photos/catalog";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...navigation.map((n) => n.href),
-    ...adventures.map((a) => `/voyages/${a.slug}`),
+    ...adventures
+      .filter((a) => !["dolomites", "cote-sauvage", "norvege"].includes(a.slug))
+      .map((a) => `/voyages/${a.slug}`),
     "/voyages/de-toulouse-a-l-italie",
     "/voyages/la-grande-boucle-de-l-ouest",
   ].map((path) => ({

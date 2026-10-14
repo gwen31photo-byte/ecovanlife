@@ -17,6 +17,9 @@ export async function generateMetadata({
     title: a?.title ?? "Voyage introuvable",
     description: a?.description,
     alternates: { canonical: `/voyages/${slug}` },
+    ...(["dolomites", "cote-sauvage", "norvege"].includes(slug)
+      ? { robots: { index: false, follow: true } }
+      : {}),
   };
 }
 export default async function Page({
