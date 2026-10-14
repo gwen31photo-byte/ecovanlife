@@ -16,6 +16,8 @@ export const stops = [
   { key: "puy", name: "Puy du Fou", lon: -0.932, lat: 46.889, anchor: "etape-6-title", label: [615, 207, 140] },
   { key: "noyal", name: "Noyal-Châtillon", lon: -1.659, lat: 48.042, anchor: "pontorson-pause-title", label: [310, 151, 175] },
   { key: "pontorson", name: "Pontorson", lon: -1.507, lat: 48.553, anchor: "pontorson-nuit-title", label: [565, 90, 130] },
+  { key: "mont-saint-michel", name: "Mont-Saint-Michel", lon: -1.511, lat: 48.636, anchor: "mont-saint-michel-arrivee-title", label: [275, 30, 220] },
+  { key: "arromanches", name: "Arromanches", lon: -0.621, lat: 49.339, anchor: "arromanches-camping-title", label: [650, 25, 160] },
 ] as const;
 
 type StopKey = (typeof stops)[number]["key"];
@@ -29,8 +31,9 @@ export const visits: { stop: StopKey; anchor?: string; name?: string }[] = [
   { stop: "meschers" }, { stop: "plage" },
   { stop: "arces", anchor: "etape-5-title", name: "Arces-sur-Gironde · dernière nuit au camping" },
   { stop: "fumee" }, { stop: "fouras" }, { stop: "puy" }, { stop: "noyal" }, { stop: "pontorson" },
+  { stop: "mont-saint-michel" }, { stop: "arromanches" },
 ];
-export const majorStops = new Set<StopKey>(["pilat", "rochelle", "meschers", "puy", "pontorson"]);
+export const majorStops = new Set<StopKey>(["pilat", "rochelle", "meschers", "puy", "pontorson", "mont-saint-michel", "arromanches"]);
 export function project(lon: number, lat: number) {
   return { x: 50 + (lon + 5.5) * 110, y: 40 + (49.5 - lat) * 92 };
 }

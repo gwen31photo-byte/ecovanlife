@@ -127,7 +127,7 @@ export default function ItineraryMap() {
           }}>
           <div className={styles.canvas} style={{ width: `${zoom * 100}%`, minWidth: `${900 * zoom}px` }}>
             <svg viewBox="0 0 1100 660" className={styles.svg} role="group" aria-labelledby="ouest-map-title ouest-map-description">
-              <title id="ouest-map-title">De Fonsorbes à Pontorson, les sept premières étapes de la Grande Boucle de l’Ouest</title>
+              <title id="ouest-map-title">De Fonsorbes à Arromanches, les huit premières étapes de la Grande Boucle de l’Ouest</title>
               <desc id="ouest-map-description">Un parcours reliant les destinations publiées, avec les excursions et retours à Arces-sur-Gironde. Chaque nom est un lien vers son passage. Le tracé représente l’ordre des destinations, sans reproduire les routes exactes.</desc>
               <defs>
                 <marker id="ouest-map-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
@@ -182,7 +182,7 @@ export default function ItineraryMap() {
         </div>
       </div>
       <div className={styles.caption}>
-        <p>De Fonsorbes à Pontorson. <span>Tracé indicatif entre les étapes.</span></p>
+        <p>De Fonsorbes à Arromanches, via le Mont-Saint-Michel. <span>Tracé indicatif entre les étapes.</span></p>
         <span className={styles.mobileHint}>Faites glisser la carte pour explorer le parcours.</span>
         <a href="https://www.naturalearthdata.com/" className={styles.credit} target="_blank" rel="noreferrer">Fond : Natural Earth</a>
       </div>
