@@ -5,7 +5,7 @@ import { Minus, Plus, RotateCcw } from "lucide-react";
 import { countries } from "./trip-map-geography";
 import styles from "./itinerary-map.module.css";
 
-import { stops, visits, majorStops, project } from "./itinerary-data";
+import { stops, visits, majorStops, project, eveningStop } from "./itinerary-data";
 
 const points = stops.map((stop) => ({ ...stop, ...project(stop.lon, stop.lat) }));
 const sequence = visits.map((visit) => ({ ...points.find((point) => point.key === visit.stop)!, ...visit }));
@@ -127,8 +127,8 @@ export default function ItineraryMap() {
           }}>
           <div className={styles.canvas} style={{ width: `${zoom * 100}%`, minWidth: `${900 * zoom}px` }}>
             <svg viewBox="0 0 1100 660" className={styles.svg} role="group" aria-labelledby="ouest-map-title ouest-map-description">
-              <title id="ouest-map-title">De Fonsorbes à Arromanches, les huit premières étapes de la Grande Boucle de l’Ouest</title>
-              <desc id="ouest-map-description">Un parcours reliant les destinations publiées, avec les excursions et retours à Arces-sur-Gironde. Chaque nom est un lien vers son passage. Le tracé représente l’ordre des destinations, sans reproduire les routes exactes.</desc>
+              <title id="ouest-map-title">De Fonsorbes à La Cambe, les neuf premières étapes de la Grande Boucle de l’Ouest</title>
+              <desc id="ouest-map-description">Un parcours reliant les destinations publiées, avec les excursions et retours à Arces-sur-Gironde. Chaque nom est un lien vers son passage. Le tracé représente l’ordre des destinations, sans reproduire les routes exactes. La dernière halte à Géfosse-Fontenay est accessible par un lien textuel, hors du tracé.</desc>
               <defs>
                 <marker id="ouest-map-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
                   <path d="M2 2L7 5L2 8" fill="none" stroke="currentColor" strokeWidth="1.5" />
@@ -180,9 +180,12 @@ export default function ItineraryMap() {
             </svg>
           </div>
         </div>
+        <p className={styles.caption}>
+          <a href={`#${eveningStop.anchor}`} onClick={jumpToStep}>{eveningStop.name}</a>
+        </p>
       </div>
       <div className={styles.caption}>
-        <p>De Fonsorbes à Arromanches, via le Mont-Saint-Michel. <span>Tracé indicatif entre les étapes.</span></p>
+        <p>De Fonsorbes à La Cambe, via le Mont-Saint-Michel. <span>Tracé indicatif entre les étapes.</span></p>
         <span className={styles.mobileHint}>Faites glisser la carte pour explorer le parcours.</span>
         <a href="https://www.naturalearthdata.com/" className={styles.credit} target="_blank" rel="noreferrer">Fond : Natural Earth</a>
       </div>
@@ -195,7 +198,9 @@ export default function ItineraryMap() {
               </a>
             </li>
           ))}
-
+          <li className={styles.mobileMajorStop}>
+            <a href={`#${eveningStop.anchor}`} onClick={jumpToStep}>{eveningStop.name}</a>
+          </li>
         </ol>
       </nav>
     </div>

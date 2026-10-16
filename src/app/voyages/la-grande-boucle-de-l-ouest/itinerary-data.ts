@@ -18,6 +18,12 @@ export const stops = [
   { key: "pontorson", name: "Pontorson", lon: -1.507, lat: 48.553, anchor: "pontorson-nuit-title", label: [565, 90, 130] },
   { key: "mont-saint-michel", name: "Mont-Saint-Michel", lon: -1.511, lat: 48.636, anchor: "etape-8", label: [275, 30, 220] },
   { key: "arromanches", name: "Arromanches", lon: -0.621, lat: 49.339, anchor: "arromanches-camping-title", label: [650, 25, 160] },
+  // Coordinates identify the published sites, not parking positions.
+  // Sources: Council of Europe (Airborne); OT Isigny-Omaha via Cirkwi (other sites).
+  { key: "sainte-mere-eglise", name: "Sainte-Mère-Église", lon: -1.3151779636385965, lat: 49.40856880851476, anchor: "etape-9", label: [850, 80, 245] },
+  { key: "maisy", name: "Batteries de Maisy", lon: -1.063024, lat: 49.3759543, anchor: "etape-9-maisy", label: [850, 135, 210] },
+  { key: "pointe-du-hoc", name: "Pointe du Hoc", lon: -0.9861666, lat: 49.3939177, anchor: "etape-9-pointe-du-hoc", label: [850, 190, 180] },
+  { key: "la-cambe", name: "La Cambe", lon: -1.0266476, lat: 49.3430888, anchor: "etape-9-la-cambe", label: [850, 245, 140] },
 ] as const;
 
 type StopKey = (typeof stops)[number]["key"];
@@ -32,8 +38,12 @@ export const visits: { stop: StopKey; anchor?: string; name?: string }[] = [
   { stop: "arces", anchor: "etape-5-title", name: "Arces-sur-Gironde · dernière nuit au camping" },
   { stop: "fumee" }, { stop: "fouras" }, { stop: "puy" }, { stop: "noyal" }, { stop: "pontorson" },
   { stop: "mont-saint-michel" }, { stop: "arromanches" },
+  { stop: "sainte-mere-eglise" }, { stop: "maisy" }, { stop: "pointe-du-hoc" }, { stop: "la-cambe" },
 ];
-export const majorStops = new Set<StopKey>(["pilat", "rochelle", "meschers", "puy", "pontorson", "mont-saint-michel", "arromanches"]);
+export const majorStops = new Set<StopKey>(["pilat", "rochelle", "meschers", "puy", "pontorson", "mont-saint-michel", "arromanches", "sainte-mere-eglise", "maisy", "pointe-du-hoc", "la-cambe"]);
 export function project(lon: number, lat: number) {
   return { x: 50 + (lon + 5.5) * 110, y: 40 + (49.5 - lat) * 92 };
 }
+
+// The named parking has not been located precisely enough to add a geographic point.
+export const eveningStop = { name: "Géfosse-Fontenay — plage des Veys", anchor: "etape-9-plage" } as const;

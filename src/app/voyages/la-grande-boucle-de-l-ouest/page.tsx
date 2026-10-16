@@ -9,6 +9,7 @@ import FourasChapter from "./fouras-chapter";
 import PuyDuFouChapter from "./puy-du-fou-chapter";
 import PontorsonChapter from "./pontorson-chapter";
 import MontSaintMichelArromanchesChapter from "./mont-saint-michel-arromanches-chapter";
+import DebarquementChapter from "./debarquement-chapter";
 import PremiersKilometresChapter from "./premiers-kilometres-chapter";
 import styles from "./page.module.css";
 
@@ -63,6 +64,7 @@ export default function OuestFrancePage() {
         <PuyDuFouChapter />
         <PontorsonChapter />
         <MontSaintMichelArromanchesChapter />
+        <DebarquementChapter />
       </div>
     </article>
   );
