@@ -16,7 +16,7 @@ export const stops = [
   { key: "puy", name: "Puy du Fou", lon: -0.932, lat: 46.889, anchor: "etape-6-title", label: [615, 207, 140] },
   { key: "noyal", name: "Noyal-Châtillon", lon: -1.659, lat: 48.042, anchor: "pontorson-pause-title", label: [310, 151, 175] },
   { key: "pontorson", name: "Pontorson", lon: -1.507, lat: 48.553, anchor: "pontorson-nuit-title", label: [565, 90, 130] },
-  { key: "mont-saint-michel", name: "Mont-Saint-Michel", lon: -1.511, lat: 48.636, anchor: "mont-saint-michel-arrivee-title", label: [275, 30, 220] },
+  { key: "mont-saint-michel", name: "Mont-Saint-Michel", lon: -1.511, lat: 48.636, anchor: "etape-8", label: [275, 30, 220] },
   { key: "arromanches", name: "Arromanches", lon: -0.621, lat: 49.339, anchor: "arromanches-camping-title", label: [650, 25, 160] },
 ] as const;
 
