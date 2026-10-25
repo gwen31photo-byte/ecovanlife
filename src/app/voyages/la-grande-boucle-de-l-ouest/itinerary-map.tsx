@@ -9,6 +9,11 @@ import { stops, visits, majorStops, project, eveningStop } from "./itinerary-dat
 
 const points = stops.map((stop) => ({ ...stop, ...project(stop.lon, stop.lat) }));
 const sequence = visits.map((visit) => ({ ...points.find((point) => point.key === visit.stop)!, ...visit }));
+// La halte non géolocalisée conserve son lien et sa place entre les jours 11 et 12.
+const chronology = sequence.flatMap((stop) => stop.key === "la-cambe"
+  ? [stop, { key: "gefosse-soir", ...eveningStop },
+    { key: "gefosse-reveil", name: "Géfosse-Fontenay · départ du jour 12", anchor: "etape-10" }]
+  : [stop]);
 
 // Separate the excursions around Arces without moving their geographic endpoints.
 const arcesRouteBends: Record<string, number> = {
@@ -127,8 +132,8 @@ export default function ItineraryMap() {
           }}>
           <div className={styles.canvas} style={{ width: `${zoom * 100}%`, minWidth: `${900 * zoom}px` }}>
             <svg viewBox="0 0 1100 660" className={styles.svg} role="group" aria-labelledby="ouest-map-title ouest-map-description">
-              <title id="ouest-map-title">De Fonsorbes à La Cambe, les neuf premières étapes de la Grande Boucle de l’Ouest</title>
-              <desc id="ouest-map-description">Un parcours reliant les destinations publiées, avec les excursions et retours à Arces-sur-Gironde. Chaque nom est un lien vers son passage. Le tracé représente l’ordre des destinations, sans reproduire les routes exactes. La dernière halte à Géfosse-Fontenay est accessible par un lien textuel, hors du tracé.</desc>
+              <title id="ouest-map-title">De Fonsorbes au camping Canadian Scottish, les dix premières étapes de la Grande Boucle de l’Ouest</title>
+              <desc id="ouest-map-description">Un parcours reliant les destinations publiées, avec les excursions et retours à Arces-sur-Gironde. Chaque nom est un lien vers son passage. Le tracé représente l’ordre des destinations, sans reproduire les routes exactes. La halte à Géfosse-Fontenay reste accessible par un lien textuel, sans point géographique. La liaison de La Cambe au cimetière américain omet cette halte non géolocalisée.</desc>
               <defs>
                 <marker id="ouest-map-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
                   <path d="M2 2L7 5L2 8" fill="none" stroke="currentColor" strokeWidth="1.5" />
@@ -182,25 +187,24 @@ export default function ItineraryMap() {
         </div>
         <p className={styles.caption}>
           <a href={`#${eveningStop.anchor}`} onClick={jumpToStep}>{eveningStop.name}</a>
+          <a href="#etape-10" onClick={jumpToStep}>Étape 10 · mardi 29 juillet 2025</a>
+          <span>Halte à Géfosse-Fontenay hors du tracé, sans point géolocalisé.</span>
         </p>
       </div>
       <div className={styles.caption}>
-        <p>De Fonsorbes à La Cambe, via le Mont-Saint-Michel. <span>Tracé indicatif entre les étapes.</span></p>
+        <p>De Fonsorbes au camping Canadian Scottish, via le Mont-Saint-Michel. <span>Tracé indicatif entre les étapes.</span></p>
         <span className={styles.mobileHint}>Faites glisser la carte pour explorer le parcours.</span>
         <a href="https://www.naturalearthdata.com/" className={styles.credit} target="_blank" rel="noreferrer">Fond : Natural Earth</a>
       </div>
       <nav className={styles.mobileItinerary} aria-label="Itinéraire du voyage">
         <ol>
-          {sequence.map((stop, index) => (
-            <li key={`${index}-${stop.key}`} className={majorStops.has(stop.key) ? styles.mobileMajorStop : undefined}>
+          {chronology.map((stop, index) => (
+            <li key={`${index}-${stop.key}`} className={("stop" in stop ? majorStops.has(stop.stop) : true) ? styles.mobileMajorStop : undefined}>
               <a href={`#${stop.anchor}`} onClick={jumpToStep}>
                 {index === 0 ? "Fonsorbes · départ" : stop.name}
               </a>
             </li>
           ))}
-          <li className={styles.mobileMajorStop}>
-            <a href={`#${eveningStop.anchor}`} onClick={jumpToStep}>{eveningStop.name}</a>
-          </li>
         </ol>
       </nav>
     </div>

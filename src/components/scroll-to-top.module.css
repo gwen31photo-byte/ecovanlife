@@ -17,7 +17,23 @@
 
 @media (max-width: 600px) {
   .button {
+    right: env(safe-area-inset-right, 0px);
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
     width: 44px;
     height: 44px;
+    background: transparent;
+    box-shadow: none;
+    isolation: isolate;
+  }
+
+  /* Keep a 44px touch target while moving the visible disc into the margin. */
+  .button::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--ink);
+    box-shadow: 0 3px 12px #14261c30;
   }
 }

@@ -24,6 +24,16 @@ export const stops = [
   { key: "maisy", name: "Batteries de Maisy", lon: -1.063024, lat: 49.3759543, anchor: "etape-9-maisy", label: [850, 135, 210] },
   { key: "pointe-du-hoc", name: "Pointe du Hoc", lon: -0.9861666, lat: 49.3939177, anchor: "etape-9-pointe-du-hoc", label: [850, 190, 180] },
   { key: "la-cambe", name: "La Cambe", lon: -1.0266476, lat: 49.3430888, anchor: "etape-9-la-cambe", label: [850, 245, 140] },
+  // Étape 10 : lieux vérifiés, sans déduire les positions des EXIF.
+  // ABMC : https://www2.abmc.gov/sites/default/files/2024-11/EN_Normandy_Booklet_02-2024_1.pdf
+  // N 49°20.910, W 0°51.285 (degrés et minutes décimales).
+  { key: "cimetiere-americain", name: "Cimetière américain", lon: -0.85475, lat: 49.3485, anchor: "etape-10-cimetiere", label: [535, 145, 245] },
+  // https://www.arromanches360.fr/preparer-ma-visite/acces/
+  // N 49°20′19.075″, W 0°37′4.123″.
+  { key: "arromanches-360", name: "Arromanches 360", lon: -(37 / 60 + 4.123 / 3600), lat: 49 + 20 / 60 + 19.075 / 3600, anchor: "etape-10-arromanches", label: [850, 300, 220] },
+  // Repère de la carte intégrée au site officiel, pas une position d’emplacement :
+  // https://campingcanadianscottish.jimdofree.com/o%C3%B9-sommes-nous/
+  { key: "canadian-scottish", name: "Canadian Scottish", lon: -0.478067486816, lat: 49.3364613858, anchor: "etape-10-camping", label: [850, 355, 240] },
 ] as const;
 
 type StopKey = (typeof stops)[number]["key"];
@@ -39,8 +49,9 @@ export const visits: { stop: StopKey; anchor?: string; name?: string }[] = [
   { stop: "fumee" }, { stop: "fouras" }, { stop: "puy" }, { stop: "noyal" }, { stop: "pontorson" },
   { stop: "mont-saint-michel" }, { stop: "arromanches" },
   { stop: "sainte-mere-eglise" }, { stop: "maisy" }, { stop: "pointe-du-hoc" }, { stop: "la-cambe" },
+  { stop: "cimetiere-americain" }, { stop: "arromanches-360" }, { stop: "canadian-scottish" },
 ];
-export const majorStops = new Set<StopKey>(["pilat", "rochelle", "meschers", "puy", "pontorson", "mont-saint-michel", "arromanches", "sainte-mere-eglise", "maisy", "pointe-du-hoc", "la-cambe"]);
+export const majorStops = new Set<StopKey>(["pilat", "rochelle", "meschers", "puy", "pontorson", "mont-saint-michel", "arromanches", "sainte-mere-eglise", "maisy", "pointe-du-hoc", "la-cambe", "cimetiere-americain", "arromanches-360", "canadian-scottish"]);
 export function project(lon: number, lat: number) {
   return { x: 50 + (lon + 5.5) * 110, y: 40 + (49.5 - lat) * 92 };
 }
