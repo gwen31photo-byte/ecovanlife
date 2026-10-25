@@ -1,105 +1,92 @@
 .map { min-width: 0; }
-.frame { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #e4edeb; }
-.viewport { overflow: auto; max-height: 720px; cursor: grab; touch-action: pan-y; scrollbar-width: thin; scrollbar-color: #bec9bf transparent; }
+.frame { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #e4edeb; }
+.toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 18px; padding: 10px 14px; border-bottom: 1px solid #bec9bf; background: #f7f6f2; }
+.controls { display: flex; gap: 2px; }
+.controls button, .panelHeader button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); color: var(--ink); cursor: pointer; }
+.controls button:hover, .panelHeader button:hover { background: var(--sand); }
+.controls button:disabled, .regionButton:disabled { opacity: .4; cursor: default; }
+.zoomStatus { color: var(--muted); font-size: 12px; }
+.regionButton { min-height: 44px; padding: 8px 14px; border: 1px solid #287447; border-radius: 7px; background: #f7f6f2; color: #205c38; font: inherit; font-size: 13px; cursor: pointer; }
+.toolbar > .regionButton { margin-left: auto; }
+.viewport { overflow: auto; height: min(60vw, 660px); cursor: grab; touch-action: none; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #8c9888 #e4edeb; }
 .viewport:active { cursor: grabbing; }
-.viewport:focus-visible { outline: 2px solid var(--rust); outline-offset: -3px; }
+.viewport:focus-visible, .map button:focus-visible, .map a:focus-visible, .itinerary summary:focus-visible { outline: 2px solid var(--rust); outline-offset: -2px; }
 .canvas { line-height: 0; }
 .svg { display: block; width: 100%; height: auto; }
 .geography { fill: #f0efe7; stroke: #aaa99b; stroke-width: 1.35; pointer-events: none; }
-.country, .smallCountry, .region, .sea { stroke: none; fill: #8c9888; font-family: var(--font-heading); }
+.geography path { vector-effect: non-scaling-stroke; }
+.country, .region, .sea { stroke: none; fill: #8c9888; font-family: var(--font-heading); }
 .country { font-size: 22px; letter-spacing: 6px; }
-.smallCountry { font-size: 12px; letter-spacing: 3px; }
-.region { font-size: 16px; font-style: italic; fill: #a1a995; }
-.sea { font-size: 19px; font-style: italic; fill: #91aaa6; letter-spacing: 2px; }
+.region { font-size: 16px; font-style: italic; fill: #72836a; }
+.sea { font-size: 19px; font-style: italic; fill: #637f7b; letter-spacing: 2px; }
 .route { fill: none; stroke: var(--rust); color: var(--rust); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; opacity: .95; pointer-events: none; }
 .route path { vector-effect: non-scaling-stroke; }
 .svg marker { color: var(--rust); }
 .stop { cursor: pointer; outline: none; }
-.leader { fill: none; stroke: #8c9685; stroke-width: 1; vector-effect: non-scaling-stroke; pointer-events: none; }
-.dot { fill: var(--rust); stroke: var(--paper); stroke-width: 2; }
-.labelTarget { fill: transparent; }
-.label { font-family: var(--font-body); font-size: 14px; font-weight: 500; fill: var(--muted); paint-order: stroke; stroke: #f0efe7; stroke-width: 5px; stroke-linejoin: round; pointer-events: none; }
-.stop[data-stop="fonsorbes"] .label { font-size: 16px; fill: var(--ink); }
-.stop:hover .label, .stop:focus-visible .label { fill: var(--rust); }
-.stop:hover .labelTarget, .stop:focus-visible .labelTarget { fill: #f7f6f2e6; stroke: var(--rust); stroke-width: 1; }
-.majorStop { --major-green: #287447; }
-.majorStop .dot { fill: var(--major-green); }
-.majorStop .label,
-.majorStop:hover .label,
-.majorStop:focus-visible .label { fill: var(--major-green); font-size: 16px; font-weight: 700; }
-.controls { position: absolute; top: 12px; right: 12px; z-index: 1; display: flex; gap: 2px; padding: 2px; border: 1px solid var(--line); border-radius: 8px; background: #f7f6f2ed; }
-.controls button { display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 5px; background: transparent; color: var(--ink); cursor: pointer; }
-.controls button:hover { background: var(--sand); }
-.controls button:disabled { opacity: .3; cursor: default; }
-.controls button:focus-visible { outline: 2px solid var(--rust); }
-.caption { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 20px; margin: 16px 0 10px; color: var(--muted); font-size: 12px; }
+.hitTarget { fill: transparent; }
+.dot { fill: var(--rust); stroke: var(--paper); pointer-events: none; }
+.majorStop .dot { fill: #287447; }
+.clusterCount { fill: white; font-weight: 700; pointer-events: none; }
+.stop:hover .hitTarget, .stop:focus-visible .hitTarget { fill: #ffffffb3; stroke: var(--rust); stroke-width: 1px; vector-effect: non-scaling-stroke; }
+.labels { fill: #205c38; font-family: var(--font-body); font-weight: 600; paint-order: stroke; stroke: #f0efe7; stroke-linejoin: round; pointer-events: none; }
+.labelBackdrop { fill: #f0efe7; stroke: none; }
+.panel { padding: 18px 22px; border-top: 1px solid #bec9bf; background: #f7f6f2; outline: none; overflow-wrap: anywhere; }
+.panelHeader { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.panelHeader h3 { margin: 0; font-size: 21px; line-height: 1.3; }
+.panelHeader button { flex-shrink: 0; }
+.panel p { margin: 8px 0 12px; font-size: 13px; line-height: 1.6; color: var(--muted); }
+.placeList, .detailList { list-style: none; padding: 0; margin: 12px 0 0; max-height: 260px; overflow: auto; }
+.placeList { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; }
+.placeList button { display: block; width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 7px; text-align: left; color: var(--ink); background: var(--paper); font: inherit; font-size: 14px; cursor: pointer; }
+.placeList button:hover { background: var(--sand); }
+.detailList li + li { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 10px; }
+.detailList a { display: inline-flex; align-items: center; min-height: 44px; color: #205c38; font-size: 14px; font-weight: 600; }
+.backButton { min-height: 44px; border: 0; padding: 8px 0; background: none; font: inherit; font-size: 13px; color: var(--ink); cursor: pointer; }
+.caption { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 20px; margin: 14px 0 24px; color: var(--muted); font-size: 12px; }
 .caption p { margin: 0; }
-.caption p span { margin-left: 8px; }
-.credit { margin-left: auto; font-size: 10px; color: var(--muted); }
-.mobileHint { display: none; }
+.credit { margin-left: auto; font-size: 11px; color: var(--muted); }
+.itinerary { border-top: 1px solid var(--line); padding-top: 16px; }
+.itinerary summary { cursor: pointer; min-height: 44px; color: var(--ink); font-size: 16px; }
+.itinerary ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 28px; list-style-position: inside; padding: 0; margin: 12px 0; }
+.itinerary li { font-size: 12px; color: var(--muted); }
+.itinerary a { display: inline-flex; align-items: center; min-height: 44px; max-width: 90%; vertical-align: middle; color: #205c38; font-size: 13px; }
+.itineraryNote { color: var(--muted); font-size: 12px; }
+.mobileItinerary { display: none; }
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 @media (max-width: 800px) {
-  .viewport { height: 460px; max-height: none; }
-  .controls { top: 8px; right: 8px; }
-  .caption { font-size: 11px; gap: 6px 12px; }
-  .caption p span { display: block; margin-left: 0; margin-top: 4px; }
-  .mobileHint { display: block; width: 100%; }
+  .viewport { height: 420px; }
+  .itinerary ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .toolbar { gap: 6px 10px; padding: 8px; }
+  .zoomStatus { margin-left: auto; font-size: 11px; }
+  .toolbar > .regionButton { width: 100%; margin: 0; }
+  .viewport { height: 240px; }
+  .panel { padding: 14px; }
+  .panelHeader h3 { font-size: 19px; }
+  .placeList { grid-template-columns: minmax(0, 1fr); max-height: 220px; }
+  .itinerary ol { grid-template-columns: minmax(0, 1fr); }
 }
 
-.mobileItinerary { display: none; }
-
+/* On phones, keep only the regional itinerary; desktop map styles stay intact. */
 @media (max-width: 600px) {
-  .frame { display: none; }
-  .caption { margin-bottom: 20px; }
-  .mobileHint, .credit { display: none; }
+  .frame, .caption, .itinerary { display: none; }
   .mobileItinerary { display: block; }
-  .mobileItinerary ol { margin: 0; padding: 0; list-style: none; }
-  .mobileItinerary li { position: relative; }
-  .mobileItinerary li::before {
-    content: "";
-    position: absolute;
-    left: 7px;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: var(--line);
-  }
-  .mobileItinerary li:first-child::before { top: 50%; }
-  .mobileItinerary li:last-child::before { bottom: 50%; }
-  .mobileItinerary li::after {
-    content: "";
-    position: absolute;
-    left: 3px;
-    top: 50%;
-    width: 9px;
-    height: 9px;
-    transform: translateY(-50%);
-    border: 1px solid var(--rust);
-    border-radius: 50%;
-    background: var(--paper);
-    pointer-events: none;
-  }
-  .mobileItinerary li:first-child::after,
-  .mobileItinerary li:last-child::after { background: var(--rust); }
-  .mobileItinerary a {
-    display: flex;
-    align-items: center;
-    min-height: 52px;
-    padding: 12px 12px 12px 34px;
-    border-radius: 6px;
-    color: var(--ink);
-    font-size: 15px;
-    line-height: 1.5;
-    text-decoration: none;
-    overflow-wrap: anywhere;
-  }
-  .mobileItinerary a:hover { background: var(--sand); color: var(--rust); }
-  .mobileItinerary .mobileMajorStop a { color: #287447; font-weight: 700; }
-  .mobileItinerary .mobileMajorStop::after {
-    left: 2px;
-    width: 11px;
-    height: 11px;
-    border-color: #287447;
-    background: #287447;
-  }
-  .mobileItinerary a:focus-visible { outline: 2px solid var(--rust); outline-offset: 2px; }
+  .map .mobileItinerary h2 { margin: 0 0 18px; font-size: 19px; font-weight: 500; }
+  .mobileRegion { border-bottom: 1px solid var(--line); }
+  .mobileRegion summary { display: flex; align-items: center; gap: 10px; min-height: 64px; padding: 12px 2px; cursor: pointer; list-style: none; }
+  .mobileRegion summary::-webkit-details-marker { display: none; }
+  .mobileRegion summary:focus-visible { outline: 2px solid var(--rust); outline-offset: 2px; border-radius: 4px; }
+  .regionTitle { flex: 1; color: var(--ink); font-size: 15px; line-height: 1.45; }
+  .placeCount { flex-shrink: 0; color: var(--muted); font-size: 11px; white-space: nowrap; }
+  .regionChevron { flex-shrink: 0; color: #205c38; transition: transform 150ms ease; }
+  .mobileRegion[open] > summary .regionChevron { transform: rotate(180deg); }
+  .mobileRegion ol { list-style: none; margin: 0; padding: 0 0 12px; }
+  .mobileRegion li + li { border-top: 1px solid #253d320c; }
+  .mobileRegion a { display: flex; align-items: flex-start; flex-direction: column; justify-content: center; gap: 4px; min-height: 56px; padding: 10px 12px; border-radius: 6px; color: #205c38; font-size: 14px; line-height: 1.5; text-decoration: none; overflow-wrap: anywhere; }
+  .mobileRegion a:hover { background: var(--sand); }
+  .visitChapter { color: var(--muted); font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .regionChevron { transition: none; }
 }

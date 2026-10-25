@@ -89,3 +89,7 @@
   .heroContent .prose p { font-size: 15px; }
   .itinerary { padding: 45px 6% 60px; }
 }
+
+@media (max-width: 600px) {
+  .itinerary > h2 { display: none; }
+}
