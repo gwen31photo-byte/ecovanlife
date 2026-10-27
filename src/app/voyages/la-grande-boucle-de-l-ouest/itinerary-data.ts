@@ -34,6 +34,13 @@ export const stops = [
   // Repère de la carte intégrée au site officiel, pas une position d’emplacement :
   // https://campingcanadianscottish.jimdofree.com/o%C3%B9-sommes-nous/
   { key: "canadian-scottish", name: "Canadian Scottish", lon: -0.478067486816, lat: 49.3364613858, anchor: "etape-10-camping", label: [850, 355, 240] },
+  // Étape 11 : repères des lieux visités, jamais des emplacements de stationnement.
+  // https://www.memorial-caen.fr/votre-visite/acces/
+  // N 49°11′50,2″, O 0°23′02,3″.
+  { key: "memorial-caen", name: "Mémorial de Caen", lon: -(23 / 60 + 2.3 / 3600), lat: 49 + 11 / 60 + 50.2 / 3600, anchor: "etape-11", label: [850, 410, 195] },
+  // Centre indicatif du plan d’eau, sans déduire la position du van des photos.
+  // OpenStreetMap, way 243197230 : https://mapcarta.com/fr/W243197230
+  { key: "chouzy", name: "Plan d’eau de Chouzy · Valloire-sur-Cisse", lon: 1.24136, lat: 47.52123, anchor: "etape-11-chouzy", label: [810, 220, 280] },
 ] as const;
 
 type StopKey = (typeof stops)[number]["key"];
@@ -50,6 +57,7 @@ export const visits: { stop: StopKey; anchor?: string; name?: string }[] = [
   { stop: "mont-saint-michel" }, { stop: "arromanches" },
   { stop: "sainte-mere-eglise" }, { stop: "maisy" }, { stop: "pointe-du-hoc" }, { stop: "la-cambe" },
   { stop: "cimetiere-americain" }, { stop: "arromanches-360" }, { stop: "canadian-scottish" },
+  { stop: "memorial-caen" }, { stop: "chouzy" },
 ];
 export const majorStops = new Set<StopKey>(["pilat", "rochelle", "meschers", "puy", "pontorson", "mont-saint-michel", "arromanches", "sainte-mere-eglise", "maisy", "pointe-du-hoc", "la-cambe", "cimetiere-americain", "arromanches-360", "canadian-scottish"]);
 export function project(lon: number, lat: number) {

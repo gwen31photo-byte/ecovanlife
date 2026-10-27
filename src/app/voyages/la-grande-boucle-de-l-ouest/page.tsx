@@ -11,6 +11,7 @@ import PontorsonChapter from "./pontorson-chapter";
 import MontSaintMichelArromanchesChapter from "./mont-saint-michel-arromanches-chapter";
 import DebarquementChapter from "./debarquement-chapter";
 import NormandieChapter from "./normandie-chapter";
+import CaenChouzyChapter from "./caen-chouzy-chapter";
 import PremiersKilometresChapter from "./premiers-kilometres-chapter";
 import styles from "./page.module.css";
 
@@ -67,6 +68,7 @@ export default function OuestFrancePage() {
         <MontSaintMichelArromanchesChapter />
         <DebarquementChapter />
         <NormandieChapter />
+        <CaenChouzyChapter />
       </div>
     </article>
   );

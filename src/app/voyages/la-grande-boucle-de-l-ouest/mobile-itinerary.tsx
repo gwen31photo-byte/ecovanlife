@@ -10,10 +10,11 @@ const regions = [
   { name: "Côte atlantique", keys: ["arces", "chateau", "boyardville", "chassiron", "rochelle", "meschers", "plage", "fumee", "fouras"] },
   { name: "Puy du Fou", keys: ["puy"] },
   { name: "Mont-Saint-Michel et environs", keys: ["noyal", "pontorson", "mont-saint-michel"] },
-  { name: "Normandie", keys: ["arromanches", "sainte-mere-eglise", "maisy", "pointe-du-hoc", "la-cambe", "gefosse-soir", "gefosse-reveil", "cimetiere-americain", "arromanches-360", "canadian-scottish"] },
+  { name: "Normandie", keys: ["arromanches", "sainte-mere-eglise", "maisy", "pointe-du-hoc", "la-cambe", "gefosse-soir", "gefosse-reveil", "cimetiere-americain", "arromanches-360", "canadian-scottish", "memorial-caen"] },
+  { name: "Val de Loire", keys: ["chouzy"] },
 ];
 
-// Chapter owning each existing destination anchor; no new narrative links.
+// Chapter owning each destination anchor.
 const chapterByAnchor: Record<string, number> = {
   "depart-title": 1, "sainte-bazeille-title": 1, "pilat-title": 1, "camping-title": 1,
   "oleron-chateau-title": 2, "oleron-boyardville-title": 2, "oleron-chassiron-title": 2, "oleron-retour-title": 2,
@@ -24,6 +25,7 @@ const chapterByAnchor: Record<string, number> = {
   "etape-8": 8, "arromanches-camping-title": 8,
   "etape-9": 9, "etape-9-maisy": 9, "etape-9-pointe-du-hoc": 9, "etape-9-la-cambe": 9, "etape-9-plage": 9,
   "etape-10": 10, "etape-10-cimetiere": 10, "etape-10-arromanches": 10, "etape-10-camping": 10,
+  "etape-11": 11, "etape-11-chouzy": 11,
 };
 
 export default function MobileItinerary({ visits, onNavigate }: {
