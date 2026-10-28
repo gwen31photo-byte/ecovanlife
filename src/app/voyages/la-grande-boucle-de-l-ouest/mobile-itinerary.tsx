@@ -11,7 +11,7 @@ const regions = [
   { name: "Puy du Fou", keys: ["puy"] },
   { name: "Mont-Saint-Michel et environs", keys: ["noyal", "pontorson", "mont-saint-michel"] },
   { name: "Normandie", keys: ["arromanches", "sainte-mere-eglise", "maisy", "pointe-du-hoc", "la-cambe", "gefosse-soir", "gefosse-reveil", "cimetiere-americain", "arromanches-360", "canadian-scottish", "memorial-caen"] },
-  { name: "Val de Loire", keys: ["chouzy"] },
+  { name: "Val de Loire", keys: ["chouzy", "beauval", "monthou"] },
 ];
 
 // Chapter owning each destination anchor.
@@ -26,6 +26,7 @@ const chapterByAnchor: Record<string, number> = {
   "etape-9": 9, "etape-9-maisy": 9, "etape-9-pointe-du-hoc": 9, "etape-9-la-cambe": 9, "etape-9-plage": 9,
   "etape-10": 10, "etape-10-cimetiere": 10, "etape-10-arromanches": 10, "etape-10-camping": 10,
   "etape-11": 11, "etape-11-chouzy": 11,
+  "etape-12": 12, "etape-12-monthou": 12,
 };
 
 export default function MobileItinerary({ visits, onNavigate }: {

@@ -41,6 +41,14 @@ export const stops = [
   // Centre indicatif du plan d’eau, sans déduire la position du van des photos.
   // OpenStreetMap, way 243197230 : https://mapcarta.com/fr/W243197230
   { key: "chouzy", name: "Plan d’eau de Chouzy · Valloire-sur-Cisse", lon: 1.24136, lat: 47.52123, anchor: "etape-11-chouzy", label: [810, 220, 280] },
+  // Étape 12 : repères indicatifs des lieux, pas des emplacements de stationnement.
+  // Destination Google Maps proposée par la page officielle :
+  // https://www.zoobeauval.com/preparez-votre-visite/acces
+  // https://goo.gl/maps/NYcer6L3c7FqK2t26 (47.2476534, 1.35309).
+  { key: "beauval", name: "ZooParc de Beauval — Saint-Aignan", lon: 1.35309, lat: 47.2476534, anchor: "etape-12", label: [810, 250, 280] },
+  // GPS publié par l’exploitant, sans déduire l’emplacement du van :
+  // https://www.campingcarpark.com/fr_FR/camping-car/centre-val-de-loire/loir-et-cher/monthou-sur-cher?areaType=camping
+  { key: "monthou", name: "Aire CAMPING-CAR PARK de Monthou-sur-Cher", lon: 1.29323, lat: 47.3487, anchor: "etape-12-monthou", label: [810, 280, 280] },
 ] as const;
 
 type StopKey = (typeof stops)[number]["key"];
@@ -58,6 +66,7 @@ export const visits: { stop: StopKey; anchor?: string; name?: string }[] = [
   { stop: "sainte-mere-eglise" }, { stop: "maisy" }, { stop: "pointe-du-hoc" }, { stop: "la-cambe" },
   { stop: "cimetiere-americain" }, { stop: "arromanches-360" }, { stop: "canadian-scottish" },
   { stop: "memorial-caen" }, { stop: "chouzy" },
+  { stop: "beauval" }, { stop: "monthou" },
 ];
 export const majorStops = new Set<StopKey>(["pilat", "rochelle", "meschers", "puy", "pontorson", "mont-saint-michel", "arromanches", "sainte-mere-eglise", "maisy", "pointe-du-hoc", "la-cambe", "cimetiere-americain", "arromanches-360", "canadian-scottish"]);
 export function project(lon: number, lat: number) {
