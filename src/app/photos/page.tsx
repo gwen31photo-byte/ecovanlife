@@ -3,7 +3,7 @@ import { PageIntro } from "@/components/ui";
 import { PhotoGallery } from "./photo-gallery";
 const title = "Photographies — instants d’évasion";
 const description =
-  "Découvrez 142 photographies de paysages, de nature, de patrimoine et de voyages, réunies en sept collections dans la galerie EcoVanLife.";
+  "Découvrez 150 photographies de paysages, de nature, de patrimoine et de voyages, réunies en sept collections dans la galerie EcoVanLife.";
 const shareImage = {
   url: "/images/social/photos-entre-roche-et-azur.jpg",
   width: 1200,
