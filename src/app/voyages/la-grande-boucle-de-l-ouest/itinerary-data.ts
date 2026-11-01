@@ -49,6 +49,12 @@ export const stops = [
   // GPS publié par l’exploitant, sans déduire l’emplacement du van :
   // https://www.campingcarpark.com/fr_FR/camping-car/centre-val-de-loire/loir-et-cher/monthou-sur-cher?areaType=camping
   { key: "monthou", name: "Aire CAMPING-CAR PARK de Monthou-sur-Cher", lon: 1.29323, lat: 47.3487, anchor: "etape-12-monthou", label: [810, 280, 280] },
+  // Étape 13 : coordonnées publiées par le château et l’office de tourisme.
+  // https://www.chenonceau.com/infos-pratiques/plan-acces/
+  { key: "chenonceau", name: "Château de Chenonceau", lon: 1.07029, lat: 47.3249, anchor: "etape-13", label: [810, 310, 280] },
+  // Destination cartographique de la fiche touristique de l’aire, pas l’emplacement du van :
+  // https://en.visitlimousin.com/stay/where-to-sleep/campsites-in-haute-vienne/aire-de-camping-car-de-javerdat-javerdat-en-4128827/
+  { key: "javerdat", name: "Aire de camping-car de Javerdat", lon: 0.98565527, lat: 45.9524823, anchor: "etape-13-javerdat", label: [800, 380, 280] },
 ] as const;
 
 type StopKey = (typeof stops)[number]["key"];
@@ -67,6 +73,7 @@ export const visits: { stop: StopKey; anchor?: string; name?: string }[] = [
   { stop: "cimetiere-americain" }, { stop: "arromanches-360" }, { stop: "canadian-scottish" },
   { stop: "memorial-caen" }, { stop: "chouzy" },
   { stop: "beauval" }, { stop: "monthou" },
+  { stop: "chenonceau" }, { stop: "javerdat" },
 ];
 export const majorStops = new Set<StopKey>(["pilat", "rochelle", "meschers", "puy", "pontorson", "mont-saint-michel", "arromanches", "sainte-mere-eglise", "maisy", "pointe-du-hoc", "la-cambe", "cimetiere-americain", "arromanches-360", "canadian-scottish"]);
 export function project(lon: number, lat: number) {

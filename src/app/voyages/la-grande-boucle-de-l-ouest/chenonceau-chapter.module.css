@@ -1,0 +1,5 @@
+/* Ajustements limités à l’étape 13 ; les images restent entières. */
+.chapter section[id] { scroll-margin-top: 32px; }
+@media (max-width: 700px) {
+  .chapter .portrait { max-width: min(90%, 315px); }
+}

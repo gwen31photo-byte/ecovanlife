@@ -13,6 +13,7 @@ import DebarquementChapter from "./debarquement-chapter";
 import NormandieChapter from "./normandie-chapter";
 import CaenChouzyChapter from "./caen-chouzy-chapter";
 import BeauvalChapter from "./beauval-chapter";
+import ChenonceauChapter from "./chenonceau-chapter";
 import PremiersKilometresChapter from "./premiers-kilometres-chapter";
 import styles from "./page.module.css";
 
@@ -71,6 +72,7 @@ export default function OuestFrancePage() {
         <NormandieChapter />
         <CaenChouzyChapter />
         <BeauvalChapter />
+        <ChenonceauChapter />
       </div>
     </article>
   );
