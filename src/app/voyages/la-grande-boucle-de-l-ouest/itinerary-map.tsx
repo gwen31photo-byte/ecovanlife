@@ -16,14 +16,15 @@ const chronology = sequence.flatMap((stop) => stop.key === "la-cambe"
   : [stop]);
 
 const regions = [
-  { name: "Départ", point: "fonsorbes", keys: ["fonsorbes", "sainte-bazeille"], side: "left" },
+  { name: "Départ / Retour", point: "fonsorbes", keys: ["fonsorbes", "sainte-bazeille"], side: "left" },
   { name: "Dune du Pilat", point: "pilat", keys: ["pilat"], side: "left" },
   { name: "Côte atlantique", point: "rochelle", keys: ["arces", "chateau", "boyardville", "chassiron", "rochelle", "meschers", "plage", "fumee", "fouras"], side: "left" },
   { name: "Puy du Fou", point: "puy", keys: ["puy"], side: "right" },
   { name: "Mont-Saint-Michel", point: "mont-saint-michel", keys: ["noyal", "pontorson", "mont-saint-michel"], side: "left" },
   { name: "Normandie", point: "arromanches", keys: ["arromanches", "sainte-mere-eglise", "maisy", "pointe-du-hoc", "la-cambe", "gefosse-soir", "gefosse-reveil", "cimetiere-americain", "arromanches-360", "canadian-scottish", "memorial-caen"], side: "right" },
   { name: "Val de Loire", point: "chouzy", keys: ["chouzy", "beauval", "monthou", "chenonceau"], side: "right" },
-  { name: "Limousin", point: "javerdat", keys: ["javerdat"], side: "right" },
+  { name: "Limousin", point: "javerdat", keys: ["javerdat", "oradour"], side: "right" },
+  { name: "Périgord", point: "reignac", keys: ["reignac"], side: "right" },
 ];
 
 // Overview drawing only: omit the Atlantic excursions and return journeys.
@@ -99,8 +100,8 @@ export default function ItineraryMap() {
         if (event.key === "Escape" && selection) { event.preventDefault(); closePanel(); }
       }}>
         <svg preserveAspectRatio="none" viewBox="0 0 1100 660" className={styles.svg} role="img" aria-labelledby="ouest-map-title ouest-map-description">
-          <title id="ouest-map-title">La grande boucle de l’Ouest, de Fonsorbes au Limousin</title>
-          <desc id="ouest-map-description">Tracé indicatif des treize premières étapes, simplifié sur la côte atlantique sans les petits allers-retours ; il ne représente pas un itinéraire routier exact. Les huit repères ouvrent les lieux et leurs liens vers le récit, sans zoom ni déplacement de la carte.</desc>
+          <title id="ouest-map-title">La grande boucle de l’Ouest, de Fonsorbes à Fonsorbes</title>
+          <desc id="ouest-map-description">Tracé indicatif des quatorze étapes, jusqu’au retour à Fonsorbes, simplifié sur la côte atlantique sans les petits allers-retours ; il ne représente pas un itinéraire routier exact. Les neuf repères ouvrent les lieux et leurs liens vers le récit, sans zoom ni déplacement de la carte.</desc>
           <defs>
             <marker id="ouest-map-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
               <path d="M2 2L7 5L2 8" fill="none" stroke="currentColor" strokeWidth="1.5" />
@@ -151,7 +152,7 @@ export default function ItineraryMap() {
         </div>}
       </div>
       <div className={styles.caption}>
-        <p>De Fonsorbes à Javerdat · Tracé indicatif.</p>
+        <p>La boucle complète, de Fonsorbes à Fonsorbes · Tracé indicatif.</p>
         <p>Touchez un repère pour retrouver les lieux et le récit.</p>
         <a href="https://www.naturalearthdata.com/" className={styles.credit} target="_blank" rel="noreferrer">Fond : Natural Earth</a>
       </div>

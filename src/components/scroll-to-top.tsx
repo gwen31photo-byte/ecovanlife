@@ -21,7 +21,7 @@ export function ScrollToTop() {
       type="button"
       className={styles.button}
       aria-label="Retour en haut de la page"
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
     >
       <ArrowUp size={20} aria-hidden="true" />
     </button>

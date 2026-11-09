@@ -12,7 +12,8 @@ const regions = [
   { name: "Mont-Saint-Michel et environs", keys: ["noyal", "pontorson", "mont-saint-michel"] },
   { name: "Normandie", keys: ["arromanches", "sainte-mere-eglise", "maisy", "pointe-du-hoc", "la-cambe", "gefosse-soir", "gefosse-reveil", "cimetiere-americain", "arromanches-360", "canadian-scottish", "memorial-caen"] },
   { name: "Val de Loire", keys: ["chouzy", "beauval", "monthou", "chenonceau"] },
-  { name: "Limousin", keys: ["javerdat"] },
+  { name: "Limousin", keys: ["javerdat", "oradour"] },
+  { name: "Périgord", keys: ["reignac"] },
 ];
 
 // Chapter owning each destination anchor.
@@ -29,6 +30,7 @@ const chapterByAnchor: Record<string, number> = {
   "etape-11": 11, "etape-11-chouzy": 11,
   "etape-12": 12, "etape-12-monthou": 12,
   "etape-13": 13, "etape-13-javerdat": 13,
+  "etape-14": 14, "etape-14-reignac": 14, "etape-14-fonsorbes": 14,
 };
 
 export default function MobileItinerary({ visits, onNavigate }: {

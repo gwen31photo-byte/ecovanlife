@@ -55,6 +55,11 @@ export const stops = [
   // Destination cartographique de la fiche touristique de l’aire, pas l’emplacement du van :
   // https://en.visitlimousin.com/stay/where-to-sleep/campsites-in-haute-vienne/aire-de-camping-car-de-javerdat-javerdat-en-4128827/
   { key: "javerdat", name: "Aire de camping-car de Javerdat", lon: 0.98565527, lat: 45.9524823, anchor: "etape-13-javerdat", label: [800, 380, 280] },
+  // Repères indicatifs des sites, pas des positions de stationnement.
+  // Oradour : village martyr (centre approximatif) ; Reignac : fiche de l’office de tourisme.
+  // https://www.cirkwi.com/fr/point-interet/878983-la-maison-forte-de-reignac
+  { key: "oradour", name: "Oradour-sur-Glane", lon: 1.032, lat: 45.931, anchor: "etape-14", label: [800, 410, 250] },
+  { key: "reignac", name: "Maison forte de Reignac", lon: 1.0551146, lat: 44.9796843, anchor: "etape-14-reignac", label: [800, 460, 250] },
 ] as const;
 
 type StopKey = (typeof stops)[number]["key"];
@@ -74,6 +79,8 @@ export const visits: { stop: StopKey; anchor?: string; name?: string }[] = [
   { stop: "memorial-caen" }, { stop: "chouzy" },
   { stop: "beauval" }, { stop: "monthou" },
   { stop: "chenonceau" }, { stop: "javerdat" },
+  { stop: "oradour" }, { stop: "reignac" },
+  { stop: "fonsorbes", anchor: "etape-14-fonsorbes", name: "Retour à Fonsorbes" },
 ];
 export const majorStops = new Set<StopKey>(["pilat", "rochelle", "meschers", "puy", "pontorson", "mont-saint-michel", "arromanches", "sainte-mere-eglise", "maisy", "pointe-du-hoc", "la-cambe", "cimetiere-americain", "arromanches-360", "canadian-scottish"]);
 export function project(lon: number, lat: number) {
