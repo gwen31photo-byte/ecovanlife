@@ -25,13 +25,14 @@ export const roadTrips = [
     alt: "Maisons colorées des Cinque Terre sur une falaise au-dessus de la mer",
   },
   {
-    title: "Chypre, l’île aux deux visages",
+    title: "Chypre, un voyage inattendu",
+    href: "/voyages/chypre-un-voyage-inattendu",
     region: "Chypre",
     category: "Road trip",
-    duration: "12 jours",
+    duration: "2 semaines",
     country: "Chypre",
     description:
-      "Une île parcourue en voiture, entre côtes sauvages, villages, vestiges et Méditerranée.",
+      "Deux semaines en famille à Chypre, un voyage inattendu qui commence par une escale à Manchester.",
     image: "/images/coast.jpg",
     alt: "Photographie d’illustration temporaire : océan et côte",
   },

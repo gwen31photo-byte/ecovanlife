@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       .map((a) => `/voyages/${a.slug}`),
     "/voyages/de-toulouse-a-l-italie",
     "/voyages/la-grande-boucle-de-l-ouest",
+    "/voyages/chypre-un-voyage-inattendu",
   ].map((path) => ({
     url: `${siteUrl}${path}`,
     changeFrequency: "monthly",
