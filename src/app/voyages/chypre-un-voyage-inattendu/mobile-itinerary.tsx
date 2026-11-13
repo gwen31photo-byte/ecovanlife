@@ -3,7 +3,7 @@ import { useEffect, useRef, type MouseEventHandler } from "react";
 import { regions } from "./itinerary-data";
 import styles from "../la-grande-boucle-de-l-ouest/itinerary-map.module.css";
 
-type Visit = { key: string; name: string; anchor: string };
+type Visit = { key: string; name: string; anchor: string; chapter: string };
 export default function MobileItinerary({ visits, onNavigate }: {
   visits: Visit[]; onNavigate: MouseEventHandler<HTMLAnchorElement>;
 }) {
@@ -26,7 +26,7 @@ export default function MobileItinerary({ visits, onNavigate }: {
         <a href={`#${visit.anchor}`} onClick={(event) => {
           if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) closeRegions();
           onNavigate(event);
-        }}><span>{visit.name}</span><span className={styles.visitChapter}>Étape 01</span></a>
+        }}><span>{visit.name}</span><span className={styles.visitChapter}>Étape {visit.chapter}</span></a>
       </li>)}</ol>
     </details>)}
   </nav>;

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ItineraryMap from "./itinerary-map";
 import ManchesterChapter from "./manchester-chapter";
+import PaphosChapter from "./paphos-chapter";
 import styles from "../la-grande-boucle-de-l-ouest/page.module.css";
 
 export const metadata: Metadata = {
@@ -30,6 +31,6 @@ export default function ChyprePage() {
       <h2 id="itinerary-title">L’itinéraire</h2>
       <ItineraryMap />
     </section>
-    <div className={styles.journal}><ManchesterChapter /></div>
+    <div className={styles.journal}><ManchesterChapter /><PaphosChapter /></div>
   </article>;
 }

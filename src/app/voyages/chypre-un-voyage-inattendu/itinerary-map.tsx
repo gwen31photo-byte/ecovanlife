@@ -5,14 +5,8 @@ import { X } from "lucide-react";
 import MobileItinerary from "./mobile-itinerary";
 import { countries } from "./trip-map-geography";
 import styles from "../la-grande-boucle-de-l-ouest/itinerary-map.module.css";
-import { points, regions, stops } from "./itinerary-data";
+import { points, regions, stops, routeSegments } from "./itinerary-data";
 const chronology = stops;
-const from = points[0];
-const to = points[1];
-const overviewRouteSegments = [{ key: "vol-toulouse-manchester",
-  path: `M${from.x},${from.y}L${to.x},${to.y}`,
-  arrow: `M${from.x},${from.y}L${(from.x + to.x) / 2},${(from.y + to.y) / 2}`,
-}];
 
 export default function ItineraryMap() {
   const [selection, setSelection] = useState<(typeof regions)[number] | null>(null);
@@ -66,9 +60,9 @@ export default function ItineraryMap() {
       <div className={styles.frame} onKeyDown={(event) => {
         if (event.key === "Escape" && selection) { event.preventDefault(); closePanel(); }
       }}>
-        <svg preserveAspectRatio="none" viewBox="0 0 1100 660" className={styles.svg} role="img" aria-labelledby="chypre-map-title chypre-map-description">
-          <title id="chypre-map-title">De Toulouse à Manchester, première étape du voyage à Chypre</title>
-          <desc id="chypre-map-description">Liaison aérienne indicative entre Toulouse-Blagnac et Manchester. Les repères ouvrent les lieux et les liens vers la première étape. Aucun itinéraire à Chypre n’est encore tracé.</desc>
+        <svg preserveAspectRatio="none" viewBox="250 100 1200 750" className={styles.svg} role="img" aria-labelledby="chypre-map-title chypre-map-description">
+          <title id="chypre-map-title">De Toulouse à Paphos, en passant par Manchester</title>
+          <desc id="chypre-map-description">Liaisons aériennes indicatives de Toulouse à Manchester, puis à Paphos. Les repères ouvrent les liens vers les deux premières étapes. Aucun trajet routier à Chypre n’est représenté.</desc>
           <defs>
             <marker id="chypre-map-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
               <path d="M2 2L7 5L2 8" fill="none" stroke="currentColor" strokeWidth="1.5" />
@@ -78,10 +72,11 @@ export default function ItineraryMap() {
             {countries.map((country) => <path key={country.name} d={country.path} />)}
             <text x="650" y="470" className={styles.country}>FRANCE</text>
             <text x="570" y="160" className={styles.region}>Royaume-Uni</text>
-            <text x="80" y="450" className={styles.sea}>Océan Atlantique</text>
+            <text x="900" y="740" className={styles.sea}>Méditerranée</text>
+            <text x="1220" y="730" className={styles.region}>Chypre</text>
           </g>
           <g className={styles.route} aria-hidden="true">
-            {overviewRouteSegments.map((segment) => <g key={segment.key}>
+            {routeSegments.map((segment) => <g key={segment.key}>
               <path d={segment.path} />
               {segment.arrow && <path d={segment.arrow} markerEnd="url(#chypre-map-arrow)" />}
             </g>)}
@@ -91,7 +86,7 @@ export default function ItineraryMap() {
           const point = points.find((point) => point.key === region.point)!;
           return <button key={region.name} type="button"
             className={`${styles.landmark} ${region.side === "left" ? styles.labelLeft : styles.labelRight}`}
-            style={{ left: `${point.x / 11}%`, top: `${point.y / 6.6}%` }}
+            style={{ left: `${(point.x - 250) / 12}%`, top: `${(point.y - 100) / 7.5}%` }}
             aria-label={`${region.name} : voir les lieux et les étapes`}
             aria-expanded={selection === region} aria-controls={selection === region ? "chypre-place-panel" : undefined}
             onClick={(event) => {
@@ -119,7 +114,7 @@ export default function ItineraryMap() {
         </div>}
       </div>
       <div className={styles.caption}>
-        <p>Étape 01 · Toulouse → Manchester · Liaison aérienne indicative.</p>
+        <p>Étapes 01–02 · Toulouse → Manchester → Paphos · Liaisons aériennes indicatives.</p>
         <p>Touchez un repère pour retrouver les lieux et le récit.</p>
         <a href="https://www.naturalearthdata.com/" className={styles.credit} target="_blank" rel="noreferrer">Fond : Natural Earth</a>
       </div>
