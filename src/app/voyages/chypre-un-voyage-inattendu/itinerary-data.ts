@@ -1,3 +1,5 @@
+import { paphosPosition } from "./cyprus-map-geography";
+
 // Ajouter ici les étapes suivantes uniquement une fois leurs souvenirs racontés.
 // Coordonnées Mercator précalculées : conserver les mêmes valeurs sur le serveur et
 // dans le navigateur. Math.log/Math.tan peuvent varier aux derniers bits selon le moteur.
@@ -21,3 +23,28 @@ export const routeSegments = [
   { key: "vol-toulouse-manchester", path: "M577.356,537.4592161972568L504.502,242.7329041740271", arrow: "M577.356,537.4592161972568L540.929,390.09606018564197" },
   { key: "vol-manchester-paphos", path: "M504.502,242.7329041740271L1198.4491400000002,766.9775737516975", arrow: "M504.502,242.7329041740271L851.4755700000001,504.8552389628623" },
 ];
+
+// Étapes publiées, dans l’ordre du récit. Plusieurs étapes peuvent partager un lieu.
+// Ajouter ici chaque nouvelle étape avec sa date et l’ancre de son chapitre.
+export type CyprusStep = {
+  key: string;
+  chapter: string;
+  date: string;
+  dateLabel: string;
+  placeKey: string;
+  title: string;
+  anchor: string;
+};
+export const cyprusSteps: CyprusStep[] = [{
+  key: "etape-02",
+  chapter: "02",
+  date: "2026-04-23",
+  dateLabel: "23 avril 2026",
+  placeKey: "paphos",
+  title: "Notre arrivée à Chypre et nos premières découvertes de Paphos",
+  anchor: "etape-2-title",
+}];
+// Aucun déplacement local représenté sans tracé documenté.
+
+// Repères géographiques fixes ; plusieurs étapes peuvent référencer un même lieu.
+export const cyprusPlaces = [{ key: "paphos", name: "Paphos", position: paphosPosition }];

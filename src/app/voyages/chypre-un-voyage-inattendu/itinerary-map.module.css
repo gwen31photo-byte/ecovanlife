@@ -1,0 +1,50 @@
+/* Styles propres à Chypre : ne pas modifier le module partagé des autres carnets. */
+.map { min-width: 0; }
+.toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.toolbar p { margin: 0; color: var(--muted); font-size: 13px; }
+.toolbar button { min-height: 44px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); color: #205c38; font: inherit; font-size: 13px; cursor: pointer; }
+.toolbar button:hover { background: var(--sand); }
+.overview, .detail { animation: reveal 240ms ease-out both; transform-origin: 75% 65%; }
+.detailFrame { position: relative; isolation: isolate; display: grid; place-items: center; aspect-ratio: 8 / 5; border: 1px solid var(--line); border-radius: 12px; background: #e4edeb; overflow: hidden; }
+.islandCanvas { position: relative; width: 100%; aspect-ratio: 8 / 5; }
+.island { display: block; width: 100%; height: auto; }
+.coastline { fill: #f0efe7; stroke: #aaa99b; stroke-width: 1.35; vector-effect: non-scaling-stroke; }
+.islandName { fill: #8c9888; font-family: var(--font-heading); font-size: 22px; letter-spacing: 6px; }
+.sea { fill: #637f7b; font-family: var(--font-heading); font-size: 19px; font-style: italic; letter-spacing: 2px; }
+.paphos { position: absolute; display: grid; place-items: center; width: 44px; height: 44px; transform: translate(-50%, -50%); padding: 0; border: 0; background: transparent; color: #205c38; font: inherit; cursor: pointer; }
+.pin { width: 15px; height: 15px; border: 3px solid var(--paper); border-radius: 50%; background: #287447; box-shadow: 0 0 0 1px #28744766; }
+.pinLabel { position: absolute; left: 34px; top: 10px; display: flex; align-items: baseline; gap: 8px; padding: 5px 8px; border-radius: 5px; background: #f7f6f2ed; font-size: 14px; font-weight: 600; white-space: nowrap; box-shadow: 0 1px 4px #253d3210; }
+.paphos:hover .pinLabel { background: #205c38; color: white; }
+.detailCaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; margin-top: 14px; color: var(--muted); font-size: 12px; }
+.detailCaption p { margin: 0; }
+.detailCaption a { color: inherit; font-size: 11px; }
+.zoomLabel { display: inline-flex; align-items: center; gap: 7px; }
+.zoomIcon { display: block; flex-shrink: 0; font-size: 16px; line-height: 1; }
+.detailOverlay { z-index: 1; }
+.stepPanel { max-height: 100%; overflow-y: auto; overscroll-behavior: contain; }
+.panelStep { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+.stepMeta { margin: 0 0 6px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.stepTitle { margin: 0 0 8px; color: var(--ink); font-size: 13px; line-height: 1.5; overflow-wrap: anywhere; }
+.readStep { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 44px; padding: 6px 0; color: #205c38; font-size: 12px; line-height: 1.4; text-decoration: none; }
+.readStep:hover { text-decoration: underline; }
+.map button:focus-visible, .map a:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; border-radius: 5px; }
+@keyframes reveal { from { opacity: .35; transform: scale(.98); } to { opacity: 1; transform: scale(1); } }
+@media (min-width: 601px) and (max-width: 1024px) {
+  .panelStep { margin-top: 8px; padding-top: 10px; }
+}
+@media (min-width: 601px) and (max-width: 800px) {
+  .detailFrame { height: 460px; aspect-ratio: auto; }
+}
+@media (max-width: 600px) {
+  .toolbar { flex-wrap: wrap; }
+  .detailFrame { aspect-ratio: auto; min-height: 320px; }
+  .detailOverlay { padding: 12px; }
+  .stepPanel { padding: 14px 16px; }
+  .islandName { font-size: 27px; }
+  .sea { font-size: 25px; }
+  .pinLabel { font-size: 13px; }
+  .readStep { min-height: 48px; font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .overview, .detail { animation: none; }
+}
