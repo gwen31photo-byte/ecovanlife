@@ -182,7 +182,7 @@ export default function Home() {
         <div className={styles.simulators}>
           <div>
             <p className="eyebrow">PRÉPARER SON VOYAGE</p>
-            <h3>Nos 6 simulateurs gratuits</h3>
+            <h3>Nos 7 simulateurs gratuits</h3>
             <p>
               Anticipez vos besoins et préparez vos étapes avec des outils
               simples pour prendre la route sereinement.

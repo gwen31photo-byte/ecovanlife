@@ -6,7 +6,7 @@ import { GuideTools } from "./guide-tools";
 export const metadata = {
   title: "Guides & Ebooks",
   description:
-    "Six simulateurs EcoVanLife et trois guides gratuits : chaleurs, choix durables et respect des lieux.",
+    "Sept simulateurs EcoVanLife, dont le chauffage d’hiver, et trois guides gratuits.",
   alternates: { canonical: "/guides" },
 };
 export default function Page() {
@@ -15,7 +15,7 @@ export default function Page() {
       <PageIntro
         eyebrow="GUIDES & EBOOKS"
         title="Calculer avant de partir."
-        description="Six simulateurs pour l’électricité, le solaire, l’eau, le carburant, le poids et l’heure de retour au camp. Trois guides illustrés sont téléchargeables gratuitement."
+        description="Sept simulateurs pour l’électricité, le solaire, l’eau, le carburant, le poids, l’heure de retour et le chauffage. Trois guides illustrés sont téléchargeables gratuitement."
         showDemoNote={false}
       />
       <GuideTools />
