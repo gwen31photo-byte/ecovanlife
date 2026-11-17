@@ -12,6 +12,9 @@ import { Gallery } from "@/components/gallery";
 import { Newsletter } from "@/components/newsletter";
 import { photographs } from "./photos/catalog";
 import { siteUrl } from "@/content/site";
+import { freeEbooks } from "@/content/free-ebooks";
+import { paidEbooks } from "@/content/ebooks";
+import styles from "./home-ebooks.module.css";
 
 const title = "EcoVanLife — Voyages en van, carnets de route et photographies";
 const description =
@@ -176,6 +179,32 @@ export default function Home() {
           href="/guides"
           link="Découvrir les guides"
         />
+        <div className={styles.simulators}>
+          <div>
+            <p className="eyebrow">PRÉPARER SON VOYAGE</p>
+            <h3>Nos 6 simulateurs gratuits</h3>
+            <p>
+              Anticipez vos besoins et préparez vos étapes avec des outils
+              simples pour prendre la route sereinement.
+            </p>
+          </div>
+          <Link className={styles.simulatorButton} href="/guides">
+            Découvrir les simulateurs
+            <ArrowUpRight size={18} aria-hidden="true" />
+          </Link>
+        </div>
+        <div className={styles.freeBlock}>
+          <div className={styles.intro}>
+            <p className="eyebrow">TROIS EBOOKS · GRATUITS</p>
+            <h3>Un peu de lecture, avant la route.</h3>
+            <p>
+              Fortes chaleurs, choix durables et respect des lieux : trois guides
+              illustrés à emporter gratuitement, sans inscription.
+            </p>
+            <TextLink href="/guides">Découvrir les 3 ebooks gratuits</TextLink>
+          </div>
+          <EbookShelf ebooks={freeEbooks} href="/guides" />
+        </div>
         <GuideCards />
       </section>
       <section className="shop-teaser section">
@@ -183,19 +212,41 @@ export default function Home() {
           <MountainDrawing />
         </div>
         <div>
-          <p className="eyebrow">DES OBJETS QUI ONT DU SENS</p>
+          <p className="eyebrow">LA BOUTIQUE · QUATRE EBOOKS PAYANTS</p>
           <h2>L’aventure s’emporte.</h2>
           <p>
             Quatre guides illustrés : voyager sobrement, l’eau, l’énergie et le
             camp de base.
           </p>
-          <TextLink href="/boutique">Voir les ebooks</TextLink>
+          <EbookShelf ebooks={paidEbooks} href="/boutique" />
+          <TextLink href="/boutique">Découvrir les 4 ebooks de la boutique</TextLink>
         </div>
       </section>
       <Newsletter />
     </>
   );
 }
+function EbookShelf({ ebooks, href }: {
+  ebooks: readonly { title: string; image: string; alt: string }[];
+  href: "/guides" | "/boutique";
+}) {
+  return (
+    <ul className={styles.shelf}>
+      {ebooks.map((ebook) => (
+        <li key={ebook.title}>
+          <Link href={href} className={styles.ebook}>
+            <span className={styles.cover}>
+              <Image src={ebook.image} alt={ebook.alt} fill
+                sizes="(max-width: 600px) 38vw, (max-width: 900px) 20vw, 12vw" />
+            </span>
+            <span>{ebook.title}</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function MountainDrawing() {
   return (
     <svg
