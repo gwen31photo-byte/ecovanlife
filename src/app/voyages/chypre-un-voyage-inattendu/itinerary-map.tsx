@@ -136,11 +136,9 @@ export default function ItineraryMap() {
             </div>}
           </div>
           <div className={styles.caption}>
-            <p>Étapes 01–02 · Toulouse → Manchester → Paphos · Liaisons aériennes indicatives.</p>
-            <p>Toulouse et Manchester : le récit · Paphos : explorer Chypre.</p>
             <a href="https://www.naturalearthdata.com/" className={styles.credit} target="_blank" rel="noreferrer">Fond : Natural Earth</a>
           </div>
-          <MobileItinerary visits={chronology} onNavigate={jumpToStep} />
+          <MobileItinerary onNavigate={jumpToStep} />
         </div>}
       </div>
     </div>

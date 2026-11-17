@@ -1,6 +1,6 @@
 import { useRef, useState, type MouseEventHandler } from "react";
 import { X } from "lucide-react";
-import { cyprusPlaces, cyprusSteps } from "./itinerary-data";
+import { cyprusPanelLinks, cyprusPlaces, cyprusTransfers } from "./itinerary-data";
 import { cyprusCoastline } from "./cyprus-map-geography";
 import shared from "../la-grande-boucle-de-l-ouest/itinerary-map.module.css";
 import styles from "./itinerary-map.module.css";
@@ -28,14 +28,29 @@ export default function CyprusItinerary({ onNavigate }: {
       <div className={styles.islandCanvas}>
         <svg viewBox="0 0 900 562.5" className={styles.island} role="img" aria-labelledby="cyprus-detail-title cyprus-detail-description">
           <title id="cyprus-detail-title">Notre séjour à Chypre</title>
-          <desc id="cyprus-detail-description">L’île de Chypre et le secteur de Paphos. Le repère de Paphos ouvre les étapes du séjour et leurs liens vers le récit. Aucun tracé routier n’est représenté.</desc>
+          <desc id="cyprus-detail-description">L’île de Chypre, Paphos et le secteur côtier de Cape Aspro. Paphos regroupe le château, Nea Paphos et les Tombeaux des Rois, visités le matin de l’étape 03. Une flèche indique le déplacement vers Cape Aspro l’après-midi. Cette liaison est schématique ; aucun tracé routier ou de randonnée n’est représenté.</desc>
+          <defs>
+            <marker id="cyprus-transfer-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+              <path d="M2 2L7 5L2 8" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            </marker>
+          </defs>
           <path d={cyprusCoastline} className={styles.coastline} />
+          <g className={shared.route} aria-hidden="true">
+            {cyprusTransfers.map((transfer) => {
+              const from = cyprusPlaces.find((place) => place.key === transfer.from)!.position;
+              const to = cyprusPlaces.find((place) => place.key === transfer.to)!.position;
+              // Terminer la flèche avant le repère, pour garder le sens visible.
+              return <path key={transfer.key} data-transfer={transfer.key}
+                d={`M${from.x},${from.y}L${from.x + (to.x - from.x) * 0.7},${from.y + (to.y - from.y) * 0.7}L${to.x},${to.y}`}
+                markerMid="url(#cyprus-transfer-arrow)" />;
+            })}
+          </g>
           <g aria-hidden="true">
             <text x="390" y="335" className={styles.islandName}>CHYPRE</text>
             <text x="490" y="520" className={styles.sea}>Méditerranée</text>
           </g>
         </svg>
-        {cyprusPlaces.map((place) => <button key={place.key} type="button" className={styles.paphos}
+        {cyprusPlaces.map((place) => <button key={place.key} type="button" className={`${styles.paphos} ${place.key === "cape-aspro" ? styles.capeAspro : ""}`}
           style={{ left: `${place.position.x / 9}%`, top: `${place.position.y / 5.625}%` }}
           aria-label={`${place.name} : voir les étapes`}
           aria-expanded={selectedPlace === place}
@@ -57,19 +72,18 @@ export default function CyprusItinerary({ onNavigate }: {
             <h3 id="cyprus-step-panel-title">{selectedPlace.name}</h3>
             <button type="button" onClick={closePanel} aria-label="Fermer le panneau des étapes"><X size={18} /></button>
           </div>
-          {cyprusSteps.filter((step) => step.placeKey === selectedPlace.key).map((step) => <div key={step.key} className={styles.panelStep}>
-            <p className={styles.stepMeta}>Étape {step.chapter} — <time dateTime={step.date}>{step.dateLabel}</time></p>
-            <p className={styles.stepTitle}>{step.title}</p>
-            <a href={`#${step.anchor}`} className={styles.readStep} onClick={(event) => {
-              if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) setSelectedPlace(null);
-              onNavigate(event);
-            }}>Lire cette étape <span aria-hidden="true">↗</span></a>
-          </div>)}
+          <ul className={`${shared.placeList} ${styles.compactLinks}`}>
+            {cyprusPanelLinks.filter((link) => link.placeKey === selectedPlace.key).map((link) => <li key={link.key}>
+              <a href={`#${link.anchor}`} onClick={(event) => {
+                if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) setSelectedPlace(null);
+                onNavigate(event);
+              }}><span>{link.label}</span><span aria-hidden="true">↗</span></a>
+            </li>)}
+          </ul>
         </div>
       </div>}
     </div>
     <div className={styles.detailCaption}>
-      <p>Touchez un repère pour retrouver les étapes et le récit.</p>
       <a href="https://www.naturalearthdata.com/" target="_blank" rel="noreferrer">Fond : Natural Earth · 1:10m</a>
     </div>
   </div>;

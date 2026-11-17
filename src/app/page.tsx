@@ -186,12 +186,10 @@ export default function Home() {
           <p className="eyebrow">DES OBJETS QUI ONT DU SENS</p>
           <h2>L’aventure s’emporte.</h2>
           <p>
-            Une future sélection d’essentiels pour le voyage et la vie en van.
-            <br />
-            Pensés pour prendre la route, et la garder longtemps.
+            Quatre guides illustrés : voyager sobrement, l’eau, l’énergie et le
+            camp de base.
           </p>
-          <TextLink href="/boutique">Un aperçu de la boutique</TextLink>
-          <span className="coming">Ouverture à venir</span>
+          <TextLink href="/boutique">Voir les ebooks</TextLink>
         </div>
       </section>
       <Newsletter />
