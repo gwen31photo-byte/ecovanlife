@@ -32,6 +32,7 @@ export type CyprusStep = {
   date: string;
   dateLabel: string;
   placeKey: string;
+  additionalPlaceKeys?: string[];
   title: string;
   anchor: string;
 };
@@ -43,8 +44,83 @@ export const cyprusSteps: CyprusStep[] = [{
   placeKey: "paphos",
   title: "Notre arrivée à Chypre et nos premières découvertes de Paphos",
   anchor: "etape-2-title",
+}, {
+  key: "etape-03",
+  chapter: "03",
+  date: "2026-04-24",
+  dateLabel: "24 avril 2026",
+  placeKey: "paphos",
+  additionalPlaceKeys: ["cape-aspro"],
+  title: "Des mosaïques de Paphos aux falaises de Cape Aspro",
+  anchor: "etape-3-title",
 }];
-// Aucun déplacement local représenté sans tracé documenté.
+// Aucun trajet routier ou sentier précis représenté sans tracé documenté.
 
 // Repères géographiques fixes ; plusieurs étapes peuvent référencer un même lieu.
-export const cyprusPlaces = [{ key: "paphos", name: "Paphos", position: paphosPosition }];
+export const cyprusPlaces = [
+  { key: "paphos", name: "Paphos", position: paphosPosition, description: "Le château, le parc archéologique de Nea Paphos et les Tombeaux des Rois sont regroupés sous ce repère à l’échelle de l’île." },
+  // Repère du secteur côtier, arrondi au centième : ni plage exacte, ni départ de randonnée.
+  // Cape Aspro : https://www.wikidata.org/wiki/Q22991976 (GNS), recoupé avec la
+  // carte de la Blue Route du conseil de Pissouri : https://www.pissouri.org.cy/en/visitors/10/touristguide_items?cat=12
+  // Projection fixe de cyprus-map-geography.ts ; aucune projection à l’hydratation.
+  { key: "cape-aspro", name: "Cape Aspro", longitude: 32.72, latitude: 34.64, position: { x: 201.5, y: 469.744 }, description: "Repère général du secteur côtier de Cape Aspro, près de Pissouri. Il ne désigne ni notre plage exacte ni un départ de randonnée." },
+];
+
+// Visites regroupées dans les panneaux : les trois sites de Paphos ne sont séparés
+// que de quelques pixels à cette échelle. Les coordonnées identifient les lieux,
+// sans déplacer leurs marqueurs pour fabriquer de l’espace ou tracer un trajet.
+export const cyprusVisits = [
+  {
+    key: "paphos-castle", name: "Château de Paphos", stepKey: "etape-03", placeKey: "paphos", anchor: "paphos-chateau-title",
+    mapLabel: "Château de Paphos",
+    order: 1, period: "Le matin",
+    latitude: 34.753619, longitude: 32.406937,
+    source: "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/pafos-paphos-castle/",
+  },
+  {
+    key: "nea-paphos", name: "Parc archéologique de Nea Paphos", stepKey: "etape-03", placeKey: "paphos", anchor: "nea-paphos-title",
+    mapLabel: "Parc archéologique",
+    order: 2, period: "Le matin",
+    latitude: 34.75658, longitude: 32.40478,
+    source: "https://www.geonames.org/414543/nea-pafos.html",
+  },
+  {
+    key: "tombs-of-kings", name: "Tombeaux des Rois", stepKey: "etape-03", placeKey: "paphos", anchor: "tombeaux-rois-title",
+    mapLabel: "Tombeaux des Rois",
+    order: 3, period: "Le matin",
+    latitude: 34.775461, longitude: 32.405828,
+    source: "https://apsida.cut.ac.cy/items/show/19532",
+  },
+  {
+    key: "cape-aspro-coast", name: "Cape Aspro · secteur côtier", stepKey: "etape-03", placeKey: "cape-aspro", anchor: "cape-aspro-title",
+    mapLabel: "Falaises et randonnée",
+    order: 4, period: "L’après-midi",
+    latitude: 34.64, longitude: 32.72,
+    source: "https://www.wikidata.org/wiki/Q22991976",
+  },
+];
+
+// Liaison entre les repères généraux existants : jamais un itinéraire GPS.
+// Les deux vues utilisent les mêmes extrémités et la même légende.
+export const cyprusTransfers = [{
+  key: "paphos-cape-aspro", stepKey: "etape-03", from: "paphos", to: "cape-aspro",
+  label: "Paphos → Cape Aspro · l’après-midi",
+  note: "Liaison schématique entre les secteurs, sans tracé routier ni itinéraire de randonnée.",
+}];
+
+// Libellés compacts communs aux encadrés de l’île et aux rubriques mobiles.
+// Réutiliser les ancres du récit et les numéros d’étapes existants.
+export const cyprusPanelLinks = [
+  { key: "paphos-arrival", placeKey: "paphos", label: "02 · Arrivée à Paphos", anchor: cyprusSteps.find((step) => step.key === "etape-02")!.anchor },
+  ...cyprusVisits.map((visit) => {
+    const step = cyprusSteps.find((item) => item.key === visit.stepKey)!;
+    return { key: visit.key, placeKey: visit.placeKey, label: `${step.chapter} · ${visit.mapLabel}`, anchor: visit.anchor };
+  }),
+];
+export const mobileRegions = [
+  ...regions.filter((region) => region.point !== "paphos").map((region) => ({
+    name: region.name,
+    links: stops.filter((stop) => region.keys.includes(stop.key)).map((stop) => ({ key: stop.key, label: `${stop.chapter} · ${stop.name}`, anchor: stop.anchor })),
+  })),
+  ...cyprusPlaces.map((place) => ({ name: place.name, links: cyprusPanelLinks.filter((link) => link.placeKey === place.key) })),
+];
