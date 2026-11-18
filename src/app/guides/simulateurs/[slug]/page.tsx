@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
@@ -49,7 +50,17 @@ export default async function SimulatorPage({ params }: Props) {
         <ArrowLeft size={18} aria-hidden="true" />
         Retour aux simulateurs
       </Link>
-      <h1 id="simulator-title">{simulators[slug].name}</h1>
+      <h1 id="simulator-title" className={styles.illustratedTitle}>
+        {simulators[slug].name}
+        <Image
+          className={styles.titleThumbnail}
+          src={`/images/illustrations-simulateurs/${slug}.webp`}
+          alt=""
+          width={960}
+          height={540}
+          sizes="(max-width: 540px) 92px, 130px"
+        />
+      </h1>
       <Tool />
       <p className="tools-source">
         Méthode reprise des simulateurs Economade : tables d’ensoleillement France,

@@ -47,21 +47,18 @@
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: clamp(14px, 2vw, 28px);
-  margin-top: 16px;
+  margin-bottom: 16px;
   padding: clamp(20px, 2.5vw, 32px) clamp(20px, 4vw, 48px);
   background: #e6ede1;
   border: 1px solid #cedac9;
   border-radius: 8px;
 }
 
-.simulatorIcon {
-  display: grid;
-  width: 42px;
-  height: 42px;
-  place-items: center;
-  border-radius: 50%;
-  background: #f5f7f0;
-  color: var(--ink);
+.simulatorThumbnail {
+  display: block;
+  width: 112px;
+  height: auto;
+  border-radius: 6px;
 }
 
 .simulators h2 {
@@ -126,5 +123,27 @@
   .cover {
     justify-self: center;
     max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .simulators {
+    align-items: center;
+  }
+
+  .simulatorThumbnail {
+    width: 100px;
+  }
+
+  .simulatorCopy {
+    display: contents;
+  }
+
+  .simulators h2 {
+    margin-bottom: 0;
+  }
+
+  .simulators p {
+    grid-column: 1 / -1;
   }
 }

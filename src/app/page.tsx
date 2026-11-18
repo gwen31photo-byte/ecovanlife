@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, Calculator, Compass, Camera, Leaf } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Compass, Camera, Leaf } from "lucide-react";
 import { SectionHeading, TextLink } from "@/components/ui";
 import { RoadTripGrid } from "@/components/road-trip-grid";
 import { Gallery } from "@/components/gallery";
@@ -178,6 +178,26 @@ export default function Home() {
           href="/guides"
           link="Découvrir les guides"
         />
+        <article className={styles.simulators}>
+          <Image
+            className={styles.simulatorThumbnail}
+            src="/images/illustrations-simulateurs/solaire.webp"
+            alt=""
+            width={112}
+            height={63}
+            sizes="(max-width: 480px) 100px, 112px"
+          />
+          <div className={styles.simulatorCopy}>
+            <h2>7 simulateurs gratuits pour préparer votre voyage</h2>
+            <p>
+              Électricité, solaire, eau, carburant, chauffage… estimez vos besoins avant de partir.
+            </p>
+          </div>
+          <Link className={styles.simulatorButton} href="/guides">
+            Découvrir les 7 simulateurs
+            <ArrowUpRight size={17} aria-hidden="true" />
+          </Link>
+        </article>
         <article className={styles.ebookCard}>
           <EbookImage ebook={freeEbook} />
           <div className={styles.copy}>
@@ -202,21 +222,6 @@ export default function Home() {
             <TextLink href="/boutique">Découvrir la boutique</TextLink>
           </div>
         </div>
-        <article className={styles.simulators}>
-          <span className={styles.simulatorIcon} aria-hidden="true">
-            <Calculator size={21} />
-          </span>
-          <div>
-            <h2>7 simulateurs gratuits pour préparer votre voyage</h2>
-            <p>
-              Électricité, solaire, eau, carburant, chauffage… estimez vos besoins avant de partir.
-            </p>
-          </div>
-          <Link className={styles.simulatorButton} href="/guides">
-            Découvrir les 7 simulateurs
-            <ArrowUpRight size={17} aria-hidden="true" />
-          </Link>
-        </article>
       </section>
       <Newsletter />
     </>
