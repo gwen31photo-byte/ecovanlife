@@ -12,11 +12,35 @@
 .island marker { color: var(--rust); }
 .islandName { fill: #8c9888; font-family: var(--font-heading); font-size: 22px; letter-spacing: 6px; }
 .sea { fill: #637f7b; font-family: var(--font-heading); font-size: 19px; font-style: italic; letter-spacing: 2px; }
+.place { position: absolute; }
 .paphos { position: absolute; display: grid; place-items: center; width: 44px; height: 44px; transform: translate(-50%, -50%); padding: 0; border: 0; background: transparent; color: #205c38; font: inherit; cursor: pointer; }
 .pin { width: 15px; height: 15px; border: 3px solid var(--paper); border-radius: 50%; background: #287447; box-shadow: 0 0 0 1px #28744766; }
 .pinLabel { position: absolute; left: 34px; top: 10px; display: flex; align-items: baseline; gap: 8px; padding: 5px 8px; border-radius: 5px; background: #f7f6f2ed; font-size: 14px; font-weight: 600; white-space: nowrap; box-shadow: 0 1px 4px #253d3210; }
-.capeAspro .pinLabel { top: 30px; }
-.paphos:hover .pinLabel { background: #205c38; color: white; }
+[data-place="cape-aspro"] .pinLabel { top: 30px; }
+/* Les points sont presque superposés à cette échelle. Chaque bouton
+   dispose de sa propre zone de clic de part et d’autre des points. */
+.place:is([data-place="kykkos"], [data-place="throni"]) { color: #205c38; }
+:is([data-place="kykkos"], [data-place="throni"]) .paphos {
+  width: 36px;
+  height: 22px;
+  transform: none;
+}
+[data-place="kykkos"] .paphos { top: 0; right: -5px; }
+[data-place="throni"] .paphos { bottom: -4px; right: -5px; width: 56px; height: 16px; }
+:is([data-place="kykkos"], [data-place="throni"]) .pin {
+  position: absolute;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-width: 2px;
+  pointer-events: none;
+}
+[data-place="kykkos"] .pin { top: -5px; }
+[data-place="throni"] .pin { bottom: -1px; }
+[data-place="kykkos"] .pinLabel { left: 9px; top: -15px; }
+[data-place="throni"] .pinLabel { left: 0; top: -40px; transform: translateX(-50%); }
+.paphos:focus-visible .pinLabel { outline: 2px solid var(--rust); outline-offset: 2px; }
+.paphos:hover .pinLabel, a.pinLabel:hover { background: #205c38; color: white; }
 .detailCaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; margin-top: 14px; color: var(--muted); font-size: 12px; }
 .detailCaption p { margin: 0; }
 .detailCaption a { color: inherit; font-size: 11px; }
@@ -40,8 +64,8 @@
   .islandName { font-size: 27px; }
   .sea { font-size: 25px; }
   .pinLabel { font-size: 13px; }
-  .paphos:not(.capeAspro) .pinLabel { left: 0; top: -20px; }
-  .capeAspro .pinLabel { left: 26px; top: 28px; }
+  [data-place="paphos"] .pinLabel { left: 0; top: -20px; }
+  [data-place="cape-aspro"] .pinLabel { left: 26px; top: 28px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .overview, .detail { animation: none; }

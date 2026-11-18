@@ -171,5 +171,8 @@ export default function PaphosCapeAsproChapter() {
       </div>
       <div className={layout.single}><Photo numero="187" wide /></div>
     </section>
+    <nav className={styles.dayNav} aria-label="Étape suivante">
+      <a href="#etape-4-title">Étape 04 · Kykkos, un monastère aux mille couleurs →</a>
+    </nav>
   </section>;
 }

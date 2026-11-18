@@ -53,6 +53,15 @@ export const cyprusSteps: CyprusStep[] = [{
   additionalPlaceKeys: ["cape-aspro"],
   title: "Des mosaïques de Paphos aux falaises de Cape Aspro",
   anchor: "etape-3-title",
+}, {
+  key: "etape-04",
+  chapter: "04",
+  date: "2026-04-25",
+  dateLabel: "25 avril 2026",
+  placeKey: "kykkos",
+  additionalPlaceKeys: ["throni"],
+  title: "Kykkos, un monastère aux mille couleurs",
+  anchor: "etape-4-title",
 }];
 // Aucun trajet routier ou sentier précis représenté sans tracé documenté.
 
@@ -64,6 +73,8 @@ export const cyprusPlaces = [
   // carte de la Blue Route du conseil de Pissouri : https://www.pissouri.org.cy/en/visitors/10/touristguide_items?cat=12
   // Projection fixe de cyprus-map-geography.ts ; aucune projection à l’hydratation.
   { key: "cape-aspro", name: "Cape Aspro", longitude: 32.72, latitude: 34.64, position: { x: 201.5, y: 469.744 }, description: "Repère général du secteur côtier de Cape Aspro, près de Pissouri. Il ne désigne ni notre plage exacte ni un départ de randonnée." },
+  { key: "kykkos", name: "Monastère de Kykkos", longitude: 32.741299, latitude: 34.98334, position: { x: 208.422, y: 333.834 } },
+  { key: "throni", name: "Throni", longitude: 32.73117, latitude: 34.98248, position: { x: 205.130, y: 334.176 } },
 ];
 
 // Visites regroupées dans les panneaux : les trois sites de Paphos ne sont séparés
@@ -98,6 +109,20 @@ export const cyprusVisits = [
     latitude: 34.64, longitude: 32.72,
     source: "https://www.wikidata.org/wiki/Q22991976",
   },
+  {
+    key: "kykkos-monastery", name: "Monastère de Kykkos", stepKey: "etape-04", placeKey: "kykkos", anchor: "etape-4-header",
+    mapLabel: "Monastère de Kykkos",
+    order: 1, period: "Le matin",
+    latitude: 34.98334, longitude: 32.741299,
+    source: "https://www.visitcyprus.com/discover-cyprus/rural/museums-galleries-rural/museum-of-kykkos-monastery-2/",
+  },
+  {
+    key: "throni-church", name: "Église de Throni", stepKey: "etape-04", placeKey: "throni", anchor: "throni-title",
+    mapLabel: "L’église de Throni",
+    order: 2, period: "Après le monastère",
+    latitude: 34.98248, longitude: 32.73117,
+    source: "https://www.openstreetmap.org/way/587513903",
+  },
 ];
 
 // Liaison entre les repères généraux existants : jamais un itinéraire GPS.
@@ -106,6 +131,10 @@ export const cyprusTransfers = [{
   key: "paphos-cape-aspro", stepKey: "etape-03", from: "paphos", to: "cape-aspro",
   label: "Paphos → Cape Aspro · l’après-midi",
   note: "Liaison schématique entre les secteurs, sans tracé routier ni itinéraire de randonnée.",
+}, {
+  key: "paphos-kykkos", stepKey: "etape-04", from: "paphos", to: "kykkos",
+  label: "Paphos → Kykkos · étape 04",
+  note: "Liaison schématique entre Paphos et le secteur de Kykkos et Throni.",
 }];
 
 // Libellés compacts communs aux encadrés de l’île et aux rubriques mobiles.

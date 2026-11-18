@@ -28,7 +28,7 @@ export default function CyprusItinerary({ onNavigate }: {
       <div className={styles.islandCanvas}>
         <svg viewBox="0 0 900 562.5" className={styles.island} role="img" aria-labelledby="cyprus-detail-title cyprus-detail-description">
           <title id="cyprus-detail-title">Notre séjour à Chypre</title>
-          <desc id="cyprus-detail-description">L’île de Chypre, Paphos et le secteur côtier de Cape Aspro. Paphos regroupe le château, Nea Paphos et les Tombeaux des Rois, visités le matin de l’étape 03. Une flèche indique le déplacement vers Cape Aspro l’après-midi. Cette liaison est schématique ; aucun tracé routier ou de randonnée n’est représenté.</desc>
+          <desc id="cyprus-detail-description">Les repères ouvrent le récit de Paphos, de Cape Aspro, du monastère de Kykkos et de Throni. Les flèches indiquent les liaisons schématiques de Paphos vers Cape Aspro et vers Kykkos.</desc>
           <defs>
             <marker id="cyprus-transfer-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
               <path d="M2 2L7 5L2 8" fill="none" stroke="currentColor" strokeWidth="1.5" />
@@ -50,18 +50,27 @@ export default function CyprusItinerary({ onNavigate }: {
             <text x="490" y="520" className={styles.sea}>Méditerranée</text>
           </g>
         </svg>
-        {cyprusPlaces.map((place) => <button key={place.key} type="button" className={`${styles.paphos} ${place.key === "cape-aspro" ? styles.capeAspro : ""}`}
-          style={{ left: `${place.position.x / 9}%`, top: `${place.position.y / 5.625}%` }}
-          aria-label={`${place.name} : voir les étapes`}
-          aria-expanded={selectedPlace === place}
-          aria-controls={selectedPlace === place ? "cyprus-step-panel" : undefined} onClick={(event) => {
-            pin.current = event.currentTarget;
-            setSelectedPlace(place);
-            requestAnimationFrame(() => panel.current?.focus({ preventScroll: true }));
-          }}>
-          <span className={styles.pin} aria-hidden="true" />
-          <span className={styles.pinLabel}>{place.name}</span>
-        </button>)}
+        {cyprusPlaces.map((place) => {
+          const directLink = place.key === "kykkos" || place.key === "throni"
+            ? cyprusPanelLinks.find((link) => link.placeKey === place.key)
+            : undefined;
+          return <div key={place.key} className={styles.place} data-place={place.key}
+            style={{ left: `${place.position.x / 9}%`, top: `${place.position.y / 5.625}%` }}>
+            <button type="button" className={styles.paphos}
+              aria-label={`${place.name} : voir les étapes`}
+              aria-expanded={selectedPlace === place}
+              aria-controls={selectedPlace === place ? "cyprus-step-panel" : undefined}
+              onClick={(event) => {
+                pin.current = event.currentTarget;
+                setSelectedPlace(place);
+                requestAnimationFrame(() => panel.current?.focus({ preventScroll: true }));
+              }}>
+              <span className={styles.pin} aria-hidden="true" />
+              {!directLink && <span className={styles.pinLabel}>{place.name}</span>}
+            </button>
+            {directLink && <a className={styles.pinLabel} href={`#${directLink.anchor}`} onClick={onNavigate}>{place.name}</a>}
+          </div>;
+        })}
       </div>
       {selectedPlace && <div className={`${shared.overlay} ${styles.detailOverlay}`} onClick={(event) => {
         if (event.target === event.currentTarget) closePanel();

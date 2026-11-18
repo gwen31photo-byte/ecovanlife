@@ -77,7 +77,7 @@ export default function ItineraryMap() {
           }}>
             <svg preserveAspectRatio="none" viewBox="250 100 1200 750" className={styles.svg} role="img" aria-labelledby="chypre-map-title chypre-map-description">
               <title id="chypre-map-title">De Toulouse à Paphos, en passant par Manchester</title>
-              <desc id="chypre-map-description">Liaisons aériennes indicatives de Toulouse à Manchester, puis à Paphos. Toulouse et Manchester ouvrent les liens vers le récit ; Paphos permet d’explorer Chypre. Aucun trajet routier à Chypre n’est représenté.</desc>
+              <desc id="chypre-map-description">Liaisons aériennes indicatives de Toulouse à Manchester, puis à Paphos. Toulouse et Manchester ouvrent les liens vers le récit ; Paphos ouvre la carte détaillée de Chypre, avec Cape Aspro, le monastère de Kykkos et Throni.</desc>
               <defs>
                 <marker id="chypre-map-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
                   <path d="M2 2L7 5L2 8" fill="none" stroke="currentColor" strokeWidth="1.5" />
