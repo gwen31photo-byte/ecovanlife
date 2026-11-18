@@ -1404,44 +1404,11 @@ input {
     font-size: 10px;
   }
 }
-.guide-tools {
-  padding-top: 20px;
-}
-.tools-lead,
 .tools-source {
   max-width: 720px;
   color: var(--muted);
-  margin-bottom: 28px;
-}
-.tools-source {
   margin: 8px 0 0;
   font-size: 12px;
-}
-.tool-nav {
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0 0 22px;
-  padding: 12px 0;
-  background: var(--paper);
-}
-.tool-nav a {
-  border: 1px solid var(--line);
-  padding: 7px 14px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  color: var(--ink);
-  background: white;
-}
-.tool-nav a.is-on,
-.tool-nav a:hover {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
 }
 .tool-card {
   background: #eae8df;
@@ -1449,7 +1416,7 @@ input {
   margin-bottom: 18px;
   scroll-margin-top: 64px;
 }
-.tool-card h3 {
+.tool-card h2 {
   font-size: 28px;
   margin-bottom: 8px;
 }
@@ -1611,7 +1578,7 @@ input {
   .tool-card {
     padding: 24px 18px;
   }
-  .tool-card h3 {
+  .tool-card h2 {
     font-size: 24px;
   }
 }

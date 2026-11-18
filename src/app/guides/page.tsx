@@ -1,8 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { PageIntro, SectionHeading } from "@/components/ui";
 import { Newsletter } from "@/components/newsletter";
 import { freeEbooks } from "@/content/free-ebooks";
-import { GuideTools } from "./guide-tools";
+import { simulators } from "./simulators";
+import styles from "./simulators.module.css";
 export const metadata = {
   title: "Guides & Ebooks",
   description:
@@ -18,7 +21,21 @@ export default function Page() {
         description="Six simulateurs pour l’électricité, le solaire, l’eau, le carburant, le poids et l’heure de retour au camp. Trois guides illustrés sont téléchargeables gratuitement."
         showDemoNote={false}
       />
-      <GuideTools />
+      <section className={`section ${styles.directory}`} id="simulateurs" aria-labelledby="simulators-title">
+        <h2 id="simulators-title">6 simulateurs gratuits</h2>
+        <ul className={styles.cards}>
+          {Object.values(simulators).map(({ name, anchor, href, description, icon: Icon }) => (
+            <li key={href} id={anchor}>
+              <Link className={styles.card} href={href}>
+                <span className={styles.icon}><Icon size={22} aria-hidden="true" /></span>
+                <ArrowUpRight className={styles.arrow} size={19} aria-hidden="true" />
+                <h3>{name}</h3>
+                <p>{description}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
       <section className="section listing">
         <SectionHeading eyebrow="À EMPORTER" title="Ebooks gratuits" />
         <div className="free-guides">
