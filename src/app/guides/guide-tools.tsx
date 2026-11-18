@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
 import {
   computeDay,
   computeFuel,
+  computeHeat,
   computeSolar,
   computeWater,
   computeWatts,
@@ -25,6 +27,10 @@ import {
   stationLabels,
   vehicleGroups,
   type Fuel,
+  type GasBottle,
+  type HeatInsulation,
+  type HeatSource,
+  type HeatVehicle,
   type SolarCity,
   type Station,
 } from "./calculators";
@@ -37,6 +43,7 @@ function useElectricity() {
   const [extraHours, setExtraHours] = useState("0");
   const [days, setDays] = useState("1");
   const [sunHours, setSunHours] = useState("4");
+  const [heatingWh, setHeatingWh] = useState(0);
   const watts = useMemo(
     () =>
       computeWatts({
@@ -45,10 +52,11 @@ function useElectricity() {
         extraHours: parseAmount(extraHours),
         days: parseAmount(days, 1),
         sunHours: parseAmount(sunHours, 4),
+        heatingWh,
       }),
-    [selected, extraWatts, extraHours, days, sunHours],
+    [selected, extraWatts, extraHours, days, sunHours, heatingWh],
   );
-  return { selected, setSelected, extraWatts, setExtraWatts, extraHours, setExtraHours, days, setDays, sunHours, setSunHours, watts };
+  return { selected, setSelected, extraWatts, setExtraWatts, extraHours, setExtraHours, days, setDays, sunHours, setSunHours, heatingWh, setHeatingWh, watts };
 }
 
 function useSolarSettings() {
@@ -79,7 +87,7 @@ function useEnergyProfile() {
 }
 
 export function Electricity() {
-  const { selected, setSelected, extraWatts, setExtraWatts, extraHours, setExtraHours, days, setDays, sunHours, setSunHours, watts } = useEnergyProfile().electricity;
+  const { selected, setSelected, extraWatts, setExtraWatts, extraHours, setExtraHours, days, setDays, sunHours, setSunHours, heatingWh, setHeatingWh, watts } = useEnergyProfile().electricity;
   return (
     <article className="tool-card" id="eco-watts">
       <p className="eyebrow">ÉLECTRICITÉ</p>
@@ -100,6 +108,12 @@ export function Electricity() {
           </label>
         ))}
       </div>
+      {heatingWh > 0 && (
+        <div className="tool-actions">
+          <p className="tool-sub">Chauffage ajouté : {formatMeasure(heatingWh, "Wh/nuit")}</p>
+          <button type="button" onClick={() => setHeatingWh(0)}>Retirer le chauffage</button>
+        </div>
+      )}
       <p className="tool-sub">Appareil en plus (facultatif)</p>
       <div className="tool-fields">
         <Field label="Watts" value={extraWatts} onChange={setExtraWatts} min={0} step={1} />
@@ -497,6 +511,201 @@ export function Night() {
   );
 }
 
+export function Heating() {
+  const router = useRouter();
+  const { heatingWh, setHeatingWh } = useEnergyProfile().electricity;
+  const [outdoor, setOutdoor] = useState("2");
+  const [indoor, setIndoor] = useState("16");
+  const [heatVehicle, setHeatVehicle] = useState<HeatVehicle>("l2h2");
+  const [insulation, setInsulation] = useState<HeatInsulation>("light");
+  const [heatSource, setHeatSource] = useState<HeatSource>("diesel");
+  const [heatHours, setHeatHours] = useState("8");
+  const [cooking, setCooking] = useState("non");
+  const [cookingMinutes, setCookingMinutes] = useState("30");
+  const [bottle, setBottle] = useState<GasBottle>("propane13");
+  const [otherKg, setOtherKg] = useState("13");
+  const [dieselStock, setDieselStock] = useState("10");
+  const [batteryStock, setBatteryStock] = useState("1280");
+  const [dieselPrice, setDieselPrice] = useState("1.75");
+  const [bottlePrice, setBottlePrice] = useState("35");
+  const heat = useMemo(
+    () =>
+      computeHeat({
+        outdoorC: parseAmount(outdoor, 2),
+        indoorC: parseAmount(indoor, 16),
+        vehicle: heatVehicle,
+        insulation,
+        source: heatSource,
+        hours: parseAmount(heatHours, 8),
+        cooking: cooking === "oui",
+        cookingMinutes: parseAmount(cookingMinutes, 30),
+        bottle,
+        otherKg: parseAmount(otherKg, 13),
+        dieselLiters: parseAmount(dieselStock, 10),
+        batteryCapacityWh: parseAmount(batteryStock, 1280),
+        dieselPrice: parseAmount(dieselPrice, 1.75),
+        bottlePrice: parseAmount(bottlePrice, 35),
+      }),
+    [
+      outdoor,
+      indoor,
+      heatVehicle,
+      insulation,
+      heatSource,
+      heatHours,
+      cooking,
+      cookingMinutes,
+      bottle,
+      otherKg,
+      dieselStock,
+      batteryStock,
+      dieselPrice,
+      bottlePrice,
+    ],
+  );
+
+  return (
+    <article className="tool-card" id="eco-chauffage">
+      <p className="eyebrow">HIVER · CHAUFFAGE</p>
+      <h2>Tenir la nuit au chaud et estimer son autonomie.</h2>
+      <p>Le besoin suit l’écart de température. La puissance inscrite sur l’appareil ne dit pas ce que la nuit coûte.</p>
+      <div className="tool-fields">
+        <label className="tool-field tool-field-wide">
+          <span>Température extérieure la nuit : {parseAmount(outdoor, 2).toLocaleString("fr-FR")}{"\u00a0"}°C</span>
+          <input
+            type="range"
+            min={-15}
+            max={15}
+            step={1}
+            value={outdoor}
+            aria-valuetext={`${parseAmount(outdoor, 2).toLocaleString("fr-FR")} degrés Celsius`}
+            onChange={(event) => setOutdoor(event.target.value)}
+          />
+        </label>
+      </div>
+      <p className="tool-sub">Température visée à l’intérieur</p>
+      <div className="tool-chips" role="group" aria-label="Température visée à l’intérieur">
+        {["14", "16", "18", "20"].map((value) => (
+          <button key={value} type="button" className={indoor === value ? "is-on" : undefined} aria-pressed={indoor === value} onClick={() => setIndoor(value)}>
+            {value} °C
+          </button>
+        ))}
+      </div>
+      <div className="tool-fields">
+        <label className="tool-field">
+          <span>Véhicule</span>
+          <select value={heatVehicle} onChange={(event) => setHeatVehicle(event.target.value as HeatVehicle)}>
+            <option value="fourgonnette">Fourgonnette (~4 m³)</option>
+            <option value="l1h1">Fourgon L1H1 (~6 m³)</option>
+            <option value="l2h2">L2H2 (~10 m³)</option>
+            <option value="l3h2">L3H2 (~13 m³)</option>
+            <option value="profile">Profilé / capucine (~18 m³)</option>
+          </select>
+        </label>
+        <label className="tool-field">
+          <span>Isolation</span>
+          <select value={insulation} onChange={(event) => setInsulation(event.target.value as HeatInsulation)}>
+            <option value="none">Aucune</option>
+            <option value="light">Légère (laine / armaflex partiel)</option>
+            <option value="good">Bonne (complète, rideaux isolants)</option>
+          </select>
+        </label>
+        <label className="tool-field">
+          <span>Chauffage</span>
+          <select value={heatSource} onChange={(event) => setHeatSource(event.target.value as HeatSource)}>
+            <option value="diesel">Diesel à air 2 kW</option>
+            <option value="gas">Gaz type Truma 2–4 kW</option>
+            <option value="electric12">Électrique 12 V</option>
+            <option value="electric230">Électrique 230 V via convertisseur</option>
+          </select>
+        </label>
+        <Field label="Heures de chauffe par nuit" value={heatHours} onChange={setHeatHours} min={0} max={24} step={0.5} />
+        <label className="tool-field">
+          <span>Cuisine au gaz</span>
+          <select value={cooking} onChange={(event) => setCooking(event.target.value)}>
+            <option value="non">Non</option>
+            <option value="oui">Oui</option>
+          </select>
+        </label>
+        <Field label="Minutes de feu par jour" value={cookingMinutes} onChange={setCookingMinutes} min={0} step={5} disabled={cooking !== "oui"} />
+        {heatSource === "gas" ? (
+          <label className="tool-field">
+            <span>Bouteille</span>
+            <select value={bottle} onChange={(event) => setBottle(event.target.value as GasBottle)}>
+              <option value="butane13">Butane 13 kg</option>
+              <option value="propane13">Propane 13 kg</option>
+              <option value="propane10">Propane 10 kg</option>
+              <option value="other">Autre</option>
+            </select>
+          </label>
+        ) : null}
+        {heatSource === "gas" && bottle === "other" ? (
+          <Field label="Gaz (kg)" value={otherKg} onChange={setOtherKg} min={0} step={0.5} />
+        ) : null}
+        {heatSource === "diesel" ? (
+          <Field label="Gazole réservé au chauffage (L)" value={dieselStock} onChange={setDieselStock} min={0} step={0.5} />
+        ) : null}
+        {heatSource === "electric12" || heatSource === "electric230" ? (
+          <Field label="Batterie (Wh)" value={batteryStock} onChange={setBatteryStock} min={0} step={10} />
+        ) : null}
+        {heatSource === "diesel" ? (
+          <Field label="Gazole (€/L)" value={dieselPrice} onChange={setDieselPrice} min={0} step={0.01} />
+        ) : null}
+        {heatSource === "gas" ? (
+          <Field label="Bouteille (€)" value={bottlePrice} onChange={setBottlePrice} min={0} step={1} />
+        ) : null}
+      </div>
+      <Results
+        items={[
+          { label: "Besoin de chauffe moyen", value: heat.needText, alert: heat.undersized },
+          { label: "Consommation par nuit", value: heat.consumption },
+          { label: "Autonomie", value: heat.nightsText },
+          { label: "Coût par nuit", value: heat.costText },
+          { label: "Batterie par nuit", value: heat.batteryText },
+        ]}
+      />
+      <p className="tool-note" aria-live="polite">{heat.sentence}</p>
+      {heat.alerts.map((alert) => (
+        <p key={alert} className="tool-note is-alert">{alert}</p>
+      ))}
+      <p className="tool-aside">
+        Ordres de grandeur pour un van stationné, sans vent fort ni ouverture de porte. Pas un dimensionnement d’installation.
+      </p>
+      <div className="tool-actions">
+        <button
+          type="button"
+          disabled={heat.batteryWh === 0}
+          onClick={() => {
+            setHeatingWh(heat.batteryWh);
+            router.push("/guides/simulateurs/electricite");
+          }}
+        >
+          {heatingWh > 0 ? "Mettre à jour dans Électricité" : "Ajouter au simulateur Électricité"}
+        </button>
+      </div>
+      {heat.batteryWh === 0 && <p className="tool-note" aria-live="polite">Aucune consommation électrique à transférer.</p>}
+      <p className="tool-links">
+        <a href="https://economade.net/schema-electrique-van-amenage-12v/" target="_blank" rel="noopener noreferrer">Schéma électrique 12 V</a>
+        <a href="https://economade.net/fiche-memo-12v-batterie-solaire/" target="_blank" rel="noopener noreferrer">Fiche mémo 12 V</a>
+      </p>
+      <div className="tool-faq">
+        <details>
+          <summary>Chauffage diesel ou gaz en van ?</summary>
+          <p>Le diesel boit peu de litres, mais le ventilateur et la bougie tirent sur la batterie. Le gaz se voit à la bouteille : le butane cale vers 0 °C, le propane tient l’hiver. Les deux demandent un détecteur de CO et une aération, surtout la nuit.</p>
+        </details>
+        <details>
+          <summary>Pourquoi ma bouteille de butane ne marche plus quand il gèle ?</summary>
+          <p>Le butane ne se vaporise presque plus vers 0 °C. La bouteille est pleine, le brûleur non. Le propane continue plus bas : c’est lui qu’on emporte l’hiver.</p>
+        </details>
+        <details>
+          <summary>Peut-on chauffer un van sur batterie ?</summary>
+          <p>Un convecteur avale en une nuit ce qu’un frigo consomme en plusieurs jours. Sans branchement, la batterie ne suit pas. L’isolation baisse le besoin ; elle ne le remplace pas par des watts.</p>
+        </details>
+      </div>
+    </article>
+  );
+}
+
 function Field({
   label,
   value,
@@ -504,6 +713,7 @@ function Field({
   min,
   max,
   step,
+  disabled,
 }: {
   label: string;
   value: string;
@@ -511,11 +721,12 @@ function Field({
   min?: number;
   max?: number;
   step?: number;
+  disabled?: boolean;
 }) {
   return (
     <label className="tool-field">
       <span>{label}</span>
-      <input type="number" inputMode="decimal" min={min} max={max} step={step} value={value} onChange={(event) => onChange(event.target.value)} />
+      <input type="number" inputMode="decimal" min={min} max={max} step={step} value={value} disabled={disabled} onChange={(event) => onChange(event.target.value)} />
     </label>
   );
 }

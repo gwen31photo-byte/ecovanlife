@@ -245,6 +245,7 @@ export function computeWatts(input: {
   extraHours: number;
   days: number;
   sunHours: number;
+  heatingWh?: number;
 }) {
   let dailyWh = 0;
   let fridgeOn = false;
@@ -254,6 +255,7 @@ export function computeWatts(input: {
     if (device.fridge) fridgeOn = true;
   }
   dailyWh += input.extraWatts * input.extraHours;
+  if (input.heatingWh && input.heatingWh > 0) dailyWh += input.heatingWh;
   const days = Math.max(input.days, 1);
   const sunHours = Math.max(input.sunHours, 0.1);
   const batteryWh = dailyWh * days * 1.3;
@@ -262,6 +264,9 @@ export function computeWatts(input: {
   if (!dailyWh) note = "Cochez au moins un appareil.";
   else if (fridgeOn && dailyWh < 400) {
     note = "La glacière écrase le reste. Questionnez-la avant d’acheter un plus gros panneau.";
+  }
+  if (input.heatingWh && input.heatingWh > 0) {
+    note += ` Chauffage inclus : ${formatMeasure(input.heatingWh, "Wh")}.`;
   }
   return {
     dailyWh,
@@ -424,4 +429,184 @@ export function computeDay(sunset: string, departure: string, driveHours: number
     ? "Vous arrivez dans le noir, ou à le chercher. Couper l’étape, ou partir plus tôt."
     : `Coucher vers ${sunset}. La marge, c’est le parking.`;
   return { arrival, latest, late, note };
+}
+
+export type HeatVehicle = "fourgonnette" | "l1h1" | "l2h2" | "l3h2" | "profile";
+export type HeatInsulation = "none" | "light" | "good";
+export type HeatSource = "diesel" | "gas" | "electric12" | "electric230";
+export type GasBottle = "butane13" | "propane13" | "propane10" | "other";
+
+/**
+ * Ordres de grandeur pour un van stationné.
+ * Besoin (W) = déperdition (W/°C) × (T intérieure − T extérieure).
+ * L’énergie sort ensuite du rendement de l’appareil, pas de sa puissance affichée.
+ */
+export const HEAT_CONFIG = {
+  lossWPerC: {
+    fourgonnette: { none: 45, light: 25, good: 15 },
+    l1h1: { none: 60, light: 35, good: 20 },
+    l2h2: { none: 85, light: 50, good: 28 },
+    l3h2: { none: 105, light: 60, good: 35 },
+    profile: { none: 130, light: 75, good: 45 },
+  },
+  heaters: {
+    diesel: { maxW: 2000, efficiency: 0.85, fanW: 15, startWh: 30, starts: 1, converterLoss: 0 },
+    /** Plafond : le haut de la plage Truma 2–4 kW. */
+    gas: { maxW: 4000, efficiency: 0.9, fanW: 5, startWh: 0, starts: 0, converterLoss: 0 },
+    /** Pas de plafond indiqué : le convecteur est supposé suivre le besoin. */
+    electric12: { maxW: Number.POSITIVE_INFINITY, efficiency: 1, fanW: 0, startWh: 0, starts: 0, converterLoss: 0 },
+    electric230: { maxW: Number.POSITIVE_INFINITY, efficiency: 1, fanW: 0, startWh: 0, starts: 0, converterLoss: 0.1 },
+  },
+  dieselKwhPerLiter: 10,
+  gasKwhPerKg: 12.8,
+  stoveKw: 1.5,
+  butaneLimitC: 2,
+  batteryShareAlert: 0.5,
+  bottlesKg: { butane13: 13, propane13: 13, propane10: 10 },
+} as const;
+
+const heatInsulationLabel: Record<HeatInsulation, string> = {
+  none: "Sans isolation",
+  light: "Isolation légère",
+  good: "Bonne isolation",
+};
+
+const heatFuelName: Record<GasBottle, string> = {
+  butane13: "butane",
+  propane13: "propane",
+  propane10: "propane",
+  other: "gaz",
+};
+
+function roundStep(value: number, step: number): number {
+  if (!Number.isFinite(value)) return value;
+  return Math.round(value / step) * step;
+}
+
+function formatGrouped(value: number, digits: number): string {
+  return value.toLocaleString("fr-FR", {
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
+  });
+}
+
+function formatNights(value: number): string {
+  if (!Number.isFinite(value)) return "—";
+  const rounded = roundStep(value, 0.5);
+  const text = Number.isInteger(rounded) ? formatGrouped(rounded, 0) : formatGrouped(rounded, 1);
+  return `${text} ${rounded < 2 ? "nuit" : "nuits"}`;
+}
+
+export function computeHeat(input: {
+  outdoorC: number;
+  indoorC: number;
+  vehicle: HeatVehicle;
+  insulation: HeatInsulation;
+  source: HeatSource;
+  hours: number;
+  cooking: boolean;
+  cookingMinutes: number;
+  bottle: GasBottle;
+  otherKg: number;
+  dieselLiters: number;
+  batteryCapacityWh: number;
+  dieselPrice: number;
+  bottlePrice: number;
+}) {
+  const vehicle = HEAT_CONFIG.lossWPerC[input.vehicle] ?? HEAT_CONFIG.lossWPerC.l2h2;
+  const insulation = vehicle[input.insulation] ? input.insulation : "light";
+  const loss = vehicle[insulation];
+  const delta = input.indoorC - input.outdoorC;
+  const needW = delta > 0 ? loss * delta : 0;
+  const heater = HEAT_CONFIG.heaters[input.source] ?? HEAT_CONFIG.heaters.diesel;
+  const calledW = Math.min(needW, heater.maxW);
+  const undersized = needW > heater.maxW;
+  const hours = Math.min(Math.max(input.hours, 0), 24);
+  const heating = needW > 0 && hours > 0;
+  const thermalWh = calledW * hours;
+  const fuelWh = heater.efficiency > 0 ? thermalWh / heater.efficiency : thermalWh;
+  let dieselLitersUsed = 0;
+  let gasKg = 0;
+  let batteryWh = heating ? heater.fanW * hours + heater.startWh * heater.starts : 0;
+  if (input.source === "diesel") {
+    dieselLitersUsed = fuelWh / 1000 / HEAT_CONFIG.dieselKwhPerLiter;
+  } else if (input.source === "gas") {
+    gasKg = fuelWh / 1000 / HEAT_CONFIG.gasKwhPerKg;
+  } else {
+    batteryWh += fuelWh * (1 + heater.converterLoss);
+  }
+  let cookingKg = 0;
+  if (input.cooking && input.cookingMinutes > 0) {
+    cookingKg = (input.cookingMinutes * HEAT_CONFIG.stoveKw) / 60 / HEAT_CONFIG.gasKwhPerKg;
+    if (input.source === "gas") gasKg += cookingKg;
+  }
+  const bottleKg =
+    input.bottle === "other"
+      ? Math.max(input.otherKg, 0)
+      : HEAT_CONFIG.bottlesKg[input.bottle];
+  const stockLiters = Math.max(input.dieselLiters, 0);
+  const stockWh = Math.max(input.batteryCapacityWh, 0);
+  let nights = Number.POSITIVE_INFINITY;
+  if (input.source === "diesel") nights = dieselLitersUsed > 0 ? stockLiters / dieselLitersUsed : Number.POSITIVE_INFINITY;
+  else if (input.source === "gas") nights = gasKg > 0 ? bottleKg / gasKg : Number.POSITIVE_INFINITY;
+  else nights = batteryWh > 0 ? stockWh / batteryWh : Number.POSITIVE_INFINITY;
+
+  let cost: number | null = null;
+  if (input.source === "diesel" && dieselLitersUsed > 0) cost = dieselLitersUsed * Math.max(input.dieselPrice, 0);
+  if (input.source === "gas" && gasKg > 0 && bottleKg > 0) cost = (gasKg / bottleKg) * Math.max(input.bottlePrice, 0);
+
+  const alerts: string[] = [];
+  if (undersized) alerts.push("Le chauffage ne suit pas, la température visée ne sera pas atteinte.");
+  if (input.source === "gas" && input.bottle === "butane13" && input.outdoorC < HEAT_CONFIG.butaneLimitC) {
+    alerts.push("Le butane ne se vaporise plus vers 0 °C : passez au propane pour l’hiver.");
+  }
+  if ((input.source === "electric12" || input.source === "electric230") && batteryWh > stockWh * HEAT_CONFIG.batteryShareAlert) {
+    alerts.push("Ce n’est pas tenable sans branchement secteur : une nuit dépasse la moitié de la batterie.");
+  }
+  if (input.source === "diesel" || input.source === "gas") {
+    alerts.push("Détecteur de CO et aération : indispensables avec le gaz ou le diesel, surtout la nuit.");
+  }
+  if (insulation === "none") {
+    alerts.push("L’isolation rapporte plus que d’augmenter la puissance du chauffage.");
+  }
+
+  const outdoor = formatGrouped(input.outdoorC, 0);
+  const nightsText = formatNights(nights);
+  let sentence = hours === 0
+    ? "Pas de chauffe : la durée est de zéro heure."
+    : "Pas de chauffe : dehors, il fait déjà au moins aussi chaud que la température visée.";
+  if (heating && input.source === "diesel") {
+    sentence = `${heatInsulationLabel[insulation]}, gazole : ${formatGrouped(stockLiters, stockLiters % 1 === 0 ? 0 : 1)} L tiennent environ ${nightsText} à ${outdoor} °C.`;
+  } else if (input.source === "gas" && gasKg > 0) {
+    sentence = `${heatInsulationLabel[insulation]}, ${heatFuelName[input.bottle]} : une bouteille de ${formatGrouped(bottleKg, bottleKg % 1 === 0 ? 0 : 1)} kg tient environ ${nightsText} à ${outdoor} °C.`;
+  } else if (heating) {
+    sentence = `${heatInsulationLabel[insulation]}, batterie : ${formatGrouped(stockWh, 0)} Wh tiennent environ ${nightsText} à ${outdoor} °C.`;
+  }
+  if (!heating && input.source === "gas" && cookingKg > 0) {
+    sentence = `Pas de chauffe. Autonomie de la bouteille pour la cuisine seule : ${nightsText}.`;
+  }
+  if (cookingKg > 0 && input.source !== "gas") {
+    sentence += ` Cuisine au gaz en plus : ${formatGrouped(roundStep(cookingKg * 1000, 10), 0)} g.`;
+  }
+
+  const consumption =
+    input.source === "diesel"
+      ? `${formatGrouped(roundStep(dieselLitersUsed, 0.1), 1)} L`
+      : input.source === "gas"
+        ? `${formatGrouped(roundStep(gasKg * 1000, 10), 0)} g`
+        : `${formatGrouped(Math.round(batteryWh), 0)} Wh`;
+
+  return {
+    needW,
+    calledW,
+    undersized,
+    batteryWh: Math.round(batteryWh),
+    nightsText,
+    costText: cost === null ? "—" : cost.toLocaleString("fr-FR", { style: "currency", currency: "EUR" }),
+    consumption,
+    sentence,
+    alerts,
+    needText: `${formatGrouped(Math.round(needW), 0)} W`,
+    batteryText: `${formatGrouped(Math.round(batteryWh), 0)} Wh`,
+  };
 }

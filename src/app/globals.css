@@ -1478,6 +1478,12 @@ input {
   color: var(--muted);
   background: #f3f1ea;
 }
+.tool-field input[type="range"] {
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  accent-color: var(--ink);
+}
 .tool-results {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1508,6 +1514,20 @@ input {
   font-size: 14px;
   margin-bottom: 8px;
 }
+.tool-note.is-alert {
+  color: #8a3a2a;
+}
+.tool-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 12px 0 4px;
+  font-size: 13px;
+}
+.tool-links a {
+  border-bottom: 1px solid #a6ad9e;
+  padding: 4px 0;
+}
 .tool-aside {
   font-size: 13px;
   color: var(--muted);
@@ -1530,12 +1550,13 @@ input {
 }
 .tool-chips button.is-on,
 .tool-chips button:hover:not(:disabled),
-.tool-actions button:hover {
+.tool-actions button:hover:not(:disabled) {
   background: var(--ink);
   color: var(--paper);
   border-color: var(--ink);
 }
-.tool-chips button:disabled {
+.tool-chips button:disabled,
+.tool-actions button:disabled {
   color: var(--muted);
   cursor: default;
 }

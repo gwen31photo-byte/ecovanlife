@@ -207,13 +207,13 @@ export default function Home() {
             <Calculator size={21} />
           </span>
           <div>
-            <h2>6 simulateurs gratuits pour préparer votre voyage</h2>
+            <h2>7 simulateurs gratuits pour préparer votre voyage</h2>
             <p>
-              Électricité, solaire, eau, carburant… estimez vos besoins avant de partir.
+              Électricité, solaire, eau, carburant, chauffage… estimez vos besoins avant de partir.
             </p>
           </div>
           <Link className={styles.simulatorButton} href="/guides">
-            Découvrir les 6 simulateurs
+            Découvrir les 7 simulateurs
             <ArrowUpRight size={17} aria-hidden="true" />
           </Link>
         </article>

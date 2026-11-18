@@ -1,4 +1,4 @@
-import { Droplets, Fuel, Moon, Scale, Sun, Zap } from "lucide-react";
+import { Droplets, Flame, Fuel, Moon, Scale, Sun, Zap } from "lucide-react";
 
 export const simulators = {
   electricite: {
@@ -42,6 +42,13 @@ export const simulators = {
     href: "/guides/simulateurs/nuit",
     description: "Trouvez l’heure de départ pour arriver avant la nuit.",
     icon: Moon,
+  },
+  chauffage: {
+    name: "Chauffage",
+    anchor: "eco-chauffage",
+    href: "/guides/simulateurs/chauffage",
+    description: "Estimez vos besoins de chauffe et votre autonomie pour les nuits froides.",
+    icon: Flame,
   },
 } as const;
 

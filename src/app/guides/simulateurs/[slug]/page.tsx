@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { Electricity, Solar, Water, FuelCost, Weight, Night } from "../../guide-tools";
+import { Electricity, Solar, Water, FuelCost, Weight, Night, Heating } from "../../guide-tools";
 import { simulators, type SimulatorSlug } from "../../simulators";
 import styles from "../../simulators.module.css";
 
@@ -13,6 +13,7 @@ const tools = {
   carburant: FuelCost,
   poids: Weight,
   nuit: Night,
+  chauffage: Heating,
 } satisfies Record<SimulatorSlug, React.ComponentType>;
 
 type Props = { params: Promise<{ slug: string }> };
@@ -46,7 +47,7 @@ export default async function SimulatorPage({ params }: Props) {
     <section className={`section ${styles.detail}`} aria-labelledby="simulator-title">
       <Link className={styles.back} href="/guides#simulateurs">
         <ArrowLeft size={18} aria-hidden="true" />
-        Retour aux 6 simulateurs
+        Retour aux simulateurs
       </Link>
       <h1 id="simulator-title">{simulators[slug].name}</h1>
       <Tool />

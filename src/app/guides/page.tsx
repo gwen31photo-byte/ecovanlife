@@ -9,7 +9,7 @@ import styles from "./simulators.module.css";
 export const metadata = {
   title: "Guides & Ebooks",
   description:
-    "Six simulateurs EcoVanLife et trois guides gratuits : chaleurs, choix durables et respect des lieux.",
+    "Sept simulateurs EcoVanLife et trois guides gratuits : chaleurs, choix durables et respect des lieux.",
   alternates: { canonical: "/guides" },
 };
 export default function Page() {
@@ -18,11 +18,11 @@ export default function Page() {
       <PageIntro
         eyebrow="GUIDES & EBOOKS"
         title="Calculer avant de partir."
-        description="Six simulateurs pour l’électricité, le solaire, l’eau, le carburant, le poids et l’heure de retour au camp. Trois guides illustrés sont téléchargeables gratuitement."
+        description="Sept simulateurs pour l’électricité, le solaire, l’eau, le carburant, le poids, l’heure de retour au camp et le chauffage. Trois guides illustrés sont téléchargeables gratuitement."
         showDemoNote={false}
       />
       <section className={`section ${styles.directory}`} id="simulateurs" aria-labelledby="simulators-title">
-        <h2 id="simulators-title">6 simulateurs gratuits</h2>
+        <h2 id="simulators-title">7 simulateurs gratuits</h2>
         <ul className={styles.cards}>
           {Object.values(simulators).map(({ name, anchor, href, description, icon: Icon }) => (
             <li key={href} id={anchor}>
