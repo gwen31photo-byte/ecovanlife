@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, Compass, Camera, Leaf } from "lucide-react";
-import {
-  SectionHeading,
-  TextLink,
-  GuideCards,
-} from "@/components/ui";
+import { ArrowDown, ArrowUpRight, Calculator, Compass, Camera, Leaf } from "lucide-react";
+import { SectionHeading, TextLink } from "@/components/ui";
 import { RoadTripGrid } from "@/components/road-trip-grid";
 import { Gallery } from "@/components/gallery";
 import { Newsletter } from "@/components/newsletter";
@@ -63,6 +59,9 @@ const featuredPhotos = featuredPhotoIds.map((id) => {
     thumbnailSrc: photo.thumbnailSrc,
   };
 });
+const [freeEbook] = freeEbooks;
+const [paidEbook] = paidEbooks;
+
 export default function Home() {
   return (
     <>
@@ -172,92 +171,67 @@ export default function Home() {
           photographies au fil des voyages.
         </div>
       </section>
-      <section className="guides-section section">
+      <section className={`guides-section section ${styles.guidesSection}`}>
         <SectionHeading
           eyebrow="POUR PRÉPARER LA SUITE"
           title="Guides & Ebooks"
           href="/guides"
           link="Découvrir les guides"
         />
-        <div className={styles.simulators}>
-          <div>
-            <p className="eyebrow">PRÉPARER SON VOYAGE</p>
-            <h3>Nos 6 simulateurs gratuits</h3>
+        <article className={styles.ebookCard}>
+          <EbookImage ebook={freeEbook} />
+          <div className={styles.copy}>
+            <h3>{freeEbooks.length} ebooks gratuits</h3>
             <p>
-              Anticipez vos besoins et préparez vos étapes avec des outils
-              simples pour prendre la route sereinement.
+              Trois guides illustrés pour traverser les fortes chaleurs, faire
+              des choix durables et respecter les lieux où vous faites halte.
+            </p>
+            <TextLink href="/guides">Découvrir les ebooks gratuits</TextLink>
+          </div>
+        </article>
+      </section>
+      <section className={`section ${styles.shopSection}`}>
+        <div className={`${styles.ebookCard} ${styles.shopCard}`}>
+          <EbookImage ebook={paidEbook} />
+          <div className={styles.copy}>
+            <h2>{paidEbooks.length} ebooks payants</h2>
+            <p>
+              Des guides illustrés pour voyager plus sobrement, gérer l’eau,
+              produire votre énergie et aménager un camp de base.
+            </p>
+            <TextLink href="/boutique">Découvrir la boutique</TextLink>
+          </div>
+        </div>
+        <article className={styles.simulators}>
+          <span className={styles.simulatorIcon} aria-hidden="true">
+            <Calculator size={21} />
+          </span>
+          <div>
+            <h2>6 simulateurs gratuits pour préparer votre voyage</h2>
+            <p>
+              Électricité, solaire, eau, carburant… estimez vos besoins avant de partir.
             </p>
           </div>
           <Link className={styles.simulatorButton} href="/guides">
-            Découvrir les simulateurs
-            <ArrowUpRight size={18} aria-hidden="true" />
+            Découvrir les 6 simulateurs
+            <ArrowUpRight size={17} aria-hidden="true" />
           </Link>
-        </div>
-        <div className={styles.freeBlock}>
-          <div className={styles.intro}>
-            <p className="eyebrow">TROIS EBOOKS · GRATUITS</p>
-            <h3>Un peu de lecture, avant la route.</h3>
-            <p>
-              Fortes chaleurs, choix durables et respect des lieux : trois guides
-              illustrés à emporter gratuitement, sans inscription.
-            </p>
-            <TextLink href="/guides">Découvrir les 3 ebooks gratuits</TextLink>
-          </div>
-          <EbookShelf ebooks={freeEbooks} href="/guides" />
-        </div>
-        <GuideCards />
-      </section>
-      <section className="shop-teaser section">
-        <div className="shop-illustration" aria-hidden="true">
-          <MountainDrawing />
-        </div>
-        <div>
-          <p className="eyebrow">LA BOUTIQUE · QUATRE EBOOKS PAYANTS</p>
-          <h2>L’aventure s’emporte.</h2>
-          <p>
-            Quatre guides illustrés : voyager sobrement, l’eau, l’énergie et le
-            camp de base.
-          </p>
-          <EbookShelf ebooks={paidEbooks} href="/boutique" />
-          <TextLink href="/boutique">Découvrir les 4 ebooks de la boutique</TextLink>
-        </div>
+        </article>
       </section>
       <Newsletter />
     </>
   );
 }
-function EbookShelf({ ebooks, href }: {
-  ebooks: readonly { title: string; image: string; alt: string }[];
-  href: "/guides" | "/boutique";
-}) {
-  return (
-    <ul className={styles.shelf}>
-      {ebooks.map((ebook) => (
-        <li key={ebook.title}>
-          <Link href={href} className={styles.ebook}>
-            <span className={styles.cover}>
-              <Image src={ebook.image} alt={ebook.alt} fill
-                sizes="(max-width: 600px) 38vw, (max-width: 900px) 20vw, 12vw" />
-            </span>
-            <span>{ebook.title}</span>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
-}
 
-function MountainDrawing() {
+function EbookImage({ ebook }: { ebook: { image: string; alt: string } }) {
   return (
-    <svg
-      viewBox="0 0 380 210"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.2"
-    >
-      <circle cx="255" cy="60" r="24" />
-      <path d="M20 175 112 42l95 133M72 100l40-58 40 58-23-9-17 15-17-15-23 9M153 175l67-94 80 94M195 116l25-35 29 35-17-6-12 9-11-8M10 182h350M286 175v-61m-23 38 23-38 23 38m-41 12 18-31 18 31M331 175v-40m-15 26 15-26 15 26" />
-      <path d="M104 193c75-20 51 24 165 3" />
-    </svg>
+    <Image
+      className={styles.cover}
+      src={ebook.image}
+      alt={ebook.alt}
+      width={1152}
+      height={864}
+      sizes="(max-width: 640px) 82vw, (max-width: 1080px) 30vw, 320px"
+    />
   );
 }
