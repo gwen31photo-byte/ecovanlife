@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteUrl, navigation, adventures } from "@/content/site";
+import { simulators } from "./guides/simulators";
 import { photographs } from "./photos/catalog";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -10,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/voyages/de-toulouse-a-l-italie",
     "/voyages/la-grande-boucle-de-l-ouest",
     "/voyages/chypre-un-voyage-inattendu",
+    ...Object.values(simulators).map(({ href }) => href),
   ].map((path) => ({
     url: `${siteUrl}${path}`,
     changeFrequency: "monthly",
