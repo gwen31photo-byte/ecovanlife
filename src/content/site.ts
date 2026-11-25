@@ -1,7 +1,9 @@
+import { vanlifeEnabled } from "./features";
+
 export const navigation = [
   { href: "/", label: "Accueil" },
   { href: "/voyages", label: "Voyages" },
-  { href: "/vanlife", label: "Vanlife" },
+  ...(vanlifeEnabled ? [{ href: "/vanlife", label: "Vanlife" }] : []),
   { href: "/photos", label: "Photos" },
   { href: "/guides", label: "Guides & Ebooks" },
   { href: "/boutique", label: "Boutique" },

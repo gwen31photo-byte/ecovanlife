@@ -7,6 +7,7 @@ import { RoadTripGrid } from "@/components/road-trip-grid";
 import { Gallery } from "@/components/gallery";
 import { Newsletter } from "@/components/newsletter";
 import { photographs } from "./photos/catalog";
+import { newsletterEnabled, vanlifeEnabled } from "@/content/features";
 import { siteUrl } from "@/content/site";
 import { freeEbooks } from "@/content/free-ebooks";
 import { paidEbooks } from "@/content/ebooks";
@@ -114,46 +115,48 @@ export default function Home() {
         />
         <RoadTripGrid />
       </section>
-      <section className="road-section">
-        <div className="road-image">
-          <Image
-            src="/images/road.jpg"
-            alt="Vallée sauvage et montagnes, photographie d’illustration d’un road trip"
-            fill
-            sizes="(max-width: 800px) 100vw, 55vw"
-          />
-          <span className="image-caption">
-            QUELQUE PART, LOIN DU QUOTIDIEN.
-          </span>
-        </div>
-        <div className="road-copy">
-          <p className="eyebrow">VANLIFE & LIBERTÉ</p>
-          <h2>
-            Sur les routes.
-            <br />
-            <em>Et nulle part ailleurs.</em>
-          </h2>
-          <p>
-            Changer de décor au réveil. S’arrêter quand la vue est belle.
-            Trouver du bonheur dans les petits détours.
-          </p>
-          <p>
-            La vanlife, c’est une autre façon de voyager. Plus libre, plus
-            simple, plus proche de la nature.
-          </p>
-          <TextLink href="/vanlife">Explorer la vie en van</TextLink>
-          <div className="road-values">
-            <span>
-              <Compass />
-              L’esprit d’aventure
-            </span>
-            <span>
-              <Leaf />
-              Le goût de l’essentiel
+      {vanlifeEnabled && (
+        <section className="road-section">
+          <div className="road-image">
+            <Image
+              src="/images/road.jpg"
+              alt="Vallée sauvage et montagnes, photographie d’illustration d’un road trip"
+              fill
+              sizes="(max-width: 800px) 100vw, 55vw"
+            />
+            <span className="image-caption">
+              QUELQUE PART, LOIN DU QUOTIDIEN.
             </span>
           </div>
-        </div>
-      </section>
+          <div className="road-copy">
+            <p className="eyebrow">VANLIFE & LIBERTÉ</p>
+            <h2>
+              Sur les routes.
+              <br />
+              <em>Et nulle part ailleurs.</em>
+            </h2>
+            <p>
+              Changer de décor au réveil. S’arrêter quand la vue est belle.
+              Trouver du bonheur dans les petits détours.
+            </p>
+            <p>
+              La vanlife, c’est une autre façon de voyager. Plus libre, plus
+              simple, plus proche de la nature.
+            </p>
+            <TextLink href="/vanlife">Explorer la vie en van</TextLink>
+            <div className="road-values">
+              <span>
+                <Compass />
+                L’esprit d’aventure
+              </span>
+              <span>
+                <Leaf />
+                Le goût de l’essentiel
+              </span>
+            </div>
+          </div>
+        </section>
+      )}
       <section className="section photo-section">
         <SectionHeading
           eyebrow="S’ARRÊTER. REGARDER. RESSENTIR."
@@ -223,7 +226,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Newsletter />
+      {newsletterEnabled && <Newsletter />}
     </>
   );
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PageIntro, SectionHeading } from "@/components/ui";
 import { Newsletter } from "@/components/newsletter";
+import { newsletterEnabled } from "@/content/features";
 import { freeEbooks } from "@/content/free-ebooks";
 import { simulators, type SimulatorSlug } from "./simulators";
 import styles from "./simulators.module.css";
@@ -84,7 +85,7 @@ export default function Page() {
           Economade.
         </p>
       </section>
-      <Newsletter />
+      {newsletterEnabled && <Newsletter />}
     </>
   );
 }

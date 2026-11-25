@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { adventures, guides, navigation, type Adventure } from "@/content/site";
+import { newsletterEnabled } from "@/content/features";
 export function TextLink({
   href,
   children,
@@ -123,7 +124,7 @@ export function Footer() {
         </div>
         <div>
           <p className="eyebrow">EXPLORER</p>
-          {navigation.slice(1, 4).map((n) => (
+          {navigation.filter(({ href }) => ["/voyages", "/vanlife", "/photos"].includes(href)).map((n) => (
             <Link href={n.href} key={n.href}>
               {n.label}
             </Link>
@@ -137,9 +138,11 @@ export function Footer() {
         </div>
         <div>
           <p className="eyebrow">RESTONS EN ROUTE</p>
-          <Link href="/#newsletter">
-            La lettre EcoVanLife <ArrowRight size={16} />
-          </Link>
+          {newsletterEnabled && (
+            <Link href="/#newsletter">
+              La lettre EcoVanLife <ArrowRight size={16} />
+            </Link>
+          )}
           <p className="footer-note">
             Voyages, vanlife & photographie.
             <br />
