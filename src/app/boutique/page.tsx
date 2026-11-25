@@ -1,12 +1,30 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { PageIntro } from "@/components/ui";
 import { paidEbooks } from "@/content/ebooks";
 
-export const metadata = {
+const shareImage = {
+  url: "/images/social/boutique-ecovanlife.jpg",
+  width: 1200,
+  height: 630,
+  alt: "Logo EcoVanLife sur fond crème et couvertures des guides Voyager sobrement, Gérer chaque goutte, Produire son énergie et Camp de base nomade.",
+};
+
+export const metadata: Metadata = {
   title: "La boutique",
   description:
     "Quatre guides illustrés en vente : Voyager sobrement, Gérer chaque goutte, Produire son énergie et Camp de base nomade.",
   alternates: { canonical: "/boutique" },
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    siteName: "EcoVanLife",
+    images: [shareImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [{ url: shareImage.url, alt: shareImage.alt }],
+  },
 };
 
 export default function Page() {

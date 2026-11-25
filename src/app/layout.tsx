@@ -28,10 +28,10 @@ export const metadata: Metadata = {
     siteName: "EcoVanLife",
     images: [
       {
-        url: "/images/hero.jpg",
-        width: 2400,
-        height: 1600,
-        alt: "Montagnes, photographie de démonstration EcoVanLife",
+        url: "/images/social/accueil-ecovanlife.png",
+        width: 1200,
+        height: 630,
+        alt: "Logo EcoVanLife représentant un van rouge devant un paysage de montagnes et de sapins.",
       },
     ],
   },
